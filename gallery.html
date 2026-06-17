@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clay & Kiln | Pottery Studio - Art Showcase</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .container {
+            max-width: 1400px !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: clip;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        body:not(.dark) * {
+            border-color: #4A3B32 !important;
+        }
+        body:not(.dark) .text-muted, body:not(.dark) .text-clay-muted {
+            color: #5C4E46 !important;
+            border-color: #4A3B32 !important;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        body.dark * {
+            border-color: #C86B47 !important;
+        }
+        body.dark section {
+            box-shadow: 0 10px 30px rgba(200, 107, 71, 0.15) !important;
+        }
+        section {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+        body.dark .bg-white {
+            background-color: #2A2421 !important;
+        }
+        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
+            color: #FAF6F0 !important;
+        }
+        body.dark .text-clay-primary {
+            color: #E1CDBB !important;
+        }
+        
+        body.dark .card-clay {
+            background-color: #2A2421;
+            border: 1px solid #C86B47 !important;
+        }
+        body.dark .bg-clay-bg {
+            background-color: #2A2421 !important;
+        }
+        body.dark .glass-navbar {
+            background-color: rgba(31, 26, 24, 0.95) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .cursive-text {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 3.5rem;
+            color: #C86B47;
+            line-height: 0.8;
+            transform: rotate(-2deg);
+        }
+        
+        /* Custom Button Styles */
+        .btn-primary-clay {
+            background-color: #C86B47;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary-clay:hover {
+            background-color: #A65636;
+            color: white;
+        }
+        .btn-outline-clay {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border: 2px solid #C86B47 !important;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-outline-clay:hover {
+            background-color: #A65636 !important;
+            border-color: #A65636 !important;
+            color: white !important;
+        }
+
+        .glass-navbar {
+            background-color: rgba(42, 36, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .navbar-collapse.collapse {
+            visibility: visible !important;
+        }
+        .nav-link {
+            color: #E1CDBB !important;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        @media (min-width: 1200px) {
+            .navbar-nav {
+                gap: 1.5rem !important;
+            }
+        }
+
+        /* Float Animations for Hero Shapes */
+        .floating-shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: floatShape 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+        }
+
+        /* Hexagon Category Clip Path */
+        .hexagon-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 115.47%; /* Aspect ratio for regular hexagons */
+            overflow: hidden;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .hexagon-wrapper:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        .hexagon-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            transition: all 0.4s ease;
+        }
+        .hexagon-inner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(42, 36, 33, 0.9), rgba(200, 107, 71, 0.6));
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        .hexagon-wrapper:hover .hexagon-inner::after {
+            opacity: 0.75;
+        }
+        .hexagon-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Premium Timeline Journey Design */
+        .journey-timeline {
+            position: relative;
+        }
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #C86B47, #E1CDBB 30%, #C86B47 70%, #E1CDBB);
+            transform: translateX(-50%);
+            z-index: 0;
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(200, 107, 71, 0.25);
+        }
+        .journey-step {
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .journey-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #C86B47, #A65636);
+            border: 4px solid #FAF6F0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 6px 15px rgba(200, 107, 71, 0.25);
+            z-index: 2;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .journey-step:hover .journey-badge {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 0 20px rgba(200, 107, 71, 0.5);
+            background: linear-gradient(135deg, #A65636, #C86B47);
+        }
+        body.dark .journey-badge {
+            border-color: #1F1A18;
+            box-shadow: 0 6px 15px rgba(200, 107, 71, 0.4);
+        }
+        
+        /* Glassmorphic card styling */
+        .glass-journey-card {
+            background: rgba(250, 246, 240, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 107, 71, 0.15);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(42, 36, 33, 0.04);
+            padding: 1.75rem;
+        }
+        .journey-step:hover .glass-journey-card {
+            transform: translateY(-5px);
+            background: rgba(250, 246, 240, 0.95);
+            border-color: rgba(200, 107, 71, 0.4);
+            box-shadow: 0 15px 35px rgba(200, 107, 71, 0.12);
+        }
+        body.dark .glass-journey-card {
+            background: rgba(42, 36, 33, 0.6);
+            border-color: rgba(200, 107, 71, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        body.dark .journey-step:hover .glass-journey-card {
+            background: rgba(42, 36, 33, 0.85);
+            border-color: rgba(200, 107, 71, 0.6);
+            box-shadow: 0 15px 35px rgba(200, 107, 71, 0.25);
+        }
+
+        /* Image hover container */
+        .journey-img-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(200, 107, 71, 0.15);
+            box-shadow: 0 8px 25px rgba(42, 36, 33, 0.06);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .journey-img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(42, 36, 33, 0.4));
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        .journey-step:hover .journey-img-container {
+            transform: scale(1.03);
+            border-color: rgba(200, 107, 71, 0.35);
+            box-shadow: 0 12px 30px rgba(200, 107, 71, 0.15);
+        }
+        .journey-step:hover .journey-img-container::after {
+            opacity: 0.8;
+        }
+
+
+        /* Modern 360 degree slider handle styling */
+        .slider-360::-webkit-slider-runnable-track {
+            background: #E1CDBB;
+            height: 8px;
+            border-radius: 4px;
+        }
+        .slider-360::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #C86B47;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+        .slider-360::-webkit-slider-thumb:active {
+            transform: scale(1.2);
+        }
+
+        /* Responsive Breakpoint Corrections */
+        @media (max-width: 1024px) {
+            .hexagon-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .display-3 { font-size: 2.75rem !important; }
+            .display-5 { font-size: 2.25rem !important; }
+            .display-6 { font-size: 1.75rem !important; }
+            .cursive-text { font-size: 2.75rem !important; }
+            
+            /* Vertical Timeline collapse on tablet/mobile */
+            .journey-timeline::before {
+                left: 32px;
+                transform: none;
+            }
+            .journey-step {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                padding-left: 80px;
+                text-align: left !important;
+                gap: 1.5rem !important;
+            }
+            .journey-badge-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .journey-content-wrapper {
+                width: 100% !important;
+            }
+            
+            .hexagon-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .btn-primary-clay:not(.btn-sm), .btn-outline-clay:not(.btn-sm) {
+                width: 100%;
+                max-width: 320px;
+            }
+            section { padding-top: 3rem !important; padding-bottom: 3rem !important; margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+        }
+        @media (max-width: 480px) {
+            .display-3 { font-size: 2.25rem !important; }
+            .display-5 { font-size: 1.85rem !important; }
+            .hexagon-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Sticky Navbar Scroll Transition */
+        .navbar-scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            background-color: rgba(42, 36, 33, 0.96) !important;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+        }
+        body.dark .navbar-scrolled {
+            background-color: rgba(26, 21, 18, 0.98) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-3 shadow-sm glass-navbar" style="z-index: 1050;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                <div class="d-flex flex-column leading-none">
+                    <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                    <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                </div>
+            </a>
+            <div class="d-flex align-items-center gap-3 order-xl-last">
+                <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Home</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="index.html">Home 1</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Dashboard</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
+                    <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon" id="nav-dark-icon-mobile"></i>
+                    </a>
+                    <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                        <i class="fa-solid fa-right-left"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill" style="border-color:#C86B47 !important; background-color:#C86B47 !important;">Login</a>
+                </div>
+            </div>
+            <div class="d-none d-xl-flex align-items-center gap-4 text-white">
+                <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
+                </a>
+                <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                    <i class="fa-solid fa-right-left"></i>
+                </a>
+                <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill" style="border-color:#C86B47 !important; background-color:#C86B47 !important;">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Creative Hero (Asymmetric Collage Layout) -->
+    <section class="relative text-white overflow-hidden py-24 lg:py-36 border-bottom-left-radius-[50px] border-bottom-right-radius-[50px]" style="background: radial-gradient(circle at 10% 20%, rgba(74, 59, 50, 1) 0%, rgba(42, 36, 33, 1) 90%);">
+        <!-- Background organic SVG lines pattern overlay -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none mix-blend-overlay">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <!-- Animated floating shapes (vector silhouettes) with staggered delays -->
+        <svg class="floating-shape w-24 h-24 text-clay-secondary" style="top: 10%; left: 8%; animation-duration: 9s;" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50 10 C30 10 20 30 20 50 C20 70 35 85 50 85 C65 85 80 70 80 50 C80 30 70 10 50 10 Z M50 20 C60 20 70 35 70 50 C70 65 60 75 50 75 C40 75 30 65 30 50 C30 35 40 20 50 20 Z" />
+        </svg>
+        <svg class="floating-shape w-32 h-32 text-clay-secondary" style="bottom: 15%; left: 42%; animation-delay: 2s; animation-duration: 12s;" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50 15 L20 40 L30 85 L70 85 L80 40 Z" />
+        </svg>
+        <svg class="floating-shape w-20 h-20 text-clay-secondary" style="top: 15%; right: 12%; animation-delay: 4.5s; animation-duration: 10s;" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M30 20 H70 V50 C70 65 50 80 50 80 C50 80 30 65 30 50 Z" />
+        </svg>
+
+        <div class="container relative z-10">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-clay-primary/30 bg-clay-primary/10 text-clay-secondary text-xs font-semibold uppercase tracking-[0.2em] mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-clay-primary animate-pulse"></span>
+                        Clay & Kiln Showcase
+                    </span>
+                    <h1 class="display-3 fw-bold text-white mb-4 leading-[1.15] font-serif">
+                        Discover <span class="text-clay-primary font-cursive text-5xl inline-block transform rotate-[-3deg] translate-y-1">creativity</span><br>in Every Piece
+                    </h1>
+                    <div class="w-20 h-[3px] bg-clay-primary mb-4 rounded-pill"></div>
+                    <p class="fs-5 text-clay-secondary mb-5 max-w-lg leading-relaxed">Every lump of clay is a blank page waiting for your personal expression. Explore our gallery of artist masterpieces, community creations, and trace the magical process from mud to glazed art.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#featured" class="btn-primary-clay text-decoration-none px-5 py-3 shadow-lg hover:shadow-clay-primary/35 transition-all">Explore Showcase <i class="fa-solid fa-chevron-down ms-2"></i></a>
+                        <a href="workshops.html" class="btn-outline-clay text-decoration-none px-5 py-3 hover:bg-clay-primary hover:text-white transition-all">Book Studio Session <i class="fa-solid fa-calendar ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Premium Single Hero Image Container -->
+                    <div class="relative rounded-[32px] overflow-hidden shadow-2xl border-4 border-white/10 max-w-[550px] mx-auto lg:ms-auto lg:me-0 mt-5 lg:mt-0 aspect-[4/3] group cursor-pointer">
+                        <img src="assets/images/gallery/gallery-hero.jpg" alt="Professional pottery artist painting a ceramic bowl" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Glassmorphism badge overlay -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-clay-dark/75 backdrop-blur-md border border-white/10 px-5 py-3.5 rounded-2xl text-white shadow-xl pointer-events-none">
+                            <span class="text-[0.6rem] uppercase tracking-[0.2em] text-clay-secondary block">Featured Scene</span>
+                            <span class="font-serif fw-bold text-sm">Professional Pottery Workshop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Featured Masterpieces -->
+    <section id="featured" class="py-20 bg-white">
+        <div class="container">
+            <div class="text-center mb-16">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">STUDIO CURATED</span>
+                <h2 class="display-5 fw-bold mt-2">Featured Masterpieces</h2>
+                <div class="w-16 h-1 bg-clay-primary mx-auto mt-4 rounded-pill"></div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Masterpiece 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-clay h-100 shadow-sm overflow-hidden flex flex-column rounded-3xl border border-clay-secondary border-opacity-30">
+                        <div class="relative overflow-hidden group">
+                            <img src="assets/images/gallery/masterpiece-1.jpg" alt="Delicate Blue Floral Vase" class="w-100 object-cover transition-transform duration-500 group-hover:scale-105" style="height: 280px;">
+                            <span class="absolute top-4 left-4 bg-clay-primary text-white text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Best in Show</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-column justify-between">
+                            <div>
+                                <h3 class="fw-bold fs-5 mb-2">Ocean Whisper Vase</h3>
+                                <p class="text-muted text-xs mb-4">An intricate hand-thrown white porcelain vase decorated with delicate underglaze blue brushwork representing sea currents.</p>
+                            </div>
+                            <div class="border-t border-secondary border-opacity-10 pt-4 mt-auto">
+                                <div class="d-flex justify-content-between align-items-center text-[11px] text-muted mb-3">
+                                    <span>Artist: <strong class="text-clay-dark dark:text-white">Elena Rostova</strong></span>
+                                    <span>May 2026</span>
+                                </div>
+                                <button class="btn btn-outline-clay w-100 text-[11px] py-2.5 rounded-pill" data-bs-toggle="modal" data-bs-target="#masterpieceModal1">View Technical Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masterpiece 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-clay h-100 shadow-sm overflow-hidden flex flex-column rounded-3xl border border-clay-secondary border-opacity-30">
+                        <div class="relative overflow-hidden group">
+                            <img src="assets/images/gallery/masterpiece-2.jpg" alt="Hand-painted Mug Collection" class="w-100 object-cover transition-transform duration-500 group-hover:scale-105" style="height: 280px;">
+                            <span class="absolute top-4 left-4 bg-[#D4AF37] text-black fw-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Studio Favorite</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-column justify-between">
+                            <div>
+                                <h3 class="fw-bold fs-5 mb-2">Artisan Painted Mugs</h3>
+                                <p class="text-muted text-xs mb-4">A set of hand-thrown stoneware coffee mugs, decorated with detailed cobalt blue geometric and organic slip-trailed patterns.</p>
+                            </div>
+                            <div class="border-t border-secondary border-opacity-10 pt-4 mt-auto">
+                                <div class="d-flex justify-content-between align-items-center text-[11px] text-muted mb-3">
+                                    <span>Artist: <strong class="text-clay-dark dark:text-white">Sarah Jenkins</strong></span>
+                                    <span>June 2026</span>
+                                </div>
+                                <button class="btn btn-outline-clay w-100 text-[11px] py-2.5 rounded-pill" data-bs-toggle="modal" data-bs-target="#masterpieceModal2">View Technical Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masterpiece 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-clay h-100 shadow-sm overflow-hidden flex flex-column rounded-3xl border border-clay-secondary border-opacity-30">
+                        <div class="relative overflow-hidden group">
+                            <img src="assets/images/gallery/masterpiece-3.jpg" alt="Luxury Decorative Pottery Bowl" class="w-100 object-cover transition-transform duration-500 group-hover:scale-105" style="height: 280px;">
+                            <span class="absolute top-4 left-4 bg-clay-dark text-clay-secondary text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Award Winner</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-column justify-between">
+                            <div>
+                                <h3 class="fw-bold fs-5 mb-2">Volcanic Ash Basin</h3>
+                                <p class="text-muted text-xs mb-4">Stoneware basin finished with a heavy textured natural wood-ash glaze that mimics cooling volcanic rock and gold crystallizations.</p>
+                            </div>
+                            <div class="border-t border-secondary border-opacity-10 pt-4 mt-auto">
+                                <div class="d-flex justify-content-between align-items-center text-[11px] text-muted mb-3">
+                                    <span>Artist: <strong class="text-clay-dark dark:text-white">Marcus Vance</strong></span>
+                                    <span>April 2026</span>
+                                </div>
+                                <button class="btn btn-outline-clay w-100 text-[11px] py-2.5 rounded-pill" data-bs-toggle="modal" data-bs-target="#masterpieceModal3">View Technical Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masterpiece 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-clay h-100 shadow-sm overflow-hidden flex flex-column rounded-3xl border border-clay-secondary border-opacity-30">
+                        <div class="relative overflow-hidden group">
+                            <img src="assets/images/gallery/masterpiece-4.jpg" alt="Dynasty Crackle Blossom Vase" class="w-100 object-cover transition-transform duration-500 group-hover:scale-105" style="height: 280px;">
+                            <span class="absolute top-4 left-4 bg-clay-primary text-white text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Museum Quality</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-column justify-between">
+                            <div>
+                                <h3 class="fw-bold fs-5 mb-2">Dynasty Blossom Vase</h3>
+                                <p class="text-muted text-xs mb-4">An exquisite double-handled ceramic amphora featuring hand-carved floral reliefs and a premium high-fire celadon copper-crackle glaze.</p>
+                            </div>
+                            <div class="border-t border-secondary border-opacity-10 pt-4 mt-auto">
+                                <div class="d-flex justify-content-between align-items-center text-[11px] text-muted mb-3">
+                                    <span>Artist: <strong class="text-clay-dark dark:text-white">Chen Wei</strong></span>
+                                    <span>March 2026</span>
+                                </div>
+                                <button class="btn btn-outline-clay w-100 text-[11px] py-2.5 rounded-pill" data-bs-toggle="modal" data-bs-target="#masterpieceModal4">View Technical Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Pottery Categories (Honeycomb Hexagon Grid) -->
+    <section class="py-20 bg-clay-bg dark:bg-clay-dark border-top border-bottom border-clay-secondary border-opacity-20">
+        <div class="container">
+            <div class="text-center mb-16">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">EXPLORE STYLES</span>
+                <h2 class="display-5 fw-bold mt-2">Pottery Categories</h2>
+                <p class="text-muted mt-2">Click any category below to filter customer masterpieces</p>
+                <div class="w-16 h-1 bg-clay-primary mx-auto mt-4 rounded-pill"></div>
+            </div>
+
+            <!-- Asymmetrical Hexagonal Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 hexagon-grid">
+                <!-- Hexagon 1: Mugs -->
+                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('mugs', this)">
+                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/mug-gallery.jpg');">
+                        <div class="hexagon-content">
+                            <i class="fa-solid fa-mug-hot fs-3 mb-2"></i>
+                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Mugs</h4>
+                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hexagon 2: Bowls -->
+                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('bowls', this)">
+                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/bowl-gallery.jpg');">
+                        <div class="hexagon-content">
+                            <i class="fa-solid fa-bowl-food fs-3 mb-2"></i>
+                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Bowls</h4>
+                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hexagon 3: Plates -->
+                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('plates', this)">
+                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/plate-gallery.jpg');">
+                        <div class="hexagon-content">
+                            <i class="fa-solid fa-compact-disc fs-3 mb-2"></i>
+                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Plates</h4>
+                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hexagon 4: Vases -->
+                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('vases', this)">
+                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/vase-gallery.jpg');">
+                        <div class="hexagon-content">
+                            <i class="fa-solid fa-whiskey-glass fs-3 mb-2"></i>
+                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Vases</h4>
+                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hexagon 5: Figurines -->
+                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('figurines', this)">
+                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/figurine-gallery.jpg');">
+                        <div class="hexagon-content">
+                            <i class="fa-solid fa-cat fs-3 mb-2"></i>
+                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Figurines</h4>
+                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hexagon 6: Home Decor -->
+                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('decor', this)">
+                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/decor-gallery.jpg');">
+                        <div class="hexagon-content">
+                            <i class="fa-solid fa-house-chimney-window fs-3 mb-2"></i>
+                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Decor</h4>
+                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear Filter Button -->
+            <div class="text-center mt-10">
+                <button id="clearFilterBtn" class="btn btn-outline-clay px-4 py-2 text-xs rounded-pill d-none" onclick="clearFilter()">
+                    <i class="fa-solid fa-filter-circle-xmark me-2"></i> Clear Category Filter
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Customer Creations (Pinterest Masonry) -->
+    <section class="py-20 bg-white">
+        <div class="container">
+            <div class="text-center mb-16">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">COMMUNITY CREATORS</span>
+                <h2 class="display-5 fw-bold mt-2">Customer Creations</h2>
+                <div class="w-16 h-1 bg-clay-primary mx-auto mt-4 rounded-pill"></div>
+            </div>
+
+            <!-- Pinterest Masonry columns via Tailwind utility classes -->
+            <div class="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4" id="masonryGallery">
+                <!-- Mug Item -->
+                <div class="break-inside-avoid relative rounded-3xl overflow-hidden group border border-secondary border-opacity-10 shadow-sm cursor-pointer gallery-item" data-category="mugs" onclick="openLightbox('assets/images/gallery/customer-artwork-1.jpg', 'Dotted Kids Mug', 'Hand painted by young artist Leo (Age 8) in our kids weekend class.')">
+                    <img src="assets/images/gallery/customer-artwork-1.jpg" alt="Painted Dotted Mug" class="w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 d-flex flex-column justify-end text-white">
+                        <h4 class="fw-bold mb-1">Dotted Polka Mug</h4>
+                        <span class="text-xs text-clay-secondary">Artist: Leo, Age 8</span>
+                        <div class="d-flex justify-content-between mt-3 text-[10px] uppercase tracking-wider text-clay-secondary">
+                            <span>Mugs</span>
+                            <span>Bisque Glazed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Plate (Plates) -->
+                <div class="break-inside-avoid relative rounded-3xl overflow-hidden group border border-secondary border-opacity-10 shadow-sm cursor-pointer gallery-item" data-category="plates" onclick="openLightbox('assets/images/gallery/customer-artwork-2.jpg', 'Summer Floral Plate', 'A family painting session result using colorful glazes and brush stamps.')">
+                    <img src="assets/images/gallery/customer-artwork-2.jpg" alt="Painted Ceramic Plate" class="w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 d-flex flex-column justify-end text-white">
+                        <h4 class="fw-bold mb-1">Summer Floral Plate</h4>
+                        <span class="text-xs text-clay-secondary">Artist: The Miller Family</span>
+                        <div class="d-flex justify-content-between mt-3 text-[10px] uppercase tracking-wider text-clay-secondary">
+                            <span>Plates</span>
+                            <span>Handpainted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clay sculpture (Figurines) -->
+                <div class="break-inside-avoid relative rounded-3xl overflow-hidden group border border-secondary border-opacity-10 shadow-sm cursor-pointer gallery-item" data-category="figurines" onclick="openLightbox('assets/images/gallery/customer-painting.jpg', 'Studio Sculpture Class', 'Clay hand-building of organic figurines during our evening workshops.')">
+                    <img src="assets/images/gallery/customer-painting.jpg" alt="Molding clay sculpture" class="w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 d-flex flex-column justify-end text-white">
+                        <h4 class="fw-bold mb-1">Clay Sculpture Workshop</h4>
+                        <span class="text-xs text-clay-secondary">Artist: Adult Class Group</span>
+                        <div class="d-flex justify-content-between mt-3 text-[10px] uppercase tracking-wider text-clay-secondary">
+                            <span>Figurines</span>
+                            <span>Hand Built</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Large Vase (Vases) -->
+                <div class="break-inside-avoid relative rounded-3xl overflow-hidden group border border-secondary border-opacity-10 shadow-sm cursor-pointer gallery-item" data-category="vases" onclick="openLightbox('assets/images/gallery/customer-artwork-3.jpg', 'Tall Glazed Vase', 'Stoneware hand-thrown vase by our resident team, finished with multiple dipped glaze layers.')">
+                    <img src="assets/images/gallery/customer-artwork-3.jpg" alt="Stoneware Ceramic Vase" class="w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 d-flex flex-column justify-end text-white">
+                        <h4 class="fw-bold mb-1">Dipped Stoneware Vase</h4>
+                        <span class="text-xs text-clay-secondary">Artist: Clara & Mason</span>
+                        <div class="d-flex justify-content-between mt-3 text-[10px] uppercase tracking-wider text-clay-secondary">
+                            <span>Vases</span>
+                            <span>Dipped Glaze</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Studio Transformation Journey (Timeline) -->
+    <section class="py-20 bg-clay-bg dark:bg-clay-dark overflow-hidden">
+        <div class="container">
+            <div class="text-center mb-16">
+                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-clay-primary/30 bg-clay-primary/10 text-clay-primary text-xs font-semibold uppercase tracking-[0.2em] mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-clay-primary animate-pulse"></span>
+                    CREATIVE LIFE CYCLE
+                </span>
+                <h2 class="display-5 fw-bold mt-2 font-serif text-clay-dark dark:text-white">Studio Transformation Journey</h2>
+                <p class="text-clay-muted dark:text-gray-300 mt-2 max-w-xl mx-auto">How raw earth changes into a glittering work of art through our five-stage artisanal process</p>
+                <div class="w-16 h-1 bg-clay-primary dark:bg-clay-secondary mx-auto mt-4 rounded-pill"></div>
+            </div>
+
+            <div class="journey-timeline max-w-5xl mx-auto">
+                
+                <!-- Step 1: Raw Piece -->
+                <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between mb-20 gap-8 md:gap-12">
+                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-end order-1 order-md-1">
+                        <div class="glass-journey-card text-start text-md-end">
+                            <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 01</span>
+                            <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">Raw Piece (Clay Throwing)</h3>
+                            
+                            <!-- Metadata Grid -->
+                            <div class="d-flex flex-wrap gap-2 justify-start justify-content-md-end mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-temperature-low text-[10px]"></i> Room Temp (68°F)
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-arrows-spin text-[10px]"></i> Potter's Wheel
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-clock text-[10px]"></i> 15-30 Mins
+                                </span>
+                            </div>
+                            
+                            <p class="text-clay-muted dark:text-gray-300 text-sm mb-0">The journey begins with wet clay centered on a spinning pottery wheel. Using steady hands and water, we shape raw earth into cylinders, plates, and organic containers.</p>
+                            
+                            <!-- Technical Details -->
+                            <div class="mt-4 pt-3 border-t border-clay-primary/10 text-xs text-clay-muted dark:text-gray-400 italic">
+                                <strong class="text-clay-primary dark:text-clay-secondary font-serif">Artisanal Insight:</strong> Requires centering force and proper hand lubrication to keep clay wall thickness uniform.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-badge-container d-flex justify-center order-2">
+                        <div class="journey-badge">01</div>
+                    </div>
+                    
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-3 order-md-3">
+                        <div class="journey-img-container">
+                            <img src="assets/images/gallery/masterpiece-1.jpg" alt="Throwing raw clay on a potter's wheel" class="w-full object-cover transition-transform duration-700 hover:scale-105" style="height: 280px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Painting -->
+                <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between mb-20 gap-8 md:gap-12">
+                    <!-- Image on left for desktop, ordered first on mobile collapse -->
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-3 order-md-1">
+                        <div class="journey-img-container">
+                            <img src="assets/images/gallery/masterpiece-2.jpg" alt="Painting fine details on pottery bisque" class="w-full object-cover transition-transform duration-700 hover:scale-105" style="height: 280px;">
+                        </div>
+                    </div>
+                    
+                    <div class="journey-badge-container d-flex justify-center order-2">
+                        <div class="journey-badge">02</div>
+                    </div>
+                    
+                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-start order-1 order-md-3">
+                        <div class="glass-journey-card text-start">
+                            <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 02</span>
+                            <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">Surface Painting</h3>
+                            
+                            <!-- Metadata Grid -->
+                            <div class="d-flex flex-wrap gap-2 justify-start mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-fire text-[10px]"></i> Bisque Fired (1700°F)
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-paintbrush text-[10px]"></i> Detail Brushes
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-clock text-[10px]"></i> 1-3 Hours
+                                </span>
+                            </div>
+                            
+                            <p class="text-clay-muted dark:text-gray-300 text-sm mb-0">After drying and a first "bisque" fire, the hardened, chalky white piece is ready. Customers use detail brushes and vibrant underglazes to hand-paint unique designs, floral patterns, or messages.</p>
+                            
+                            <!-- Technical Details -->
+                            <div class="mt-4 pt-3 border-t border-clay-primary/10 text-xs text-clay-muted dark:text-gray-400 italic">
+                                <strong class="text-clay-primary dark:text-clay-secondary font-serif">Artisanal Insight:</strong> Porous bisque clay absorbs pigment quickly, making steady brush strokes critical.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Glazing -->
+                <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between mb-20 gap-8 md:gap-12">
+                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-end order-1 order-md-1">
+                        <div class="glass-journey-card text-start text-md-end">
+                            <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 03</span>
+                            <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">Liquid Glazing</h3>
+                            
+                            <!-- Metadata Grid -->
+                            <div class="d-flex flex-wrap gap-2 justify-start justify-content-md-end mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-droplet text-[10px]"></i> Liquid Glaze suspension
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-hand-holding text-[10px]"></i> Dipping Tongs
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-clock text-[10px]"></i> 5-10 Mins
+                                </span>
+                            </div>
+                            
+                            <p class="text-clay-muted dark:text-gray-300 text-sm mb-0">The painted pottery is dipped into a vat of liquid glass suspension (glaze). The chalky liquid coats the pigments. When fired, this chalk melts into a waterproof, high-gloss food-safe glass seal.</p>
+                            
+                            <!-- Technical Details -->
+                            <div class="mt-4 pt-3 border-t border-clay-primary/10 text-xs text-clay-muted dark:text-gray-400 italic">
+                                <strong class="text-clay-primary dark:text-clay-secondary font-serif">Artisanal Insight:</strong> Proper dipping speed ensures an even thickness and prevents runoffs during final fire.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-badge-container d-flex justify-center order-2">
+                        <div class="journey-badge">03</div>
+                    </div>
+                    
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-3 order-md-3">
+                        <div class="journey-img-container">
+                            <img src="assets/images/gallery/masterpiece-3.jpg" alt="Dipping pottery piece in glaze" class="w-full object-cover transition-transform duration-700 hover:scale-105" style="height: 280px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Kiln Firing -->
+                <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between mb-20 gap-8 md:gap-12">
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-3 order-md-1">
+                        <div class="journey-img-container">
+                            <img src="assets/images/gallery/masterpiece-4.jpg" alt="Glowing ceramic kiln firing" class="w-full object-cover transition-transform duration-700 hover:scale-105" style="height: 280px;">
+                        </div>
+                    </div>
+                    
+                    <div class="journey-badge-container d-flex justify-center order-2">
+                        <div class="journey-badge">04</div>
+                    </div>
+                    
+                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-start order-1 order-md-3">
+                        <div class="glass-journey-card text-start">
+                            <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 04</span>
+                            <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">Extreme Kiln Firing</h3>
+                            
+                            <!-- Metadata Grid -->
+                            <div class="d-flex flex-wrap gap-2 justify-start mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-temperature-arrow-up text-[10px]"></i> 2200°F (Cone 5/6)
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-cubes text-[10px]"></i> Kiln Shelves
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-clock text-[10px]"></i> 24-Hour Cycle
+                                </span>
+                            </div>
+                            
+                            <p class="text-clay-muted dark:text-gray-300 text-sm mb-0">Pieces are loaded into our high-temperature kilns, firing up to 2200°F (1200°C). Over 24 hours, the intense heat triggers chemical transformations, fusing clay particles and glazing the surface.</p>
+                            
+                            <!-- Technical Details -->
+                            <div class="mt-4 pt-3 border-t border-clay-primary/10 text-xs text-clay-muted dark:text-gray-400 italic">
+                                <strong class="text-clay-primary dark:text-clay-secondary font-serif">Artisanal Insight:</strong> Firing vitrifies the silica, fusing paint pigments and glaze into a permanent glass matrix.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Finished Artwork -->
+                <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between gap-8 md:gap-12">
+                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-end order-1 order-md-1">
+                        <div class="glass-journey-card text-start text-md-end">
+                            <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 05</span>
+                            <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">The Finished Masterpiece</h3>
+                            
+                            <!-- Metadata Grid -->
+                            <div class="d-flex flex-wrap gap-2 justify-start justify-content-md-end mb-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i> Glossy & Safe
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-sun text-[10px]"></i> Inspection Light
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
+                                    <i class="fa-solid fa-heart text-[10px]"></i> Lifetime Heirloom
+                                </span>
+                            </div>
+                            
+                            <p class="text-clay-muted dark:text-gray-300 text-sm mb-0">Once the kiln cools down, the finished pieces are unpacked. The raw, grey clay and powdery paint have transformed into a brilliant, glass-finished heirloom ready to take home and use daily.</p>
+                            
+                            <!-- Technical Details -->
+                            <div class="mt-4 pt-3 border-t border-clay-primary/10 text-xs text-clay-muted dark:text-gray-400 italic">
+                                <strong class="text-clay-primary dark:text-clay-secondary font-serif">Artisanal Insight:</strong> Food-safe, microwave-safe, dishwasher-safe, and ready to stand the test of time.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-badge-container d-flex justify-center order-2">
+                        <div class="journey-badge">05</div>
+                    </div>
+                    
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-3 order-md-3">
+                        <div class="journey-img-container">
+                            <img src="assets/images/gallery/vase-gallery.jpg" alt="Glossy finished pottery bowl out of kiln" class="w-full object-cover transition-transform duration-700 hover:scale-105" style="height: 280px;">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Interactive Gallery Showcase & CTA -->
+    <section class="py-20 bg-white">
+        <div class="container">
+            <div class="text-center mb-16">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">INTERACTIVE EXPERIENCE</span>
+                <h2 class="display-5 fw-bold mt-2">Interactive Pottery Showcase</h2>
+                <p class="text-muted mt-2">Use the slider control below to rotate the ceramic piece 360° and inspect the glazes</p>
+                <div class="w-16 h-1 bg-clay-primary mx-auto mt-4 rounded-pill"></div>
+            </div>
+
+            <div class="row align-items-center g-5 justify-content-center">
+                <!-- 360 interactive rotation block -->
+                <div class="col-lg-5 text-center">
+                    <div class="bg-clay-bg dark:bg-clay-dark border border-clay-secondary border-opacity-20 p-5 rounded-[40px] shadow-sm position-relative">
+                        <!-- Image Frame container -->
+                        <div class="d-inline-block rounded-2xl overflow-hidden bg-white dark:bg-clay-dark border-4 border-clay-secondary shadow-md mb-6 w-100 max-w-[320px]">
+                            <img id="pottery360Img" src="assets/images/gallery/showcase-360-1.jpg" alt="Interactive 360 Ceramic Vase" class="w-100 object-cover" style="height: 320px;">
+                        </div>
+                        
+                        <!-- 360 Overlay badge -->
+                        <div class="absolute top-10 right-10 bg-clay-primary text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
+                            <i class="fa-solid fa-arrows-spin me-1"></i> Drag / Slide 360°
+                        </div>
+
+                        <!-- Range slider controller -->
+                        <div class="max-w-[280px] mx-auto mb-3">
+                            <input type="range" class="form-range slider-360 w-100" id="pottery360Range" min="0" max="100" value="0">
+                            <div class="d-flex justify-content-between text-[10px] text-muted mt-2 uppercase tracking-wider">
+                                <span>Left View</span>
+                                <span>Center</span>
+                                <span>Right View</span>
+                            </div>
+                        </div>
+                        <h4 class="font-serif fw-bold fs-5 mt-4 mb-1">Dripped Amber Amphora</h4>
+                        <p class="text-muted text-xs mb-0">Handcrafted stoneware, double dipped feldspathic glazes</p>
+                    </div>
+                </div>
+
+                <!-- Showcase side columns (Showcase Collection 2x2 Grid) -->
+                <div class="col-lg-7">
+                    <div class="row g-4">
+                        <!-- Item 1: Luxury ceramic gallery display -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center gap-4 p-4 rounded-3xl bg-clay-bg dark:bg-clay-dark border border-clay-secondary border-opacity-20 h-100">
+                                <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+                                    <img src="assets/images/gallery/showcase-gallery.jpg" alt="Luxury ceramic gallery display" class="w-100 h-100 object-cover">
+                                </div>
+                                <div>
+                                    <span class="bg-clay-primary bg-opacity-10 text-clay-primary text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full">Gallery Display</span>
+                                    <h4 class="font-serif fw-bold mt-2 mb-1 fs-6">Luxury Gallery</h4>
+                                    <p class="text-muted text-[11px] mb-0">Elegantly displayed modern porcelain works under spotlighting.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Studio shelf collections -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center gap-4 p-4 rounded-3xl bg-clay-bg dark:bg-clay-dark border border-clay-secondary border-opacity-20 h-100">
+                                <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+                                    <img src="assets/images/gallery/showcase-shelves.jpg" alt="Studio shelf collections" class="w-100 h-100 object-cover">
+                                </div>
+                                <div>
+                                    <span class="bg-clay-primary bg-opacity-10 text-clay-primary text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full">Studio Shelves</span>
+                                    <h4 class="font-serif fw-bold mt-2 mb-1 fs-6">Studio Collection</h4>
+                                    <p class="text-muted text-[11px] mb-0">Rows of raw and drying pieces on rustic studio wooden shelves.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Modern pottery exhibition -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center gap-4 p-4 rounded-3xl bg-clay-bg dark:bg-clay-dark border border-clay-secondary border-opacity-20 h-100">
+                                <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+                                    <img src="assets/images/gallery/showcase-exhibition.jpg" alt="Modern pottery exhibition" class="w-100 h-100 object-cover">
+                                </div>
+                                <div>
+                                    <span class="bg-clay-primary bg-opacity-10 text-clay-primary text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full">Exhibition</span>
+                                    <h4 class="font-serif fw-bold mt-2 mb-1 fs-6">Modern Exhibition</h4>
+                                    <p class="text-muted text-[11px] mb-0">Curated abstract ceramic sculptures on display in an art hall.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Premium handcrafted artwork -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center gap-4 p-4 rounded-3xl bg-clay-bg dark:bg-clay-dark border border-clay-secondary border-opacity-20 h-100">
+                                <div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+                                    <img src="assets/images/gallery/showcase-artwork.jpg" alt="Premium handcrafted artwork" class="w-100 h-100 object-cover">
+                                </div>
+                                <div>
+                                    <span class="bg-clay-primary bg-opacity-10 text-clay-primary text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full">Handcrafted Art</span>
+                                    <h4 class="font-serif fw-bold mt-2 mb-1 fs-6">Premium Artwork</h4>
+                                    <p class="text-muted text-[11px] mb-0">Close-up of an intricate, detailed clay piece with delicate glazes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call To Actions -->
+                    <div class="mt-8 d-flex flex-column flex-sm-row gap-3">
+                        <a href="glazecolors.html" class="btn-primary-clay text-decoration-none py-3 px-4 flex-grow-1">View Full Glaze Collection</a>
+                        <a href="workshops.html" class="btn-outline-clay text-decoration-none py-3 px-4 flex-grow-1">Book Studio Session</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-clay-dark text-white pt-5 pb-3 border-top border-secondary border-opacity-10">
+        <div class="container mt-4 text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <a class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 text-white text-decoration-none mb-3" href="index.html">
+                        <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                        <div class="d-flex flex-column leading-none text-start">
+                            <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                            <span class="text-[0.5rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                        </div>
+                    </a>
+                    <p class="text-clay-secondary text-sm pe-md-4">A premium pottery painting and ceramic art studio for all ages. Create, relax, and take home beautiful memories.</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-4">
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">QUICK LINKS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-clay-secondary text-decoration-none hover:text-white">About</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Gallery</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Glaze Colors</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="blogs.html" class="text-clay-secondary text-decoration-none hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">SERVICES</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Pottery Painting</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Ceramic Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Kids Classes</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Corporate Events</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Artwork Firing</a></li>
+                        <li class="mb-2"><a href="user-dashboard.html" class="text-clay-secondary text-decoration-none hover:text-white">Studio Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">STUDIO HOURS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-3">
+                            <span class="d-block text-white">Monday - Friday</span>
+                            09:00 AM - 08:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Saturday</span>
+                            09:00 AM - 09:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Sunday</span>
+                            10:00 AM - 06:00 PM
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <h6 class="fw-bold mb-4">NEWSLETTER</h6>
+                    <p class="text-sm text-clay-secondary mb-3">Get pottery tips, workshop updates and exclusive offers!</p>
+                    <form class="d-flex justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white rounded-start-pill text-sm" placeholder="Your email address" style="border-right: none; max-width: 200px;">
+                        <button type="submit" class="btn bg-clay-primary text-white rounded-end-pill px-3 border-0"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-sm text-clay-secondary">
+                <p class="mb-2 mb-md-0">&copy; 2026 Clay & Kiln Pottery Studio.</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Privacy Policy</a>
+                    <span class="text-secondary">|</span>
+                    <a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Terms & Conditions</a>
+                    <span class="text-secondary">|</span>
+                    <a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL OVERLAY -->
+    <div id="lightboxOverlay" class="fixed inset-0 z-[2000] hidden bg-black/95 flex flex-column justify-center items-center p-4">
+        <!-- Close button -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-clay-primary transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- Image display -->
+        <div class="max-w-4xl max-h-[75vh] overflow-hidden rounded-2xl border-4 border-white/10 shadow-2xl mb-4">
+            <img id="lightboxImg" src="" alt="Lightbox Full View" class="max-w-full max-h-[70vh] object-contain mx-auto">
+        </div>
+        <!-- Lightbox Caption -->
+        <div class="text-center max-w-2xl px-4">
+            <h3 id="lightboxTitle" class="font-serif fw-bold text-white text-xl mb-2"></h3>
+            <p id="lightboxText" class="text-clay-secondary text-sm"></p>
+        </div>
+    </div>
+
+    <!-- MASTERPIECE TECHNICAL MODALS -->
+    <!-- Modal 1 -->
+    <div class="modal fade" id="masterpieceModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg rounded-[24px]">
+                <div class="modal-header border-secondary border-opacity-20 p-4">
+                    <h5 class="modal-title font-serif fw-bold fs-4"><i class="fa-solid fa-flask text-clay-primary me-2"></i> Ocean Whisper Technical Details</h5>
+                    <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="assets/images/gallery/masterpiece-1.jpg" alt="Masterpiece 1" class="img-fluid rounded-2xl shadow-sm object-cover" style="height: 250px; width: 100%;">
+                        </div>
+                        <div class="col-md-7">
+                            <table class="table table-sm border-secondary border-opacity-20 text-sm dark:text-white">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Clay Body</td>
+                                        <td class="py-2">Grolleg English Kaolin Porcelain (smooth white)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Technique</td>
+                                        <td class="py-2">Wheel-thrown, thin-walled construction</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Decor</td>
+                                        <td class="py-2">Cobalt blue carbonate underglaze wash, custom hand-painted lines</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Glaze</td>
+                                        <td class="py-2">High gloss, lead-free borosilicate clear coat</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Firing</td>
+                                        <td class="py-2">Cone 10 oxidation gas kiln, peak 2350°F (1285°C)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-muted mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i> Elena's Ocean Whisper Vase required 14 hours of air-drying before receiving its bisque fire, followed by fine brush decoration which took over 4 hours of painting time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="masterpieceModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg rounded-[24px]">
+                <div class="modal-header border-secondary border-opacity-20 p-4">
+                    <h5 class="modal-title font-serif fw-bold fs-4"><i class="fa-solid fa-flask text-clay-primary me-2"></i> Artisan Painted Mugs Technical Details</h5>
+                    <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="assets/images/gallery/masterpiece-2.jpg" alt="Masterpiece 2" class="img-fluid rounded-2xl shadow-sm object-cover" style="height: 250px; width: 100%;">
+                        </div>
+                        <div class="col-md-7">
+                            <table class="table table-sm border-secondary border-opacity-20 text-sm dark:text-white">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Clay Body</td>
+                                        <td class="py-2">Buff Stoneware with iron spots (tactile sand texture)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Technique</td>
+                                        <td class="py-2">Wheel-thrown body, hand-pulled ergonomic handles</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Decor</td>
+                                        <td class="py-2">Hand-painted slip-trailed cobalt blue patterns</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Glaze</td>
+                                        <td class="py-2">Gloss clear interior, satin matte white exterior finish</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Firing</td>
+                                        <td class="py-2">Cone 6 oxidation in electric kiln, peak 2232°F (1222°C)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-muted mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i> Sarah's hand-painted mugs feature a comfortable thumb-rest handle and raw bottom ring showing the natural toasted clay speckles after firing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal fade" id="masterpieceModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg rounded-[24px]">
+                <div class="modal-header border-secondary border-opacity-20 p-4">
+                    <h5 class="modal-title font-serif fw-bold fs-4"><i class="fa-solid fa-flask text-clay-primary me-2"></i> Volcanic Ash Basin Technical Details</h5>
+                    <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="assets/images/gallery/masterpiece-3.jpg" alt="Masterpiece 3" class="img-fluid rounded-2xl shadow-sm object-cover" style="height: 250px; width: 100%;">
+                        </div>
+                        <div class="col-md-7">
+                            <table class="table table-sm border-secondary border-opacity-20 text-sm dark:text-white">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Clay Body</td>
+                                        <td class="py-2">Buff Stoneware with 15% medium grog (rough dark texture)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Technique</td>
+                                        <td class="py-2">Coil-built and paddle-shaped slab base</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Decor</td>
+                                        <td class="py-2">Carved deep facets, slip-trailed iron oxides</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Glaze</td>
+                                        <td class="py-2">Natural wood-ash overlay glaze with copper carbonate specks</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Firing</td>
+                                        <td class="py-2">Cone 6 reduction atmosphere, peak 2232°F (1222°C)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-muted mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i> The natural wood-ash melts inside the hot kiln atmosphere to run down the carved ridges, creating the signature bubbling volcanic lava textures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="modal fade" id="masterpieceModal4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg rounded-[24px]">
+                <div class="modal-header border-secondary border-opacity-20 p-4">
+                    <h5 class="modal-title font-serif fw-bold fs-4"><i class="fa-solid fa-flask text-clay-primary me-2"></i> Dynasty Blossom Vase Technical Details</h5>
+                    <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="assets/images/gallery/masterpiece-4.jpg" alt="Masterpiece 4" class="img-fluid rounded-2xl shadow-sm object-cover" style="height: 250px; width: 100%;">
+                        </div>
+                        <div class="col-md-7">
+                            <table class="table table-sm border-secondary border-opacity-20 text-sm dark:text-white">
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Clay Body</td>
+                                        <td class="py-2">Grolleg English Kaolin Porcelain (smooth pure white)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Technique</td>
+                                        <td class="py-2">Wheel-thrown body, hand-sculpted elegant side handles</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Decor</td>
+                                        <td class="py-2">Intricate hand-carved floral reliefs (sgraffito detailing)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Glaze</td>
+                                        <td class="py-2">Celadon green copper-crackle glaze suspension</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold py-2 text-clay-primary">Firing</td>
+                                        <td class="py-2">Cone 10 reduction gas kiln, peak 2350°F (1285°C)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-muted mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i> Chen Wei's masterpiece requires over 40 hours of meticulous carving. The crackle patterns develop as the glass contracts faster than the porcelain body during cooling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Settings inputs to support clicking triggers -->
+    <div class="d-none">
+        <input type="checkbox" id="darkModeSwitch">
+        <input type="checkbox" id="rtlSwitch">
+    </div>
+
+    <script>
+        // Interactive 360-degree pottery slider
+        document.addEventListener('DOMContentLoaded', () => {
+            const rangeInput = document.getElementById('pottery360Range');
+            const images360 = [
+                'assets/images/gallery/showcase-360-1.jpg',
+                'assets/images/gallery/showcase-360-2.jpg',
+                'assets/images/gallery/showcase-360-3.jpg'
+            ];
+            const showcaseImg = document.getElementById('pottery360Img');
+            
+            if(rangeInput && showcaseImg) {
+                rangeInput.addEventListener('input', (e) => {
+                    const value = parseInt(e.target.value);
+                    let index = 0;
+                    if(value < 33) {
+                        index = 0;
+                    } else if (value < 66) {
+                        index = 1;
+                    } else {
+                        index = 2;
+                    }
+                    showcaseImg.src = images360[index];
+                });
+            }
+        });
+
+        // Gallery Filter System
+        let activeCategoryFilter = null;
+        function filterGallery(category, element) {
+            const items = document.querySelectorAll('.gallery-item');
+            const clearBtn = document.getElementById('clearFilterBtn');
+            const wrappers = document.querySelectorAll('.hexagon-wrapper');
+
+            // Reset hexagon borders
+            wrappers.forEach(w => w.classList.remove('scale-105', 'border-4', 'border-clay-primary'));
+            
+            if (activeCategoryFilter === category) {
+                // If clicking same category, toggle off
+                clearFilter();
+                return;
+            }
+
+            activeCategoryFilter = category;
+            clearBtn.classList.remove('d-none');
+            
+            // highlight clicked hexagon wrapper
+            element.classList.add('scale-105', 'border-4', 'border-clay-primary');
+
+            items.forEach(item => {
+                if (item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    item.classList.add('animate-fade-in');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function clearFilter() {
+            const items = document.querySelectorAll('.gallery-item');
+            const clearBtn = document.getElementById('clearFilterBtn');
+            const wrappers = document.querySelectorAll('.hexagon-wrapper');
+            
+            activeCategoryFilter = null;
+            clearBtn.classList.add('d-none');
+            
+            wrappers.forEach(w => w.classList.remove('scale-105', 'border-4', 'border-clay-primary'));
+
+            items.forEach(item => {
+                item.style.display = 'block';
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(src, title, description) {
+            const overlay = document.getElementById('lightboxOverlay');
+            const img = document.getElementById('lightboxImg');
+            const titleEl = document.getElementById('lightboxTitle');
+            const textEl = document.getElementById('lightboxText');
+
+            img.src = src;
+            titleEl.textContent = title;
+            textEl.textContent = description;
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const overlay = document.getElementById('lightboxOverlay');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Esc key to close Lightbox
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Shared Dark Mode & RTL Settings Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+            const bsLink = document.getElementById('bootstrap-css');
+            
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            const rtlSwitch = document.getElementById('rtlSwitch');
+            
+            // --- Dark Mode ---
+            function updateThemeUI(isDark) {
+                const navDarkIcon = document.getElementById('nav-dark-icon');
+                const navDarkIconMobile = document.getElementById('nav-dark-icon-mobile');
+                if (isDark) {
+                    htmlEl.setAttribute('data-bs-theme', 'dark');
+                    bodyEl.classList.add('dark');
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-moon');
+                        navDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-moon');
+                        navDarkIconMobile.classList.add('fa-sun');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('data-bs-theme', 'light');
+                    bodyEl.classList.remove('dark');
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-sun');
+                        navDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-sun');
+                        navDarkIconMobile.classList.add('fa-moon');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = false;
+                }
+            }
+
+            function toggleDarkMode(e) {
+                const isDark = e.target.checked;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            }
+
+            // Init Theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                updateThemeUI(true);
+            } else {
+                updateThemeUI(false);
+            }
+            
+            if (darkModeSwitch) {
+                darkModeSwitch.addEventListener('change', toggleDarkMode);
+            }
+
+            // --- RTL Layout ---
+            function updateRtlUI(isRtl) {
+                if (isRtl) {
+                    htmlEl.setAttribute('dir', 'rtl');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('dir', 'ltr');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = false;
+                }
+            }
+
+            function toggleRtl(e) {
+                const isRtl = e.target.checked;
+                localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+                updateRtlUI(isRtl);
+            }
+
+            // Init RTL
+            const savedRtl = localStorage.getItem('rtl') === 'true';
+            updateRtlUI(savedRtl);
+            
+            if (rtlSwitch) {
+                rtlSwitch.addEventListener('change', toggleRtl);
+            }
+
+            // Sticky Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.glass-navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('navbar-scrolled');
+                } else {
+                    nav.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

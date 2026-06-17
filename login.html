@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Clay & Kiln Pottery Studio</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    <link class="bootstrap-style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72',
+                        'clay-accent': '#D98A6C'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* High Contrast Overrides */
+        .text-clay-muted, .text-muted {
+            color: #5C4E46 !important;
+        }
+        body.dark .text-clay-muted, body.dark .text-muted {
+            color: #C8B8AD !important;
+        }
+        input, select, textarea, .form-control {
+            border: 1.5px solid #4A3B32 !important;
+            color: #4A3B32 !important;
+            background-color: #ffffff !important;
+        }
+        body.dark input, body.dark select, body.dark textarea, body.dark .form-control {
+            border: 1.5px solid #C86B47 !important;
+            color: #FAF6F0 !important;
+            background-color: #2A2421 !important;
+        }
+        label, .form-label {
+            color: #4A3B32 !important;
+            font-weight: 600 !important;
+        }
+        body.dark label, body.dark .form-label {
+            color: #FAF6F0 !important;
+            font-weight: 600 !important;
+        }
+        .border-clay-secondary\/30 {
+            border-color: #FAF6F0 !important;
+        }
+        body.dark .border-clay-text\/20 {
+            border-color: #C86B47 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex items-center justify-center p-4 bg-[url('assets/images/gallery/gallery-hero.jpg')] bg-cover bg-center">
+
+    <!-- Background blurred overlay -->
+    <div class="absolute inset-0 bg-clay-dark/25 dark:bg-black/45 backdrop-blur-xs z-0"></div>
+
+    <!-- Floating Theme/RTL toggles in the top-right corner -->
+    <div class="absolute top-5 right-5 z-20 flex gap-2 bg-white/85 dark:bg-clay-dark/85 backdrop-blur-md px-3 py-2 rounded-full border border-clay-secondary/30 dark:border-clay-text/30 shadow-sm">
+        <button onclick="toggleTheme()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-base" title="Toggle Theme">
+            <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
+        </button>
+        <div class="w-[1px] bg-clay-secondary/35 dark:bg-clay-text/30 self-stretch my-0.5"></div>
+        <button onclick="toggleRtl()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-base" title="Toggle Layout Direction">
+            <i class="fa-solid fa-right-left"></i>
+        </button>
+    </div>
+
+    <!-- Main Login Card Container -->
+    <div class="relative z-10 w-full max-w-md bg-white/95 dark:bg-clay-dark/95 backdrop-blur-md rounded-[28px] border border-clay-secondary/30 dark:border-clay-text/20 p-6 md:p-8 shadow-2xl transition-all duration-300">
+        
+        <!-- Logo and Brand Title -->
+        <div class="text-center mb-6">
+            <a href="index.html" class="inline-flex items-center gap-2.5 text-decoration-none">
+                <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" class="h-10 w-10">
+                <div class="flex flex-col leading-none text-left">
+                    <span class="font-serif font-bold text-clay-primary dark:text-white text-lg tracking-wide">CLAY & KILN</span>
+                    <span class="text-[0.55rem] text-clay-muted dark:text-clay-secondary tracking-[0.25em] mt-1">POTTERY STUDIO</span>
+                </div>
+            </a>
+            <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mt-5 mb-1.5">Welcome back</h2>
+            <p class="text-xs text-clay-muted dark:text-clay-secondary/70">Sign in to manage your creations, schedule classes & track rewards</p>
+        </div>
+
+        <!-- Login Form -->
+        <form action="user-dashboard.html" class="space-y-4">
+            <div>
+                <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white mb-1.5 block">Email address</label>
+                <input type="email" class="form-control rounded-xl border-clay-secondary/50 dark:bg-clay-dark/30 dark:border-clay-text/50 dark:text-white py-2.5 px-4 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary text-sm" placeholder="hello@clayandkiln.com" value="sam.john@example.com" required>
+            </div>
+            
+            <div class="relative">
+                <div class="flex justify-between items-center mb-1.5">
+                    <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white mb-0 block">Password</label>
+                    <a href="javascript:void(0)" onclick="alert('Password reset link sent to email!');" class="text-clay-primary dark:text-clay-accent text-[11px] font-semibold text-decoration-none hover:underline">Forgot password?</a>
+                </div>
+                <div class="relative">
+                    <input type="password" id="loginPassword" class="form-control rounded-xl border-clay-secondary/50 dark:bg-clay-dark/30 dark:border-clay-text/50 dark:text-white py-2.5 pl-4 pr-10 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary text-sm" placeholder="••••••••" value="password123" required>
+                    <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeIcon')" class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-clay-muted dark:text-clay-secondary/70 hover:text-clay-primary">
+                        <i class="fa-solid fa-eye text-sm" id="eyeIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-check flex items-center gap-2 pt-1">
+                <input class="form-check-input focus:ring-clay-primary border-clay-secondary/70" type="checkbox" id="rememberMe" checked>
+                <label class="form-check-label text-xs text-clay-text dark:text-clay-secondary/90 cursor-pointer mb-0 mt-0.5" for="rememberMe">Remember me</label>
+            </div>
+
+            <button type="submit" class="w-full bg-clay-primary hover:bg-clay-accent text-white font-medium py-3 rounded-xl transition-all shadow-md mt-4 flex items-center justify-center gap-2 text-sm">
+                <span>Sign in</span>
+                <i class="fa-solid fa-arrow-right-long text-xs mt-0.5"></i>
+            </button>
+        </form>
+
+        <!-- Social login divider -->
+        <div class="relative my-6 text-center">
+            <hr class="border-clay-secondary/30 dark:border-clay-text/20">
+            <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/95 dark:bg-clay-dark/95 px-3 text-[10px] uppercase font-bold tracking-widest text-clay-muted dark:text-clay-secondary/60">or continue with</span>
+        </div>
+
+        <!-- Social button icons -->
+        <div class="grid grid-cols-3 gap-3 mb-6">
+            <button onclick="alert('OAuth login triggered');" class="flex items-center justify-center gap-2 py-2.5 border border-clay-secondary/50 dark:border-clay-text/35 hover:bg-clay-bg dark:hover:bg-white/5 rounded-xl text-xs font-semibold text-clay-text dark:text-clay-secondary transition-all">
+                <i class="fa-brands fa-google text-sm"></i>
+                <span>Google</span>
+            </button>
+            <button onclick="alert('OAuth login triggered');" class="flex items-center justify-center gap-2 py-2.5 border border-clay-secondary/50 dark:border-clay-text/35 hover:bg-clay-bg dark:hover:bg-white/5 rounded-xl text-xs font-semibold text-clay-text dark:text-clay-secondary transition-all">
+                <i class="fa-brands fa-apple text-sm"></i>
+                <span>Apple</span>
+            </button>
+            <button onclick="alert('OAuth login triggered');" class="flex items-center justify-center gap-2 py-2.5 border border-clay-secondary/50 dark:border-clay-text/35 hover:bg-clay-bg dark:hover:bg-white/5 rounded-xl text-xs font-semibold text-clay-text dark:text-clay-secondary transition-all">
+                <i class="fa-brands fa-facebook text-sm"></i>
+                <span>Facebook</span>
+            </button>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="text-center text-xs text-clay-muted dark:text-clay-secondary/80">
+            <span>Don't have an account?</span>
+            <a href="register.html" class="text-clay-primary dark:text-clay-accent font-bold text-decoration-none hover:underline ml-1">Create account</a>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Theme & Direction Sync Scripts -->
+    <script>
+        const htmlEl = document.documentElement;
+        const bodyEl = document.body;
+        const bsLink = document.getElementById('bootstrap-css');
+
+        // 1. Password Visibility Toggle
+        function togglePasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // 2. Theme Switching
+        function updateThemeUI(isDark) {
+            const navDarkIcon = document.getElementById('nav-dark-icon');
+            if (isDark) {
+                htmlEl.classList.add('dark');
+                bodyEl.classList.add('dark');
+                htmlEl.setAttribute('data-bs-theme', 'dark');
+                if (navDarkIcon) {
+                    navDarkIcon.classList.remove('fa-moon');
+                    navDarkIcon.classList.add('fa-sun');
+                }
+            } else {
+                htmlEl.classList.remove('dark');
+                bodyEl.classList.remove('dark');
+                htmlEl.setAttribute('data-bs-theme', 'light');
+                if (navDarkIcon) {
+                    navDarkIcon.classList.remove('fa-sun');
+                    navDarkIcon.classList.add('fa-moon');
+                }
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = !bodyEl.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeUI(isDark);
+        }
+
+        // Init Theme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            updateThemeUI(true);
+        } else {
+            updateThemeUI(false);
+        }
+
+        // 3. RTL Layout Support
+        function updateRtlUI(isRtl) {
+            if (isRtl) {
+                htmlEl.setAttribute('dir', 'rtl');
+                if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+            } else {
+                htmlEl.setAttribute('dir', 'ltr');
+                if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+            }
+        }
+
+        function toggleRtl() {
+            const isRtl = htmlEl.getAttribute('dir') !== 'rtl';
+            localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+            updateRtlUI(isRtl);
+        }
+
+        // Init RTL
+        const savedRtl = localStorage.getItem('rtl') === 'true';
+        updateRtlUI(savedRtl);
+    </script>
+</body>
+</html>

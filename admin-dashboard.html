@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Admin Console | Clay & Kiln Pottery Studio</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    <link class="bootstrap-style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72',
+                        'clay-accent': '#D98A6C'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .cursive-text {
+            font-family: 'Qwitcher Grypen', cursive;
+        }
+        .sidebar-menu-item {
+            text-align: left !important;
+        }
+        /* Kiln shelf grid stylings */
+        .kiln-grid-spot {
+            transition: all 0.2s;
+        }
+        .kiln-grid-spot:hover {
+            transform: scale(1.15);
+            z-index: 10;
+        }
+        /* High Contrast Font and Border Overrides */
+        .text-muted, .text-clay-muted {
+            color: #5C4E46 !important;
+        }
+        body.dark .text-muted, body.dark .text-clay-muted {
+            color: #C8B8AD !important;
+        }
+        input, select, textarea, .form-control {
+            border: 1px solid #4A3B32 !important;
+            color: #4A3B32 !important;
+            background-color: #ffffff !important;
+        }
+        body.dark input, body.dark select, body.dark textarea, body.dark .form-control {
+            border: 1px solid #C86B47 !important;
+            color: #FAF6F0 !important;
+            background-color: #2A2421 !important;
+        }
+        body.dark table, body.dark th, body.dark td {
+            border-color: #C86B47 !important;
+            color: #FAF6F0 !important;
+        }
+        .card, .border {
+            border-color: #E1CDBB !important;
+        }
+        body.dark .card, body.dark .border, body.dark .border-t, body.dark .border-b, body.dark .border-l, body.dark .border-r {
+            border-color: #C86B47 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex">
+
+    <!-- 1. Left Sidebar Navigation -->
+    <aside id="sidebar" class="fixed top-0 bottom-0 left-0 z-40 w-72 !bg-white dark:!bg-clay-dark border-r !border-clay-secondary/30 dark:!border-clay-text/30 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+        
+        <!-- Top Section of Sidebar -->
+        <div class="px-6 py-6 flex flex-col h-full overflow-y-auto">
+            <!-- Studio Brand Logo -->
+            <a class="flex items-center gap-3 mb-8 text-decoration-none" href="index.html">
+                <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" class="h-9 w-9">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif font-bold text-clay-primary dark:text-white text-lg tracking-wide">CLAY & KILN</span>
+                    <span class="text-[0.55rem] text-clay-muted dark:text-clay-secondary tracking-[0.25em] mt-1">POTTERY STUDIO</span>
+                </div>
+            </a>
+
+            <!-- Admin Profile Card -->
+            <div class="bg-clay-bg/50 dark:bg-clay-bg/5 border !border-clay-secondary/30 dark:!border-clay-text/20 rounded-2xl p-4 mb-8 flex items-center gap-3">
+                <img src="assets/images/about/team2.jpg" alt="Admin Avatar" class="rounded-full border border-2 border-red-500 object-cover w-12 h-12 shadow-sm">
+                <div class="overflow-hidden">
+                    <h5 class="text-sm font-semibold text-clay-text dark:text-white truncate mb-0">Admin Console</h5>
+                    <span class="text-[0.65rem] font-bold text-red-500 tracking-widest uppercase block mt-1">SUPER ADMINISTRATOR</span>
+                </div>
+            </div>
+
+            <!-- Operations control Menu -->
+            <div class="mb-4">
+                <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary/50 tracking-[0.2em] uppercase block mb-3 pl-2">Operations Control</span>
+                <nav class="space-y-1.5">
+                    <button onclick="showPanel('telemetry')" data-panel="telemetry" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 bg-clay-primary text-white">
+                        <i class="fa-solid fa-fire w-5 text-center"></i>
+                        <span>Admin Overview</span>
+                    </button>
+                    <button onclick="showPanel('calendar')" data-panel="calendar" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-calendar-days w-5 text-center"></i>
+                        <span>Studio Schedule</span>
+                    </button>
+                    <button onclick="showPanel('revenue')" data-panel="revenue" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-chart-line w-5 text-center"></i>
+                        <span>Revenue Analytics</span>
+                    </button>
+                    <button onclick="showPanel('diagnostics')" data-panel="diagnostics" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-list-check w-5 text-center"></i>
+                        <span>Firing Queue</span>
+                    </button>
+                    <button onclick="showPanel('maintenance')" data-panel="maintenance" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-box-open w-5 text-center"></i>
+                        <span>Pickup Management</span>
+                    </button>
+                    <button onclick="showPanel('solar')" data-panel="solar" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-champagne-glasses w-5 text-center"></i>
+                        <span>Private Events</span>
+                    </button>
+                    <button onclick="showPanel('hotspot')" data-panel="hotspot" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-cubes w-5 text-center"></i>
+                        <span>Bisque Inventory</span>
+                    </button>
+                    <button onclick="showPanel('audit')" data-panel="audit" class="sidebar-menu-item w-full flex items-center gap-3.5 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-clay-text dark:text-clay-secondary hover:bg-clay-secondary/20 dark:hover:bg-clay-primary/20">
+                        <i class="fa-solid fa-users-gear w-5 text-center"></i>
+                        <span>Staff Management</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Bottom Options of Sidebar -->
+        <div class="px-6 py-6 border-t !border-clay-secondary/30 dark:!border-clay-text/30 space-y-2">
+            <!-- Mobile/Tablet Utility Icons -->
+            <div class="lg:hidden flex items-center justify-between px-2 pb-4 mb-2 border-b !border-clay-secondary/30 dark:!border-clay-text/30">
+                <a href="index.html" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Main Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <button onclick="toggleTheme()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Toggle Theme">
+                    <i class="fa-solid fa-moon nav-dark-icon"></i>
+                </button>
+                <button onclick="toggleRtl()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Toggle LTR/RTL">
+                    <i class="fa-solid fa-right-left"></i>
+                </button>
+                <div class="relative dropup">
+                    <button class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Notifications" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-clay-dark"></span>
+                    </button>
+                    <ul class="dropdown-menu shadow-sm !border-clay-secondary/20 rounded-xl mb-2 p-2 w-64 text-sm z-[60] !bg-white dark:!bg-clay-dark border dark:border-clay-text/30">
+                        <li class="px-3 py-2 fw-bold border-bottom dark:border-clay-text/30 mb-1 text-clay-text dark:text-white">Admin Alerts</li>
+                        <li><a class="dropdown-item rounded-lg text-clay-text dark:text-clay-secondary hover:bg-clay-bg dark:hover:bg-white/5" href="#">Kiln 4 completed firing</a></li>
+                        <li><a class="dropdown-item rounded-lg text-clay-text dark:text-clay-secondary hover:bg-clay-bg dark:hover:bg-white/5" href="#">New user registration: Jane</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="user-dashboard.html" class="flex items-center gap-3.5 px-4 py-3 text-sm font-semibold text-clay-primary hover:text-clay-accent transition-all duration-200 rounded-xl hover:bg-clay-primary/5">
+                <i class="fa-solid fa-user-circle w-5 text-center"></i>
+                <span>Client Portal Console</span>
+            </a>
+            <a href="login.html" class="flex items-center gap-3.5 px-4 py-3 text-sm font-semibold text-red-600 hover:text-red-700 transition-all duration-200 rounded-xl hover:bg-red-500/5">
+                <i class="fa-solid fa-arrow-right-from-bracket w-5 text-center"></i>
+                <span>Log Out Session</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Sidebar overlay for mobile views -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 z-30 bg-black/40 backdrop-blur-xs hidden lg:hidden"></div>
+
+    <!-- 2. Main Content Area -->
+    <main class="flex-1 min-h-screen lg:ml-72 flex flex-col min-w-0">
+        
+        <!-- Right top utility header -->
+        <header class="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-white/85 dark:bg-clay-dark/85 backdrop-blur-md border-b !border-clay-secondary/20 dark:!border-clay-text/20">
+            <!-- Left section -->
+            <div class="flex items-center gap-4">
+                <!-- Mobile Menu Hamburger Trigger -->
+                <button onclick="toggleSidebar()" class="lg:hidden text-clay-text dark:text-white hover:text-clay-primary transition text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Left breadcrumbs -->
+                <nav aria-label="breadcrumb">
+                    <ol class="flex items-center gap-2 text-xs font-semibold tracking-wider text-clay-muted dark:text-clay-secondary mb-0 uppercase pl-0">
+                        <li class="hidden sm:block"><span class="hover:text-clay-primary">Admin Cockpit</span></li>
+                        <li class="hidden sm:block"><span class="text-clay-secondary">/</span></li>
+                        <li class="active text-clay-primary" id="breadcrumb-active" aria-current="page">Admin Overview</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- Right side toggles -->
+            <div class="hidden lg:flex items-center gap-4 text-clay-text dark:text-white">
+                <a href="index.html" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Main Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <button onclick="toggleTheme()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Toggle Theme">
+                    <i class="fa-solid fa-moon nav-dark-icon" id="nav-dark-icon"></i>
+                </button>
+                <button onclick="toggleRtl()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Toggle LTR/RTL">
+                    <i class="fa-solid fa-right-left"></i>
+                </button>
+                <!-- Notification (Desktop Right Side) -->
+                <div class="relative hidden lg:block dropdown">
+                    <button class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Notifications" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-clay-dark"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm !border-clay-secondary/20 rounded-xl mt-2 p-2 w-64 text-sm z-[60] !bg-white dark:!bg-clay-dark border dark:border-clay-text/30">
+                        <li class="px-3 py-2 fw-bold border-bottom dark:border-clay-text/30 mb-1 text-clay-text dark:text-white">Admin Alerts</li>
+                        <li><a class="dropdown-item rounded-lg text-clay-text dark:text-clay-secondary hover:bg-clay-bg dark:hover:bg-white/5" href="#">Kiln 4 completed firing</a></li>
+                        <li><a class="dropdown-item rounded-lg text-clay-text dark:text-clay-secondary hover:bg-clay-bg dark:hover:bg-white/5" href="#">New user registration: Jane</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Container for panels -->
+        <div class="flex-grow p-6 md:p-8">
+
+            <!-- ================= PANEL: KILN TELEMETRY MAP ================= -->
+            <section id="panel-telemetry" class="dashboard-panel space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <!-- Stats Row -->
+                <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Active Rigs (Kilns)</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-clay-text dark:text-white mt-2 mb-0" id="stat-active-kilns">3 / 4</h3>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Today's Jobs</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-clay-text dark:text-white mt-2 mb-0">8 Slots</h3>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Solar Offset</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-clay-primary dark:text-clay-secondary mt-2 mb-0">98.4%</h3>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Net Yield</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-green-500 dark:text-green-400 mt-2 mb-0">$1,420</h3>
+                    </div>
+                </div>
+
+                <!-- Main Telemetry Grid -->
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                    <!-- Left: Kiln Firing Shelf Grid Map (representing 2D space telemetry) -->
+                    <div class="xl:col-span-2 bg-clay-dark border border-clay-text/50 p-6 rounded-3xl text-white flex flex-col justify-between min-h-[450px]">
+                        <div>
+                            <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+                                <div>
+                                    <span class="text-[0.65rem] font-bold tracking-widest text-clay-secondary uppercase">Live Coordinate Feeds</span>
+                                    <h3 class="text-lg font-serif font-bold mt-1 text-white">Active Kiln Chamber Tracking</h3>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="pingSprinter()" class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all whitespace-nowrap">Force Temp Ping</button>
+                                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium px-4 py-2 text-xs rounded-full transition-all whitespace-nowrap">Check Airflow</button>
+                                </div>
+                            </div>
+
+                            <!-- Visual Shelf grid representation of pieces inside the kiln chamber -->
+                            <div class="bg-black/30 border border-clay-text/20 rounded-2xl p-6 relative overflow-hidden flex flex-col items-center">
+                                <span class="text-xs text-clay-secondary/60 mb-4 font-mono">KILN INNER CHAMBER SHELF HEAT MAP LAYOUT</span>
+                                <div class="grid grid-cols-5 gap-3 w-full max-w-sm">
+                                    <!-- Row 1 -->
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Vase #1 (2100°F)">V1</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Plate #3 (2090°F)">P3</div>
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Mug #12 (1850°F)">M12</div>
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Bowl #8 (2110°F)">B8</div>
+                                    <!-- Row 2 -->
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Mug #14 (1840°F)">M14</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Pitcher #2 (2125°F)">Pi2</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Pitcher #3 (2115°F)">Pi3</div>
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <!-- Row 3 -->
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Tile #1 (1820°F)">T1</div>
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Tile #2 (1825°F)">T2</div>
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Bowl #10 (2120°F)">B10</div>
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Mug #20 (1830°F)">M20</div>
+                                    <!-- Row 4 -->
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Plate #8 (2105°F)">P8</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Vase #5 (2130°F)">V5</div>
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Mug #24 (1845°F)">M24</div>
+                                    <!-- Row 5 -->
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Figurine #1 (2080°F)">F1</div>
+                                    <div class="kiln-grid-spot bg-neutral-800 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono border border-neutral-700 opacity-40">--</div>
+                                    <div class="kiln-grid-spot bg-yellow-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-yellow-300" title="Tile #5 (1820°F)">T5</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Sculpture #2 (2140°F)">S2</div>
+                                    <div class="kiln-grid-spot bg-red-500/80 aspect-square rounded-lg flex items-center justify-center text-[10px] font-mono cursor-pointer border border-red-300" title="Bowl #18 (2110°F)">B18</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Firing Alert Ticker -->
+                        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-clay-secondary/85">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation text-yellow-500 animate-flash"></i> Kiln Ventilation Fan operating at nominal 94% efficiency. Peak power draws stable.</span>
+                            <span class="font-mono text-white/50" id="live-time-ticker">Refreshed: 15:29:29</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Kiln Active Telemetry Details -->
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs flex flex-col justify-between">
+                        <div>
+                            <!-- Kiln Selector Header -->
+                            <div class="flex items-center gap-3 mb-6 border-b !border-clay-secondary/20 dark:!border-clay-text/10 pb-4">
+                                <div class="bg-clay-primary/10 dark:bg-clay-primary/20 text-clay-primary p-3 rounded-2xl flex items-center justify-center">
+                                    <i class="fa-solid fa-truck text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-clay-text dark:text-white mb-0.5">Kiln #1</h4>
+                                    <span class="bg-green-500/10 text-green-600 text-[0.6rem] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Active Firing</span>
+                                </div>
+                            </div>
+
+                            <!-- Sensor specs list -->
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-clay-muted dark:text-clay-secondary/80">Instructor / Operator</span>
+                                    <span class="font-bold text-clay-text dark:text-white">Marcus Thorne</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-clay-muted dark:text-clay-secondary/80">Target Destination (Cycle)</span>
+                                    <span class="font-bold text-clay-text dark:text-white">Cone 6 Glaze (2232°F)</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="text-clay-muted dark:text-clay-secondary/80">Target Core Temperature</span>
+                                    <span class="font-bold font-mono text-clay-text dark:text-white" id="telemetry-temp">34.0625 N, 118.4012 W</span>
+                                </div>
+
+                                <!-- Firing progress slider bars (Freshwater/Solar array yield/Lithium batt equivalents) -->
+                                <div class="space-y-3 pt-3 border-t !border-clay-secondary/20 dark:!border-clay-text/10">
+                                    <div>
+                                        <div class="flex justify-between text-xs mb-1">
+                                            <span class="text-clay-muted dark:text-clay-secondary/80">Chamber Oxygen %</span>
+                                            <span class="font-bold text-clay-text dark:text-white" id="telemetry-bar1-val">78%</span>
+                                        </div>
+                                        <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                            <div class="bg-[#C86B47] h-full rounded-full transition-all duration-300" id="telemetry-bar1" style="width: 78%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between text-xs mb-1">
+                                            <span class="text-clay-muted dark:text-clay-secondary/80">Electric Element Draw</span>
+                                            <span class="font-bold text-clay-text dark:text-white" id="telemetry-bar2-val">820 Watts</span>
+                                        </div>
+                                        <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                            <div class="bg-green-500 h-full rounded-full transition-all duration-300" id="telemetry-bar2" style="width: 82%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between text-xs mb-1">
+                                            <span class="text-clay-muted dark:text-clay-secondary/80">Kiln Load Fill</span>
+                                            <span class="font-bold text-clay-text dark:text-white" id="telemetry-bar3-val">94%</span>
+                                        </div>
+                                        <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                            <div class="bg-blue-500 h-full rounded-full transition-all duration-300" id="telemetry-bar3" style="width: 94%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action controls -->
+                        <div class="mt-8">
+                            <button onclick="pingStylist()" class="w-full bg-clay-primary hover:bg-clay-accent text-white font-medium py-3 rounded-full transition-all flex items-center justify-center gap-2 shadow-md whitespace-nowrap">
+                                <i class="fa-solid fa-paper-plane"></i> Ping Instructor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: SCHEDULING CALENDAR ================= -->
+            <section id="panel-calendar" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Studio Schedule</h2>
+                        <p class="text-sm text-clay-muted dark:text-clay-secondary/70 mb-0">Oversee class attendance bookings and register custom member slots.</p>
+                    </div>
+                    <a onclick="showPanel('editor')" class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-plus"></i> Schedule Class
+                    </a>
+                </div>
+
+                <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                    <h3 class="text-base font-bold uppercase tracking-wider text-clay-text dark:text-white mb-4">Bookings & Attendance Log</h3>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle !border-clay-secondary/25 dark:!border-clay-text/20 mb-0">
+                            <thead class="table-dark">
+                                <tr class="bg-clay-dark text-white border-transparent">
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Student</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Class Reservation</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Date & Session</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Payment</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Status</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-clay-text dark:text-clay-secondary text-sm">
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Sarah Jenkins</td>
+                                    <td class="py-3 px-4">Intro to Pottery Wheel</td>
+                                    <td class="py-3 px-4">Today, 2:00 PM</td>
+                                    <td class="py-3 px-4 text-green-600 dark:text-green-400 font-semibold">$45.00 Paid</td>
+                                    <td class="py-3 px-4"><span class="bg-yellow-500/10 text-yellow-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Checked In</span></td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-clay-secondary hover:!bg-clay-bg dark:!border-clay-text/20 dark:hover:bg-white/5 text-clay-text dark:text-clay-secondary font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Sam John</td>
+                                    <td class="py-3 px-4">Slab Ceramic Pitchers</td>
+                                    <td class="py-3 px-4">June 18, 2026</td>
+                                    <td class="py-3 px-4 text-green-600 dark:text-green-400 font-semibold">Member Credit</td>
+                                    <td class="py-3 px-4"><span class="bg-green-500/10 text-green-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Confirmed</span></td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-clay-secondary hover:!bg-clay-bg dark:!border-clay-text/20 dark:hover:bg-white/5 text-clay-text dark:text-clay-secondary font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Jack Roberts</td>
+                                    <td class="py-3 px-4">Clay & Wine Date Night</td>
+                                    <td class="py-3 px-4">June 20, 2026</td>
+                                    <td class="py-3 px-4 text-green-600 dark:text-green-400 font-semibold">$60.00 Paid</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-500/10 text-gray-500 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Pending</span></td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-clay-secondary hover:!bg-clay-bg dark:!border-clay-text/20 dark:hover:bg-white/5 text-clay-text dark:text-clay-secondary font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Emily Chen</td>
+                                    <td class="py-3 px-4">Glazing Techniques Workshop</td>
+                                    <td class="py-3 px-4">June 21, 2026</td>
+                                    <td class="py-3 px-4 text-green-600 dark:text-green-400 font-semibold">$35.00 Paid</td>
+                                    <td class="py-3 px-4"><span class="bg-green-500/10 text-green-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Confirmed</span></td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-clay-secondary hover:!bg-clay-bg dark:!border-clay-text/20 dark:hover:bg-white/5 text-clay-text dark:text-clay-secondary font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Michael Brown</td>
+                                    <td class="py-3 px-4">Advanced Wheel Throwing</td>
+                                    <td class="py-3 px-4">June 22, 2026</td>
+                                    <td class="py-3 px-4 text-red-600 dark:text-red-400 font-semibold">$80.00 Unpaid</td>
+                                    <td class="py-3 px-4"><span class="bg-red-500/10 text-red-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Action Req</span></td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-clay-secondary hover:!bg-clay-bg dark:!border-clay-text/20 dark:hover:bg-white/5 text-clay-text dark:text-clay-secondary font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: REVENUE ANALYTICS ================= -->
+            <section id="panel-revenue" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Revenue Analytics</h2>
+                <p class="text-sm text-clay-muted dark:text-clay-secondary/70">Analyze sales yields from workshops, private bookings, and pottery raw materials.</p>
+
+                <!-- Sales overview grid charts using native SVG charts -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Donut Chart representing category shares -->
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs flex flex-col justify-between">
+                        <h3 class="text-base font-bold text-clay-text dark:text-white mb-4">Weekly Sales Breakdown</h3>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 py-2">
+                            <div class="relative w-32 h-32 flex-shrink-0">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="rgba(225, 205, 187, 0.15)" stroke-width="3.5"></circle>
+                                    <!-- Segment 1: Workshops (54%) -> stroke-dasharray="54 46" offset="0" -->
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#C86B47" stroke-width="3.5" stroke-dasharray="54 46" stroke-dashoffset="0"></circle>
+                                    <!-- Segment 2: Parties (29%) -> stroke-dasharray="29 71" offset="-54" -->
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#D98A6C" stroke-width="3.5" stroke-dasharray="29 71" stroke-dashoffset="-54"></circle>
+                                    <!-- Segment 3: Store (17%) -> stroke-dasharray="17 83" offset="-83" -->
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#10B981" stroke-width="3.5" stroke-dasharray="17 83" stroke-dashoffset="-83"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                    <span class="text-[0.55rem] font-bold text-clay-muted dark:text-clay-secondary/50 uppercase tracking-wider">Net Yield</span>
+                                    <span class="text-base font-extrabold text-clay-text dark:text-white">$3,420</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2.5 text-xs w-full">
+                                <div class="flex items-center justify-between gap-3">
+                                    <span class="flex items-center gap-2 text-clay-muted dark:text-clay-secondary/80">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#C86B47] inline-block"></span> Workshops
+                                    </span>
+                                    <span class="font-bold text-clay-text dark:text-white">54% ($1,850)</span>
+                                </div>
+                                <div class="flex items-center justify-between gap-3">
+                                    <span class="flex items-center gap-2 text-clay-muted dark:text-clay-secondary/80">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#D98A6C] inline-block"></span> Parties
+                                    </span>
+                                    <span class="font-bold text-clay-text dark:text-white">29% ($980)</span>
+                                </div>
+                                <div class="flex items-center justify-between gap-3">
+                                    <span class="flex items-center gap-2 text-clay-muted dark:text-clay-secondary/80">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span> Store Sales
+                                    </span>
+                                    <span class="font-bold text-clay-text dark:text-white">17% ($590)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column Bar Chart representing Monthly Revenue -->
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-clay-text dark:text-white mb-3">Monthly Revenue Progression</h3>
+                            <div class="w-full pt-1">
+                                <svg class="w-full h-28 overflow-visible" viewBox="0 0 240 80" preserveAspectRatio="none">
+                                    <line x1="10" y1="10" x2="230" y2="10" stroke="rgba(200,107,71,0.08)" stroke-width="0.5" stroke-dasharray="3 3"></line>
+                                    <line x1="10" y1="40" x2="230" y2="40" stroke="rgba(200,107,71,0.08)" stroke-width="0.5" stroke-dasharray="3 3"></line>
+                                    <line x1="10" y1="70" x2="230" y2="70" stroke="rgba(200,107,71,0.2)" stroke-width="0.8"></line>
+                                    
+                                    <!-- Bars: Jan (30px), Feb (45px), Mar (55px), Apr (48px), May (62px), Jun (70px) -->
+                                    <rect x="22" y="40" width="16" height="30" rx="3" fill="#E1CDBB" class="hover:fill-clay-primary transition-colors duration-200" title="Jan: $2,400"></rect>
+                                    <rect x="58" y="25" width="16" height="45" rx="3" fill="#E1CDBB" class="hover:fill-clay-primary transition-colors duration-200" title="Feb: $2,800"></rect>
+                                    <rect x="94" y="15" width="16" height="55" rx="3" fill="#E1CDBB" class="hover:fill-clay-primary transition-colors duration-200" title="Mar: $3,100"></rect>
+                                    <rect x="130" y="22" width="16" height="48" rx="3" fill="#E1CDBB" class="hover:fill-clay-primary transition-colors duration-200" title="Apr: $2,900"></rect>
+                                    <rect x="166" y="8" width="16" height="62" rx="3" fill="#C86B47" class="hover:fill-clay-primary transition-colors duration-200" title="May: $3,420"></rect>
+                                    <rect x="202" y="0" width="16" height="70" rx="3" fill="#C86B47" class="hover:fill-clay-primary transition-colors duration-200" title="Jun: $3,800"></rect>
+
+                                    <!-- Month Labels -->
+                                    <text x="30" y="78" font-size="6" fill="#8A7B72" text-anchor="middle">Jan</text>
+                                    <text x="66" y="78" font-size="6" fill="#8A7B72" text-anchor="middle">Feb</text>
+                                    <text x="102" y="78" font-size="6" fill="#8A7B72" text-anchor="middle">Mar</text>
+                                    <text x="138" y="78" font-size="6" fill="#8A7B72" text-anchor="middle">Apr</text>
+                                    <text x="174" y="78" font-size="6" fill="#8A7B72" text-anchor="middle">May</text>
+                                    <text x="210" y="78" font-size="6" fill="#8A7B72" text-anchor="middle">Jun</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="border-t !border-clay-secondary/20 dark:!border-clay-text/10 pt-3 mt-3 flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-clay-text dark:text-white">Annual: $84,650</span>
+                            <button class="border !border-clay-secondary dark:!border-clay-text/20 hover:bg-clay-bg dark:hover:bg-white/5 text-clay-text dark:text-clay-secondary font-medium px-3 py-1 text-[10px] rounded-full transition-all whitespace-nowrap">Download Audit Invoice</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: DIAGNOSTICS ================= -->
+            <section id="panel-diagnostics" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Firing Queue</h2>
+                        <p class="text-sm text-clay-muted dark:text-clay-secondary/70 mb-0">Manage pieces waiting to be fired and prioritize items for upcoming kiln loads.</p>
+                    </div>
+                    <button class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-fire-burner"></i> Start Kiln Load
+                    </button>
+                </div>
+
+                <!-- Next Kiln Load Capacity Bar -->
+                <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-sm font-bold text-clay-text dark:text-white">Next Kiln Load Capacity</h3>
+                        <span class="text-xs font-bold text-clay-primary">85% Full</span>
+                    </div>
+                    <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-3 overflow-hidden">
+                        <div class="bg-gradient-to-r from-orange-400 to-clay-primary h-full rounded-full transition-all duration-500" style="width: 85%;"></div>
+                    </div>
+                    <p class="text-xs text-clay-muted dark:text-clay-secondary/70 mt-3 mb-0">Estimated start: Today at 6:00 PM. Room for ~3 more small items.</p>
+                </div>
+
+                <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-base font-bold uppercase tracking-wider text-clay-text dark:text-white">Pending Pieces</h3>
+                        <div class="flex gap-2">
+                            <span class="bg-red-500/10 text-red-600 text-[0.6rem] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">3 Rush</span>
+                            <span class="bg-gray-500/10 text-gray-500 text-[0.6rem] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">12 Standard</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle !border-clay-secondary/25 dark:!border-clay-text/20 mb-0">
+                            <thead class="table-dark">
+                                <tr class="bg-clay-dark text-white border-transparent">
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Item ID</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Student Name</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Firing Type</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Priority</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-clay-text dark:text-clay-secondary text-sm">
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">#FQ-1042</td>
+                                    <td class="py-3 px-4">Sam John</td>
+                                    <td class="py-3 px-4">Bisque Fire (Cone 04)</td>
+                                    <td class="py-3 px-4"><span class="bg-red-500/10 text-red-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">High</span></td>
+                                    <td class="py-3 px-4"><span class="bg-yellow-500/10 text-yellow-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Next Load</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">#FQ-1043</td>
+                                    <td class="py-3 px-4">Emily Chen</td>
+                                    <td class="py-3 px-4">Glaze Fire (Cone 6)</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-500/10 text-gray-500 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Standard</span></td>
+                                    <td class="py-3 px-4"><span class="bg-gray-500/10 text-gray-500 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Waiting</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">#FQ-1044</td>
+                                    <td class="py-3 px-4">Marcus Thorne</td>
+                                    <td class="py-3 px-4">Luster Fire (Cone 018)</td>
+                                    <td class="py-3 px-4"><span class="bg-red-500/10 text-red-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">High</span></td>
+                                    <td class="py-3 px-4"><span class="bg-yellow-500/10 text-yellow-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Next Load</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: MAINTENANCE ================= -->
+            <section id="panel-maintenance" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Pickup Management</h2>
+                        <p class="text-sm text-clay-muted dark:text-clay-secondary/70 mb-0">Organize finished pieces and notify customers when their pottery is ready for pickup.</p>
+                    </div>
+                    <button class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-paper-plane"></i> Send Mass Reminder
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs flex flex-col justify-center items-center text-center">
+                        <div class="relative w-24 h-24 mb-3">
+                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.915" fill="none" stroke="rgba(225, 205, 187, 0.2)" stroke-width="3.5"></circle>
+                                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#C86B47" stroke-width="3.5" stroke-dasharray="65 35" stroke-dashoffset="0"></circle>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span class="text-xl font-extrabold text-clay-text dark:text-white">65%</span>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-sm text-clay-text dark:text-white mb-1">Pickup Shelf Capacity</h3>
+                        <p class="text-xs text-clay-muted dark:text-clay-secondary/75 mb-0">42/65 slots filled.</p>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-lg text-clay-text dark:text-white mb-2">Ready for Pickup</h3>
+                            <p class="text-xs text-clay-muted dark:text-clay-secondary/75 mb-4">42 items are currently sitting on the pickup shelves waiting for customers.</p>
+                        </div>
+                        <button class="w-full bg-clay-primary/10 hover:bg-clay-primary/20 text-clay-primary font-bold px-4 py-2.5 text-xs rounded-full transition-all border border-clay-primary/30">View All 42 Items</button>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-lg text-red-600 dark:text-red-400 mb-2">Abandoned Pieces</h3>
+                            <p class="text-xs text-clay-muted dark:text-clay-secondary/75 mb-4">8 items have been left for over 60 days. These need to be cleared or donated.</p>
+                        </div>
+                        <button class="w-full border !border-red-300 dark:!border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 font-medium px-4 py-2.5 text-xs rounded-full transition-all">Review Abandoned Inventory</button>
+                    </div>
+                </div>
+
+                <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                    <h3 class="text-base font-bold uppercase tracking-wider text-clay-text dark:text-white mb-4">Recent Ready Items</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle !border-clay-secondary/25 dark:!border-clay-text/20 mb-0">
+                            <thead class="table-dark">
+                                <tr class="bg-clay-dark text-white border-transparent">
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Customer</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Item Type</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Shelf Location</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider">Days Waiting</th>
+                                    <th class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-clay-text dark:text-clay-secondary text-sm">
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Alex Johnson</td>
+                                    <td class="py-3 px-4">Large Serving Bowl</td>
+                                    <td class="py-3 px-4"><span class="bg-clay-secondary/20 dark:bg-white/10 px-2 py-1 rounded font-mono text-xs">A-04</span></td>
+                                    <td class="py-3 px-4">2 Days</td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-green-500/50 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Mark Picked Up</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">Maria Garcia</td>
+                                    <td class="py-3 px-4">Set of 4 Mugs</td>
+                                    <td class="py-3 px-4"><span class="bg-clay-secondary/20 dark:bg-white/10 px-2 py-1 rounded font-mono text-xs">C-12</span></td>
+                                    <td class="py-3 px-4">5 Days</td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-green-500/50 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Mark Picked Up</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold py-3 px-4">James Wilson</td>
+                                    <td class="py-3 px-4">Sculpture (Abstract)</td>
+                                    <td class="py-3 px-4"><span class="bg-clay-secondary/20 dark:bg-white/10 px-2 py-1 rounded font-mono text-xs">D-01</span></td>
+                                    <td class="py-3 px-4 text-red-500 font-bold">14 Days</td>
+                                    <td class="py-3 px-4 text-center"><button class="border !border-green-500/50 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 font-medium px-3 py-1 text-xs rounded-full transition-all whitespace-nowrap">Mark Picked Up</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: SOLAR OPTIMIZATION ================= -->
+            <section id="panel-solar" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Private Events</h2>
+                        <p class="text-sm text-clay-muted dark:text-clay-secondary/70 mb-0">Manage incoming requests and bookings for private parties, team building, and special events.</p>
+                    </div>
+                    <button class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-plus"></i> Create Event
+                    </button>
+                </div>
+
+                <!-- Event Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Events This Month</span>
+                        <h3 class="text-2xl font-bold text-clay-text dark:text-white mt-2 mb-0">8</h3>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Pending Requests</span>
+                        <h3 class="text-2xl font-bold text-yellow-500 mt-2 mb-0">3</h3>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Total Guests</span>
+                        <h3 class="text-2xl font-bold text-clay-text dark:text-white mt-2 mb-0">124</h3>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-5 rounded-2xl text-center shadow-xs">
+                        <span class="text-[0.65rem] font-bold text-clay-muted dark:text-clay-secondary tracking-[0.15em] uppercase">Projected Revenue</span>
+                        <h3 class="text-2xl font-bold text-green-500 dark:text-green-400 mt-2 mb-0">$4,250</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                    <!-- Upcoming Events -->
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                        <h3 class="font-serif font-bold text-lg text-clay-text dark:text-white mb-6">Confirmed Upcoming Events</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b !border-clay-secondary/20 dark:!border-clay-text/10 pb-4">
+                                <div class="flex gap-4 items-center">
+                                    <div class="bg-clay-secondary/20 dark:bg-white/5 p-3 rounded-xl text-center min-w-[60px]">
+                                        <span class="block text-xs font-bold text-clay-primary">JUN</span>
+                                        <span class="block text-xl font-serif text-clay-text dark:text-white">24</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-clay-text dark:text-white mb-1">Corporate Team Building</h4>
+                                        <p class="text-xs text-clay-muted dark:text-clay-secondary/70 mb-1">TechCorp Inc. &bull; 15 Guests</p>
+                                        <span class="text-[0.65rem] bg-clay-primary/10 text-clay-primary px-2 py-0.5 rounded font-bold">Catering: Yes</span>
+                                    </div>
+                                </div>
+                                <span class="bg-green-500/10 text-green-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider hidden sm:block">Confirmed</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b !border-clay-secondary/20 dark:!border-clay-text/10 pb-4">
+                                <div class="flex gap-4 items-center">
+                                    <div class="bg-clay-secondary/20 dark:bg-white/5 p-3 rounded-xl text-center min-w-[60px]">
+                                        <span class="block text-xs font-bold text-clay-primary">JUL</span>
+                                        <span class="block text-xl font-serif text-clay-text dark:text-white">02</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-clay-text dark:text-white mb-1">Bachelorette Pottery Party</h4>
+                                        <p class="text-xs text-clay-muted dark:text-clay-secondary/70 mb-1">Jessica's Party &bull; 8 Guests</p>
+                                        <span class="text-[0.65rem] bg-clay-primary/10 text-clay-primary px-2 py-0.5 rounded font-bold">BYOB</span>
+                                    </div>
+                                </div>
+                                <span class="bg-green-500/10 text-green-600 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider hidden sm:block">Confirmed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pending Requests -->
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                        <h3 class="font-serif font-bold text-lg text-clay-text dark:text-white mb-6">Pending Requests</h3>
+                        <div class="space-y-4">
+                            <div class="bg-yellow-500/5 border border-yellow-500/20 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                <div>
+                                    <h4 class="font-bold text-sm text-clay-text dark:text-white mb-1">Kids Birthday Party</h4>
+                                    <p class="text-xs text-clay-muted dark:text-clay-secondary/70 mb-2">Requested: July 15 &bull; 12 Kids &bull; Glaze Only</p>
+                                    <div class="text-[0.65rem] text-clay-muted">Contact: Amanda S. (amanda@email.com)</div>
+                                </div>
+                                <div class="flex gap-2 w-full sm:w-auto">
+                                    <button class="flex-1 sm:flex-none bg-green-500 hover:bg-green-600 text-white font-medium px-3 py-1.5 text-xs rounded-full transition-all">Approve</button>
+                                    <button class="flex-1 sm:flex-none border border-red-300 text-red-500 hover:bg-red-50 dark:border-red-800 dark:hover:bg-red-900/20 font-medium px-3 py-1.5 text-xs rounded-full transition-all">Deny</button>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-500/5 border border-yellow-500/20 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                <div>
+                                    <h4 class="font-bold text-sm text-clay-text dark:text-white mb-1">Local Art Group Workshop</h4>
+                                    <p class="text-xs text-clay-muted dark:text-clay-secondary/70 mb-2">Requested: July 20 &bull; 20 Adults &bull; Handbuilding</p>
+                                    <div class="text-[0.65rem] text-clay-muted">Contact: Robert T. (rob@artlocal.org)</div>
+                                </div>
+                                <div class="flex gap-2 w-full sm:w-auto">
+                                    <button class="flex-1 sm:flex-none bg-green-500 hover:bg-green-600 text-white font-medium px-3 py-1.5 text-xs rounded-full transition-all">Approve</button>
+                                    <button class="flex-1 sm:flex-none border border-red-300 text-red-500 hover:bg-red-50 dark:border-red-800 dark:hover:bg-red-900/20 font-medium px-3 py-1.5 text-xs rounded-full transition-all">Deny</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: HOTSPOT DENSITY ================= -->
+            <section id="panel-hotspot" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Bisque Inventory</h2>
+                        <p class="text-sm text-clay-muted dark:text-clay-secondary/70 mb-0">Track quantities of pre-made bisque pottery available for walk-in painting sessions.</p>
+                    </div>
+                    <button class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-truck-ramp-box"></i> Log New Delivery
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-4 rounded-2xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-green-500 text-white text-[0.55rem] font-bold px-2 py-0.5 rounded-bl-lg">HEALTHY</div>
+                        <i class="fa-solid fa-mug-hot text-2xl text-clay-primary mb-2"></i>
+                        <h4 class="font-bold text-sm text-clay-text dark:text-white">Mugs & Cups</h4>
+                        <span class="text-lg font-serif text-clay-text dark:text-white">142</span>
+                        <div class="text-[0.65rem] text-clay-muted dark:text-clay-secondary/70 mt-1">Target: 100</div>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-4 rounded-2xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-yellow-500 text-white text-[0.55rem] font-bold px-2 py-0.5 rounded-bl-lg">ORDER SOON</div>
+                        <i class="fa-solid fa-bowl-food text-2xl text-clay-primary mb-2"></i>
+                        <h4 class="font-bold text-sm text-clay-text dark:text-white">Bowls</h4>
+                        <span class="text-lg font-serif text-clay-text dark:text-white">85</span>
+                        <div class="text-[0.65rem] text-clay-muted dark:text-clay-secondary/70 mt-1">Target: 120</div>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border border-red-400 dark:border-red-600 bg-red-50/50 dark:bg-red-900/10 p-4 rounded-2xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-[0.55rem] font-bold px-2 py-0.5 rounded-bl-lg animate-pulse">CRITICAL</div>
+                        <i class="fa-solid fa-plate-wheat text-2xl text-red-500 mb-2"></i>
+                        <h4 class="font-bold text-sm text-red-700 dark:text-red-400">Plates</h4>
+                        <span class="text-lg font-serif text-red-600 dark:text-red-400">12</span>
+                        <div class="text-[0.65rem] text-red-500 mt-1">Target: 100</div>
+                    </div>
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-4 rounded-2xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-green-500 text-white text-[0.55rem] font-bold px-2 py-0.5 rounded-bl-lg">HEALTHY</div>
+                        <i class="fa-solid fa-paw text-2xl text-clay-primary mb-2"></i>
+                        <h4 class="font-bold text-sm text-clay-text dark:text-white">Figurines</h4>
+                        <span class="text-lg font-serif text-clay-text dark:text-white">210</span>
+                        <div class="text-[0.65rem] text-clay-muted dark:text-clay-secondary/70 mt-1">Target: 150</div>
+                    </div>
+                </div>
+
+                <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                    <h3 class="text-base font-bold text-clay-text dark:text-white mb-4">Stock Level Comparison</h3>
+                    <div class="space-y-4 w-full">
+                        <!-- Bar 1 -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-clay-text dark:text-white font-medium">Mugs & Cups (142/100)</span>
+                                <span class="text-green-500 font-bold">142%</span>
+                            </div>
+                            <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                <div class="bg-green-500 h-full rounded-full" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 2 -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-clay-text dark:text-white font-medium">Bowls (85/120)</span>
+                                <span class="text-yellow-500 font-bold">70%</span>
+                            </div>
+                            <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                <div class="bg-yellow-500 h-full rounded-full" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 3 -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-red-600 dark:text-red-400 font-bold">Plates (12/100)</span>
+                                <span class="text-red-500 font-bold">12%</span>
+                            </div>
+                            <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                <div class="bg-red-500 h-full rounded-full" style="width: 12%;"></div>
+                            </div>
+                        </div>
+                        <!-- Bar 4 -->
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-clay-text dark:text-white font-medium">Figurines (210/150)</span>
+                                <span class="text-green-500 font-bold">140%</span>
+                            </div>
+                            <div class="w-full bg-clay-secondary/35 dark:bg-clay-text/30 rounded-full h-2 overflow-hidden">
+                                <div class="bg-green-500 h-full rounded-full" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: EXECUTIVE AUDIT ================= -->
+            <section id="panel-audit" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Staff Management & Audit Logs</h2>
+                        <p class="text-sm text-clay-muted dark:text-clay-secondary/70 mb-0">Monitor active staff shifts and review executive action tracks logged by instructors.</p>
+                    </div>
+                    <button class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-4 py-2 text-xs rounded-full transition-all flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-user-plus"></i> Add Staff Member
+                    </button>
+                </div>
+
+                <!-- Active Staff Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                        <h3 class="text-base font-bold text-clay-text dark:text-white mb-4 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span> On-Shift Instructors
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <img src="assets/images/about/team1.jpg" alt="Sarah" class="w-12 h-12 rounded-full object-cover border-2 border-clay-primary" onerror="this.src='https://via.placeholder.com/150';">
+                                <div>
+                                    <h4 class="font-bold text-sm text-clay-text dark:text-white mb-0.5">Sarah Jenkins</h4>
+                                    <p class="text-[0.65rem] text-clay-muted dark:text-clay-secondary/70 mb-0 uppercase tracking-wider">Front Desk & Walk-ins</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <img src="assets/images/about/team3.jpg" alt="Marcus" class="w-12 h-12 rounded-full object-cover border-2 border-clay-primary" onerror="this.src='https://via.placeholder.com/150';">
+                                <div>
+                                    <h4 class="font-bold text-sm text-clay-text dark:text-white mb-0.5">Marcus Thorne</h4>
+                                    <p class="text-[0.65rem] text-clay-muted dark:text-clay-secondary/70 mb-0 uppercase tracking-wider">Kiln Tech & Class Inst.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 p-6 rounded-3xl shadow-xs">
+                        <h3 class="text-base font-bold text-clay-text dark:text-white mb-4">Recent Audit Logs</h3>
+                        <ul class="space-y-3 text-xs">
+                            <li class="flex justify-between border-b !border-clay-secondary/20 dark:!border-clay-text/10 pb-2">
+                                <div>
+                                    <span class="font-bold text-clay-text dark:text-white">Admin Console</span>
+                                    <p class="text-clay-muted dark:text-clay-secondary/70 mb-0 mt-0.5">Updated inventory bag level for Gray Stoneware Clay</p>
+                                </div>
+                                <span class="text-clay-muted font-mono text-[0.65rem]">Today, 10:15 AM</span>
+                            </li>
+                            <li class="flex justify-between border-b !border-clay-secondary/20 dark:!border-clay-text/10 pb-2">
+                                <div>
+                                    <span class="font-bold text-clay-text dark:text-white">Sarah Jenkins</span>
+                                    <p class="text-clay-muted dark:text-clay-secondary/70 mb-0 mt-0.5">Checked In member 'Sam John' for Slab Pitchers class</p>
+                                </div>
+                                <span class="text-clay-muted font-mono text-[0.65rem]">Today, 09:30 AM</span>
+                            </li>
+                            <li class="flex justify-between pb-1">
+                                <div>
+                                    <span class="font-bold text-clay-text dark:text-white">Marcus Thorne</span>
+                                    <p class="text-clay-muted dark:text-clay-secondary/70 mb-0 mt-0.5">Started Firing Chamber cycle #2 (Cone 6 Glaze)</p>
+                                </div>
+                                <span class="text-clay-muted font-mono text-[0.65rem]">Yesterday, 14:45 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PANEL: WORKSHOP EDITOR ================= -->
+            <section id="panel-editor" class="dashboard-panel hidden space-y-6 animate-[fadeIn_0.3s_ease-out]">
+                <h2 class="text-2xl font-bold font-serif text-clay-text dark:text-white mb-1">Schedule New Workshop</h2>
+                <p class="text-sm text-clay-muted dark:text-clay-secondary/70">Create, adjust, and publish new ceramic workshops to the public site booking platform.</p>
+
+                <div class="!bg-white dark:!bg-clay-dark border !border-clay-secondary/30 dark:!border-clay-text/30 rounded-3xl p-6 md:p-8 max-w-3xl shadow-xs">
+                    <form onsubmit="event.preventDefault(); alert('Workshop published!');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white">Workshop Title</label>
+                                <input type="text" class="form-control rounded-xl !border-clay-secondary/50 dark:bg-clay-dark/30 dark:!border-clay-text/50 dark:text-white py-2.5 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary" placeholder="e.g. Sgraffito Vase Carving" required>
+                            </div>
+                            <div>
+                                <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white">Assign Instructor</label>
+                                <select class="form-select rounded-xl !border-clay-secondary/50 dark:bg-clay-dark/30 dark:!border-clay-text/50 dark:text-white py-2.5 focus:border-clay-primary">
+                                    <option>Eleanor Vance</option>
+                                    <option>Marcus Chen</option>
+                                    <option>Sarah Jenkins</option>
+                                    <option>David Ross</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white">Class Pricing ($)</label>
+                                <input type="number" class="form-control rounded-xl !border-clay-secondary/50 dark:bg-clay-dark/30 dark:!border-clay-text/50 dark:text-white py-2.5 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary" value="45" required>
+                            </div>
+                            <div>
+                                <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white">Date</label>
+                                <input type="date" class="form-control rounded-xl !border-clay-secondary/50 dark:bg-clay-dark/30 dark:!border-clay-text/50 dark:text-white py-2.5 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary" required>
+                            </div>
+                            <div>
+                                <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white">Session Slot</label>
+                                <select class="form-select rounded-xl !border-clay-secondary/50 dark:bg-clay-dark/30 dark:!border-clay-text/50 dark:text-white py-2.5 focus:border-clay-primary">
+                                    <option>Morning (10:00 AM - 12:00 PM)</option>
+                                    <option>Afternoon (2:00 PM - 5:00 PM)</option>
+                                    <option>Night (7:00 PM - 9:00 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-4 border-t !border-clay-secondary/20 dark:!border-clay-text/20 flex justify-end">
+                            <button type="submit" class="bg-clay-primary hover:bg-clay-accent text-white font-medium px-6 py-3 rounded-full transition-all shadow-md">Publish Workshop to Public Site</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Dashboard compact footer -->
+        <footer class="mt-auto px-8 py-4 border-t !border-clay-secondary/15 dark:!border-clay-text/15 text-center md:text-left text-xs text-clay-muted dark:text-clay-secondary/50 flex flex-col md:flex-row justify-between items-center gap-2">
+            <p class="mb-0">&copy; 2026 Clay & Kiln Pottery Studio. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="javascript:void(0)" class="hover:text-clay-primary text-decoration-none">Privacy Policy</a>
+                <a href="javascript:void(0)" class="hover:text-clay-primary text-decoration-none">Terms of Use</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Navigation Panel & Custom Logic Scripts -->
+    <script>
+        const htmlEl = document.documentElement;
+        const bodyEl = document.body;
+        const bsLink = document.getElementById('bootstrap-css');
+
+        // 1. Sidebar Panel Switching
+        function showPanel(panelId) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.dashboard-panel');
+            panels.forEach(p => p.classList.add('hidden'));
+
+            // Show active panel
+            const activePanel = document.getElementById('panel-' + panelId);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+            }
+
+            // Update active menu link
+            const menuButtons = document.querySelectorAll('.sidebar-menu-item');
+            menuButtons.forEach(btn => {
+                const pAttr = btn.getAttribute('data-panel');
+                if (pAttr === panelId) {
+                    btn.classList.add('bg-clay-primary', 'text-white');
+                    btn.classList.remove('text-clay-text', 'dark:text-clay-secondary', 'hover:bg-clay-secondary/20', 'dark:hover:bg-clay-primary/20');
+                } else {
+                    btn.classList.remove('bg-clay-primary', 'text-white');
+                    btn.classList.add('text-clay-text', 'dark:text-clay-secondary', 'hover:bg-clay-secondary/20', 'dark:hover:bg-clay-primary/20');
+                }
+            });
+
+            // Update breadcrumb
+            const breadcrumbActive = document.getElementById('breadcrumb-active');
+            if (breadcrumbActive) {
+                const nameMap = {
+                    'telemetry': 'Admin Overview',
+                    'calendar': 'Studio Schedule',
+                    'revenue': 'Revenue Analytics',
+                    'diagnostics': 'Firing Queue',
+                    'maintenance': 'Pickup Management',
+                    'solar': 'Private Events',
+                    'hotspot': 'Bisque Inventory',
+                    'audit': 'Staff Management',
+                    'editor': 'Workshop Schedule'
+                };
+                breadcrumbActive.textContent = nameMap[panelId] || (panelId.charAt(0).toUpperCase() + panelId.slice(1));
+            }
+
+            // Close sidebar on mobile after clicking
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (!sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // 2. Responsive Mobile Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // 3. Dark Mode Theme Switching (fully customized and integrated)
+        function updateThemeUI(isDark) {
+            const navDarkIcons = document.querySelectorAll('.nav-dark-icon');
+            if (isDark) {
+                htmlEl.classList.add('dark');
+                bodyEl.classList.add('dark');
+                htmlEl.setAttribute('data-bs-theme', 'dark');
+                navDarkIcons.forEach(icon => {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                });
+            } else {
+                htmlEl.classList.remove('dark');
+                bodyEl.classList.remove('dark');
+                htmlEl.setAttribute('data-bs-theme', 'light');
+                navDarkIcons.forEach(icon => {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                });
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = !bodyEl.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeUI(isDark);
+        }
+
+        // Init Theme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            updateThemeUI(true);
+        } else {
+            updateThemeUI(false);
+        }
+
+        // 4. RTL Support
+        function updateRtlUI(isRtl) {
+            if (isRtl) {
+                htmlEl.setAttribute('dir', 'rtl');
+                if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+            } else {
+                htmlEl.setAttribute('dir', 'ltr');
+                if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+            }
+        }
+
+        function toggleRtl() {
+            const isRtl = htmlEl.getAttribute('dir') !== 'rtl';
+            localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+            updateRtlUI(isRtl);
+        }
+
+        // Init RTL
+        const savedRtl = localStorage.getItem('rtl') === 'true';
+        updateRtlUI(savedRtl);
+
+        // 5. Simulated Telemetry Interactions
+        function pingSprinter() {
+            // Randomize temperature coordinates and load readouts to simulate GPS telemetry updates
+            const activeRigEl = document.getElementById('stat-active-kilns');
+            const tempValEl = document.getElementById('telemetry-temp');
+            
+            // Random status
+            const activeKilns = Math.floor(Math.random() * 2) + 2; // 2 or 3
+            activeRigEl.textContent = `${activeKilns} / 4`;
+            
+            // Random temp/gps string
+            const lat = (34.0625 + (Math.random() - 0.5) * 0.01).toFixed(4);
+            const lng = (-118.4012 + (Math.random() - 0.5) * 0.01).toFixed(4);
+            tempValEl.textContent = `${lat} N, ${lng.replace('-', '')} W`;
+
+            // Random bar values
+            const val1 = Math.floor(Math.random() * 20) + 70; // 70 to 90
+            const val2 = Math.floor(Math.random() * 300) + 600; // 600 to 900
+            const val3 = Math.floor(Math.random() * 10) + 90; // 90 to 100
+
+            document.getElementById('telemetry-bar1-val').textContent = `${val1}%`;
+            document.getElementById('telemetry-bar1').style.width = `${val1}%`;
+            
+            document.getElementById('telemetry-bar2-val').textContent = `${val2} Watts`;
+            document.getElementById('telemetry-bar2').style.width = `${(val2/1000)*100}%`;
+            
+            document.getElementById('telemetry-bar3-val').textContent = `${val3}%`;
+            document.getElementById('telemetry-bar3').style.width = `${val3}%`;
+
+            alert("GPS Coordinate Ping Sent! Telemetry readouts updated.");
+        }
+
+        function pingStylist() {
+            alert("Stylist Marcus Thorne has been pinged on his pager console.");
+        }
+
+        // Periodic clock updater
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            const ticker = document.getElementById('live-time-ticker');
+            if (ticker) ticker.textContent = `Refreshed: ${timeStr}`;
+        }, 1000);
+    </script>
+</body>
+</html>

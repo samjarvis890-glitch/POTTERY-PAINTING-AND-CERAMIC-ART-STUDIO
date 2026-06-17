@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pottery Workshops | Clay & Kiln Pottery Studio</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .container {
+            max-width: 1400px !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: clip;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            overflow-x: clip;
+            box-sizing: border-box;
+            background-color: #E1CDBB;
+        }
+        html.dark {
+            background-color: #1a1513;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        body:not(.dark) * {
+            border-color: #4A3B32 !important;
+        }
+        body:not(.dark) .text-muted, body:not(.dark) .text-clay-muted {
+            color: #5C4E46 !important;
+            border-color: #4A3B32 !important;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        body.dark * {
+            border-color: #C86B47 !important;
+        }
+        body.dark section {
+            box-shadow: 0 10px 30px rgba(200, 107, 71, 0.15) !important;
+        }
+        section {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+        body.dark .bg-white {
+            background-color: #2A2421 !important;
+        }
+        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
+            color: #FAF6F0 !important;
+        }
+        body.dark .text-clay-primary {
+            color: #E1CDBB !important;
+        }
+        
+        body.dark .card-clay {
+            background-color: #2A2421;
+            border: 1px solid #C86B47 !important;
+        }
+        body.dark .bg-clay-bg {
+            background-color: #2A2421 !important;
+        }
+        body.dark .glass-navbar {
+            background-color: rgba(31, 26, 24, 0.95) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .cursive-text {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 3.5rem;
+            color: #C86B47;
+            line-height: 0.8;
+            transform: rotate(-2deg);
+        }
+        
+        /* Mobile Responsive Fixes */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .display-3 { font-size: 2.5rem !important; }
+            .display-5 { font-size: 2rem !important; }
+            .display-6 { font-size: 1.75rem !important; }
+            .cursive-text { font-size: 2.5rem !important; }
+            .hero-section { text-align: center; padding: 2.5rem 1rem !important; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+            .hero-section p { margin-left: auto; margin-right: auto; }
+            .hero-section .d-flex.flex-wrap { flex-direction: column; gap: 0.5rem !important; justify-content: center; align-items: center; }
+            .btn-primary-clay:not(.btn-sm), .btn-outline-clay:not(.btn-sm) { width: 100%; max-width: 300px; padding: 12px 20px; display: inline-block; margin: 0 auto; text-align: center; }
+            section { padding-top: 3rem !important; padding-bottom: 3rem !important; margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+            .workshop-card { padding: 2rem !important; text-align: center; }
+            .workshop-card .col-lg-7 { align-items: center; }
+            .workshop-card .d-flex { justify-content: center; }
+            .workshop-card ul { padding-left: 0; }
+            .center-circle, .timeline-line { display: none !important; }
+            .timeline-step { margin-bottom: 2rem; }
+            .footer .text-md-start { text-align: center !important; }
+            .footer .d-flex.justify-content-md-start { justify-content: center !important; }
+            .position-absolute.top-50.end-0.translate-middle-y { display: none !important; }
+            .hero-section img, section img.object-cover { border-radius: 20px !important; height: auto !important; max-height: 400px; }
+            .row > * { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .display-3 { font-size: 2rem !important; }
+            .display-5 { font-size: 1.75rem !important; }
+        }
+        
+        .btn-primary-clay {
+            background-color: #C86B47;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary-clay:hover {
+            background-color: #A65636;
+            color: white;
+        }
+        .btn-outline-clay {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border: 2px solid #C86B47 !important;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-outline-clay:hover {
+            background-color: #A65636 !important;
+            border-color: #A65636 !important;
+            color: white !important;
+        }
+        .hero-section {
+            background-color: #2A2421;
+            color: white;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            position: relative;
+        }
+        .nav-link {
+            color: #E1CDBB !important;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        .glass-navbar {
+            background-color: rgba(42, 36, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (min-width: 1200px) {
+            .navbar-nav {
+                gap: 1.5rem !important;
+            }
+            .navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+            .navbar .dropdown-menu {
+                margin-top: 0;
+                display: none;
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-collapse.collapse {
+            visibility: visible !important;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .card-clay {
+            border: none;
+            border-radius: 16px;
+            background-color: white;
+            transition: transform 0.3s;
+        }
+        .card-clay:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .card-img-wrapper {
+            background-color: #F5F0E8;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-img-wrapper img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        /* Additional Page Specific Styles */
+        .workshop-hero-wrap {
+            background: linear-gradient(135deg, #1F1A18 0%, #2A2421 100%);
+            border-bottom: 3px solid #C86B47;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+        .spinning-wheel-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto;
+        }
+        .spinning-wheel-border {
+            position: absolute;
+            inset: -15px;
+            border: 3px dashed #C86B47;
+            border-radius: 50%;
+            animation: spin 25s linear infinite;
+        }
+        .spinning-wheel-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid #E1CDBB;
+            object-fit: cover;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .floating-badge-1 {
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            background-color: #C86B47;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            animation: float-badge 3s ease-in-out infinite;
+        }
+        .floating-badge-2 {
+            position: absolute;
+            bottom: 15%;
+            right: -5%;
+            background-color: #3B7A57;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            animation: float-badge 3.5s ease-in-out infinite alternate;
+        }
+        @keyframes float-badge {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Sticky Navbar Scroll Transition */
+        .navbar-scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            background-color: rgba(42, 36, 33, 0.96) !important;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+        }
+        body.dark .navbar-scrolled {
+            background-color: rgba(26, 21, 18, 0.98) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-3 shadow-sm glass-navbar" style="z-index: 1050;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                <div class="d-flex flex-column leading-none">
+                    <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                    <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                </div>
+            </a>
+            <div class="d-flex align-items-center gap-3 order-xl-last">
+                <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Home</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="index.html">Home 1</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dashboard</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
+                    <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon" id="nav-dark-icon-mobile"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                        <i class="fa-solid fa-right-left"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+                </div>
+            </div>
+            <div class="d-none d-xl-flex align-items-center gap-4 text-white">
+                <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
+                </a>
+                <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                    <i class="fa-solid fa-right-left"></i>
+                </a>
+                <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <div class="min-h-[80vh] flex items-center relative overflow-hidden bg-clay-bg dark:bg-clay-dark rounded-bl-[60px] rounded-br-[60px] py-16 lg:py-24 border-b-4 border-clay-primary shadow-lg">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-0 right-0 w-[40vw] h-full bg-clay-secondary/20 dark:bg-clay-primary/10 rounded-l-[100px] z-0"></div>
+        <div class="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full border-[1px] border-clay-primary/30 z-0"></div>
+        <div class="absolute top-20 left-[30%] w-[100px] h-[100px] rounded-full bg-clay-primary/20 blur-2xl z-0"></div>
+
+        <div class="container relative z-10 mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <!-- Image Composition Side -->
+                <div class="w-full lg:w-5/12 order-2 lg:order-1 relative">
+                    <div class="relative w-full max-w-sm mx-auto lg:mx-0">
+                        <!-- Main Arch Image -->
+                        <div class="relative w-full aspect-[3/4] rounded-t-[200px] rounded-b-[40px] overflow-hidden border-[12px] border-white dark:border-clay-dark shadow-2xl z-10 transition-transform duration-700 hover:-translate-y-2">
+                            <img src="assets/images/home/workshop-beginner.jpg" alt="Pottery Workshop" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Overlapping Circle Image -->
+                        <div class="absolute -bottom-12 -right-12 w-48 h-48 rounded-full overflow-hidden border-[8px] border-white dark:border-clay-dark shadow-xl z-20 hidden md:block transition-transform duration-700 hover:scale-105 hover:rotate-6">
+                            <img src="assets/images/home/workshop-advanced.jpg" alt="Detail" class="w-full h-full object-cover">
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Text Content Side -->
+                <div class="w-full lg:w-7/12 order-1 lg:order-2 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/60 dark:bg-black/20 backdrop-blur-md border border-clay-primary/20 px-4 py-2 rounded-full mb-8 shadow-sm">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-clay-primary opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-clay-primary"></span>
+                        </span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-clay-text dark:text-gray-300">Live Studio Status: Session running</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-clay-text dark:text-white mb-2 leading-tight">
+                        Pottery
+                    </h1>
+                    <div class="font-cursive text-7xl md:text-8xl lg:text-9xl text-clay-primary mb-6 lg:-ml-4 drop-shadow-sm" style="line-height: 0.7; transform: rotate(-2deg);">
+                        Workshops
+                    </div>
+                    
+                    <p class="text-lg md:text-xl text-clay-muted dark:text-gray-300 mb-10 max-w-xl mx-auto lg:mx-0 font-sans font-light leading-relaxed">
+                        Get your hands dirty and master the wheel. We host structured pottery courses, day classes, and creative social events for makers of all ages.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
+                        <a href="#classes" class="group relative px-8 py-4 bg-clay-primary text-white rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 no-underline">
+                            <span class="relative z-10 font-bold tracking-wide flex items-center gap-2">
+                                View Classes <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                            <div class="absolute inset-0 bg-[#A65636] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out z-0"></div>
+                        </a>
+                        
+                        <a href="#calendar" class="group px-8 py-4 bg-transparent border-2 border-clay-primary text-clay-primary dark:text-clay-secondary rounded-full font-bold tracking-wide hover:bg-clay-primary hover:text-white dark:hover:text-white transition-all duration-300 flex items-center gap-2 no-underline">
+                            <i class="fa-regular fa-calendar group-hover:scale-110 transition-transform"></i> Booking Calendar
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center justify-center lg:justify-start gap-4">
+                        <div class="flex -space-x-4">
+                            <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-beginner.jpg" alt="Student 1">
+                            <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-advanced.jpg" alt="Student 2">
+                            <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-kids.jpg" alt="Student 3">
+                            <div class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark bg-clay-secondary flex items-center justify-center text-clay-text font-bold text-sm">
+                                4.9<i class="fa-solid fa-star text-[10px] ml-0.5"></i>
+                            </div>
+                        </div>
+                        <div class="text-left text-sm">
+                            <p class="font-bold text-clay-text dark:text-white mb-0 leading-none mt-1">Loved by 1000+ students</p>
+                            <p class="text-clay-muted dark:text-gray-400 mb-0 text-xs mt-1">Based on latest reviews</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Class Categories Grid -->
+    <section class="py-5" id="classes">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">CLASSES FOR EVERYONE</span>
+                <h2 class="display-5 fw-bold mt-2">Find Your Workshop</h2>
+                <p class="text-muted max-w-xl mx-auto">Select a course tailored to your level. All raw materials and firing are covered in the pricing.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 shadow-sm border border-secondary border-opacity-10 d-flex flex-column">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/home/workshop-beginner.jpg" alt="Beginner Wheel">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="fw-bold mb-2">Intro to Wheel</h4>
+                            <p class="text-muted text-sm mb-4">Learn basic centering, opening, and lifting clay cylinder steps. Perfect first-time beginner class.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-clay-primary">$45.00</span>
+                                <a href="#calendar" class="btn btn-sm btn-primary-clay px-3 py-1 text-xs rounded-pill">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 shadow-sm border border-secondary border-opacity-10 d-flex flex-column">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/home/workshop-advanced.jpg" alt="Handbuilding">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="fw-bold mb-2">Handbuilding & Coils</h4>
+                            <p class="text-muted text-sm mb-4">Explore slabs, coils, and pinch pots. Create custom plates or organic vases without a wheel.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-clay-primary">$40.00</span>
+                                <a href="#calendar" class="btn btn-sm btn-primary-clay px-3 py-1 text-xs rounded-pill">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 shadow-sm border border-secondary border-opacity-10 d-flex flex-column">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/home/workshop-kids.jpg" alt="Kids Clay">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="fw-bold mb-2">Kids Clay Club</h4>
+                            <p class="text-muted text-sm mb-4">Fun animal pinch pots and mug painting. Engaging hands-on art class for kids aged 6-12.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-clay-primary">$30.00</span>
+                                <a href="#calendar" class="btn btn-sm btn-primary-clay px-3 py-1 text-xs rounded-pill">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 shadow-sm border border-secondary border-opacity-10 d-flex flex-column">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/home/workshop-private.jpg" alt="Date Night">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="fw-bold mb-2">Clay & Wine Date Night</h4>
+                            <p class="text-muted text-sm mb-4">Bring a partner, sip on delicious wine, and learn pottery wheel spinning together in a relaxed social event.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-clay-primary">$60.00</span>
+                                <a href="#calendar" class="btn btn-sm btn-primary-clay px-3 py-1 text-xs rounded-pill">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Booking calendar -->
+    <section class="py-5 bg-white" id="calendar">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">SCHEDULE TIME</span>
+                <h2 class="display-5 fw-bold mt-2">Workshop Calendar</h2>
+                <p class="text-muted max-w-xl mx-auto">Book your slot. Day sessions and weekly intensive bookings are listed below.</p>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle border-secondary border-opacity-25">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Class Name</th>
+                            <th>Instructor</th>
+                            <th>Date & Time</th>
+                            <th>Skill Level</th>
+                            <th>Spots Left</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-clay-dark dark:text-white">
+                        <tr>
+                            <td class="fw-bold">Wheel Centering Workshop</td>
+                            <td>Marcus Chen</td>
+                            <td>Every Saturday (10am - 12pm)</td>
+                            <td><span class="badge bg-success rounded-pill px-3">Beginner</span></td>
+                            <td class="text-danger fw-semibold">2 spots left</td>
+                            <td><a href="login.html" class="btn btn-sm btn-primary-clay px-3 py-1 rounded-pill">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Slab Ceramic Pitchers</td>
+                            <td>Sarah Jenkins</td>
+                            <td>June 18, 2026 (2pm - 5pm)</td>
+                            <td><span class="badge bg-warning rounded-pill px-3">Intermediate</span></td>
+                            <td>6 spots left</td>
+                            <td><a href="login.html" class="btn btn-sm btn-primary-clay px-3 py-1 rounded-pill">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Handmade Pottery Mug Painting</td>
+                            <td>Eleanor Vance</td>
+                            <td>June 20, 2026 (11am - 1pm)</td>
+                            <td><span class="badge bg-success rounded-pill px-3">All Levels</span></td>
+                            <td>8 spots left</td>
+                            <td><a href="login.html" class="btn btn-sm btn-primary-clay px-3 py-1 rounded-pill">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Figurines & Clay Sculpting</td>
+                            <td>David Ross</td>
+                            <td>June 25, 2026 (4pm - 7pm)</td>
+                            <td><span class="badge bg-danger rounded-pill px-3">Advanced</span></td>
+                            <td class="text-danger fw-semibold">1 spot left</td>
+                            <td><a href="login.html" class="btn btn-sm btn-primary-clay px-3 py-1 rounded-pill">Register</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Meet the Instructors -->
+    <section class="py-5" id="instructors">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">THE TEACHING TEAM</span>
+                <h2 class="display-5 fw-bold mt-2">Our Instructors</h2>
+                <p class="text-muted max-w-xl mx-auto">Learn from professional potters who are passionate about sharing clay craft.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Instructor 1 -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <img src="assets/images/about/team1.jpg" alt="Eleanor" class="rounded-circle border border-4 border-clay-primary shadow-sm mb-3 mx-auto object-cover" style="width: 130px; height: 130px;">
+                    <h5 class="fw-bold mb-1">Eleanor Vance</h5>
+                    <p class="text-clay-primary text-sm mb-2">Clay Master & Co-Founder</p>
+                    <p class="text-muted text-xs">15+ years experience on the wheel. Specializes in large scale jars.</p>
+                </div>
+                <!-- Instructor 2 -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <img src="assets/images/about/team2.jpg" alt="Marcus" class="rounded-circle border border-4 border-clay-primary shadow-sm mb-3 mx-auto object-cover" style="width: 130px; height: 130px;">
+                    <h5 class="fw-bold mb-1">Marcus Chen</h5>
+                    <p class="text-clay-primary text-sm mb-2">Glazing Expert</p>
+                    <p class="text-muted text-xs">Graduated from Fine Arts in Ceramic Chemistry. Glaze combinations wizard.</p>
+                </div>
+                <!-- Instructor 3 -->
+                <div class="col-md-6 col-lg-3 text-center">
+                    <img src="assets/images/about/team3.jpg" alt="Sarah" class="rounded-circle border border-4 border-clay-primary shadow-sm mb-3 mx-auto object-cover" style="width: 130px; height: 130px;">
+                    <h5 class="fw-bold mb-1">Sarah Jenkins</h5>
+                    <p class="text-clay-primary text-sm mb-2">Kids Program Lead</p>
+                    <p class="text-muted text-xs">Ex-Elementary school teacher who loves modeling quirky animal cups and pots.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Studio Guidelines & Reclaim Process -->
+    <section class="py-5 bg-white" id="guidelines">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">STUDIO ETIQUETTE</span>
+                <h2 class="display-5 fw-bold mt-2">Studio Safety & Guidelines</h2>
+                <p class="text-muted max-w-xl mx-auto">Help us keep a creative, clean environment. Here are basic guidelines for clay works.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 bg-clay-bg dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10 h-100">
+                        <i class="fa-solid fa-shirt text-clay-primary fs-2 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Dress Comfortably</h4>
+                        <p class="text-muted text-sm">Clay washes out easily, but we suggest wearing old clothes and comfortable closed-toe shoes. Trim nails before throwing!</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-clay-bg dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10 h-100">
+                        <i class="fa-solid fa-recycle text-clay-primary fs-2 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Reclaim Clay Bucket</h4>
+                        <p class="text-muted text-sm">Scraps of dried clay must go into our designated Reclaim Slurry buckets. We filter, wedge, and reuse raw clay to minimize waste.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-clay-bg dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10 h-100">
+                        <i class="fa-solid fa-broom text-clay-primary fs-2 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Wipe Down Wheels</h4>
+                        <p class="text-muted text-sm">Please allow 15 minutes at the end of class to clean your wheel pan, rinse your sponge tools, and wipe stools for the next student.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Reviews & Class Gallery (Redesigned) -->
+    <section class="py-20 relative overflow-hidden bg-clay-secondary bg-opacity-20 dark:bg-clay-dark dark:bg-opacity-50" id="reviews">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-clay-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-clay-secondary/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 z-0"></div>
+
+        <div class="container relative z-10 mx-auto px-4">
+            
+            <div class="flex flex-col lg:flex-row items-end justify-between mb-12 lg:mb-16 gap-6">
+                <div class="max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/50 dark:bg-black/20 rounded-full border border-clay-primary/20 mb-4 shadow-sm">
+                        <i class="fa-solid fa-camera text-clay-primary text-xs"></i>
+                        <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-[10px]">STUDENT CREATIONS</span>
+                    </div>
+                    <h2 class="font-serif text-4xl lg:text-6xl font-bold text-clay-dark dark:text-white mb-4">
+                        Class Success <span class="font-cursive text-clay-primary text-6xl lg:text-8xl" style="line-height: 0.5;">Stories</span>
+                    </h2>
+                    <p class="text-clay-muted dark:text-gray-400 text-lg">See the final masterpieces thrown and painted during our weekend workshops. Real students, real clay.</p>
+                </div>
+                
+                <div class="hidden lg:block pb-4">
+                    <a href="gallery.html" class="group flex items-center gap-2 text-clay-primary font-bold hover:text-[#A65636] transition-colors text-decoration-none">
+                        View Full Gallery <span class="w-8 h-8 rounded-full border border-clay-primary flex items-center justify-center group-hover:bg-clay-primary group-hover:text-white transition-all"><i class="fa-solid fa-arrow-right text-xs"></i></span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Review Card 1 -->
+                <div class="relative group overflow-hidden rounded-[2rem] shadow-lg h-[450px] border border-secondary border-opacity-10">
+                    <img src="assets/images/gallery/customer-artwork-1.jpg" alt="Student Bowl" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="flex items-center gap-2 text-warning mb-3 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-white font-serif text-lg lg:text-xl italic mb-4 leading-relaxed line-clamp-3">"The Saturday morning Wheel Centering class was life changing. Sarah was patient, step-by-step, and I made three bowls that I actually use every day!"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-clay-primary flex items-center justify-center text-white font-bold text-sm shadow-md">JR</div>
+                            <div>
+                                <h6 class="text-white font-bold mb-0 text-sm">Jack Roberts</h6>
+                                <p class="text-gray-300 text-xs mb-0">Beginner Workshop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="relative group overflow-hidden rounded-[2rem] shadow-lg h-[450px] border border-secondary border-opacity-10">
+                    <img src="assets/images/gallery/customer-kids.jpg" alt="Student Kids" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="flex items-center gap-2 text-warning mb-3 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-white font-serif text-lg lg:text-xl italic mb-4 leading-relaxed line-clamp-3">"My 8-year-old had the best time at the Kids Clay Club. She brought home the cutest little turtle pinch pot and can't wait to go back."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-clay-primary flex items-center justify-center text-white font-bold text-sm shadow-md">MW</div>
+                            <div>
+                                <h6 class="text-white font-bold mb-0 text-sm">Maria Wong</h6>
+                                <p class="text-gray-300 text-xs mb-0">Kids Clay Club</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="relative group overflow-hidden rounded-[2rem] shadow-lg h-[450px] border border-secondary border-opacity-10">
+                    <img src="assets/images/gallery/customer-family.jpg" alt="Student Family" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="flex items-center gap-2 text-warning mb-3 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-white font-serif text-lg lg:text-xl italic mb-4 leading-relaxed line-clamp-3">"We booked a Clay & Wine date night and it was incredible. Marcus guided us smoothly, and we loved the relaxing, creative atmosphere."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-clay-primary flex items-center justify-center text-white font-bold text-sm shadow-md">DT</div>
+                            <div>
+                                <h6 class="text-white font-bold mb-0 text-sm">David & Tina</h6>
+                                <p class="text-gray-300 text-xs mb-0">Date Night Event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-10 text-center lg:hidden">
+                <a href="gallery.html" class="btn-outline-clay w-full max-w-sm rounded-full py-3 d-inline-block text-decoration-none">View Full Gallery</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-clay-dark text-white pt-5 pb-3">
+        <div class="container mt-4 text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <a class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 text-white text-decoration-none mb-3" href="index.html">
+                        <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                        <div class="d-flex flex-column leading-none text-start">
+                            <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                            <span class="text-[0.5rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                        </div>
+                    </a>
+                    <p class="text-clay-secondary text-sm pe-md-4">A premium pottery painting and ceramic art studio for all ages. Create, relax, and take home beautiful memories.</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-4">
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">QUICK LINKS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-clay-secondary text-decoration-none hover:text-white">About</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Gallery</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Glaze Colors</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="blogs.html" class="text-clay-secondary text-decoration-none hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">SERVICES</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Pottery Painting</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Ceramic Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Kids Classes</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Corporate Events</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Artwork Firing</a></li>
+                        <li class="mb-2"><a href="user-dashboard.html" class="text-clay-secondary text-decoration-none hover:text-white">Studio Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">STUDIO HOURS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-3">
+                            <span class="d-block text-white">Monday - Friday</span>
+                            09:00 AM - 08:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Saturday</span>
+                            09:00 AM - 09:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Sunday</span>
+                            10:00 AM - 06:00 PM
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <h6 class="fw-bold mb-4">NEWSLETTER</h6>
+                    <p class="text-sm text-clay-secondary mb-3">Get pottery tips, workshop updates and exclusive offers!</p>
+                    <form class="d-flex justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white rounded-start-pill text-sm" placeholder="Your email address" style="border-right: none; max-width: 250px;">
+                        <button type="submit" class="btn bg-clay-primary text-white rounded-end-pill px-3"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-sm text-clay-secondary">
+                <p class="mb-2 mb-md-0">&copy; 2026 Clay & Kiln Pottery Studio.</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Privacy Policy</a>
+                    <span class="text-secondary">|</span>
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Terms & Conditions</a>
+                    <span class="text-secondary">|</span>
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg" style="border-radius: 16px;">
+          <div class="modal-header border-secondary border-opacity-25">
+            <h5 class="modal-title font-serif fw-bold" id="settingsModalLabel"><i class="fa-solid fa-gear me-2 text-clay-primary"></i> Site Settings</h5>
+            <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            
+            <!-- Dark Mode Toggle -->
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-moon fs-5" id="modal-dark-icon"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Dark Mode</h6>
+                        <small class="text-muted text-sm">Toggle dark/light theme</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="darkModeSwitch">
+                </div>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="d-flex justify-content-between align-items-center p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-right-left fs-5"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">RTL Layout</h6>
+                        <small class="text-muted text-sm">Right-to-Left orientation</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="rtlSwitch">
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Settings Modal Logic (Dark Mode & RTL)
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+            const bsLink = document.getElementById('bootstrap-css');
+            
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            const rtlSwitch = document.getElementById('rtlSwitch');
+            const modalDarkIcon = document.getElementById('modal-dark-icon');
+            
+            // --- Dark Mode ---
+            function updateThemeUI(isDark) {
+                const navDarkIcon = document.getElementById('nav-dark-icon');
+                const navDarkIconMobile = document.getElementById('nav-dark-icon-mobile');
+                if (isDark) {
+                    htmlEl.setAttribute('data-bs-theme', 'dark');
+                    bodyEl.classList.add('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-moon');
+                        modalDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-moon');
+                        navDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-moon');
+                        navDarkIconMobile.classList.add('fa-sun');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('data-bs-theme', 'light');
+                    bodyEl.classList.remove('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-sun');
+                        modalDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-sun');
+                        navDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-sun');
+                        navDarkIconMobile.classList.add('fa-moon');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = false;
+                } }
+
+            function toggleDarkMode(e) {
+                const isDark = e.target.checked;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            }
+
+            // Init Theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) { updateThemeUI(true); } else { updateThemeUI(false); }
+            
+            if (darkModeSwitch) { darkModeSwitch.addEventListener('change', toggleDarkMode); }
+
+            // --- RTL Layout ---
+            function updateRtlUI(isRtl) { if (isRtl) { htmlEl.setAttribute('dir', 'rtl');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = true; } else { htmlEl.setAttribute('dir', 'ltr');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = false; } }
+
+            function toggleRtl(e) { const isRtl = e.target.checked;
+                localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+                updateRtlUI(isRtl); }
+
+            // Init RTL
+            const savedRtl = localStorage.getItem('rtl') === 'true';
+            updateRtlUI(savedRtl);
+            
+            if (rtlSwitch) { rtlSwitch.addEventListener('change', toggleRtl); }
+
+            // Sticky Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.glass-navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('navbar-scrolled');
+                } else {
+                    nav.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Events & Parties | Clay & Kiln Pottery Studio</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .container {
+            max-width: 1400px !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: clip;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            overflow-x: clip;
+            box-sizing: border-box;
+            background-color: #E1CDBB;
+        }
+        html.dark {
+            background-color: #1a1513;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        body:not(.dark) * {
+            border-color: #4A3B32 !important;
+        }
+        body:not(.dark) .text-muted, body:not(.dark) .text-clay-muted {
+            color: #5C4E46 !important;
+            border-color: #4A3B32 !important;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        body.dark * {
+            border-color: #C86B47 !important;
+        }
+        body.dark section {
+            box-shadow: 0 10px 30px rgba(200, 107, 71, 0.15) !important;
+        }
+        section {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+        body.dark .bg-white {
+            background-color: #2A2421 !important;
+        }
+        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
+            color: #FAF6F0 !important;
+        }
+        body.dark .text-clay-primary {
+            color: #E1CDBB !important;
+        }
+        
+        body.dark .card-clay {
+            background-color: #2A2421;
+            border: 1px solid #C86B47 !important;
+        }
+        body.dark .bg-clay-bg {
+            background-color: #2A2421 !important;
+        }
+        body.dark .glass-navbar {
+            background-color: rgba(31, 26, 24, 0.95) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .cursive-text {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 3.5rem;
+            color: #C86B47;
+            line-height: 0.8;
+            transform: rotate(-2deg);
+        }
+        
+        /* Mobile Responsive Fixes */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .display-3 { font-size: 2.5rem !important; }
+            .display-5 { font-size: 2rem !important; }
+            .display-6 { font-size: 1.75rem !important; }
+            .cursive-text { font-size: 2.5rem !important; }
+            .hero-section { text-align: center; padding: 2.5rem 1rem !important; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+            .hero-section p { margin-left: auto; margin-right: auto; }
+            .hero-section .d-flex.flex-wrap { flex-direction: column; gap: 0.5rem !important; justify-content: center; align-items: center; }
+            .btn-primary-clay:not(.btn-sm), .btn-outline-clay:not(.btn-sm) { width: 100%; max-width: 300px; padding: 12px 20px; display: inline-block; margin: 0 auto; text-align: center; }
+            section { padding-top: 3rem !important; padding-bottom: 3rem !important; margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+            .workshop-card { padding: 2rem !important; text-align: center; }
+            .workshop-card .col-lg-7 { align-items: center; }
+            .workshop-card .d-flex { justify-content: center; }
+            .workshop-card ul { padding-left: 0; }
+            .center-circle, .timeline-line { display: none !important; }
+            .timeline-step { margin-bottom: 2rem; }
+            .footer .text-md-start { text-align: center !important; }
+            .footer .d-flex.justify-content-md-start { justify-content: center !important; }
+            .position-absolute.top-50.end-0.translate-middle-y { display: none !important; }
+            .hero-section img, section img.object-cover { border-radius: 20px !important; height: auto !important; max-height: 400px; }
+            .row > * { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .display-3 { font-size: 2rem !important; }
+            .display-5 { font-size: 1.75rem !important; }
+        }
+        
+        .btn-primary-clay {
+            background-color: #C86B47;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary-clay:hover {
+            background-color: #A65636;
+            color: white;
+        }
+        .btn-outline-clay {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border: 2px solid #C86B47 !important;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-outline-clay:hover {
+            background-color: #A65636 !important;
+            border-color: #A65636 !important;
+            color: white !important;
+        }
+        .hero-section {
+            background-color: #2A2421;
+            color: white;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            position: relative;
+        }
+        .nav-link {
+            color: #E1CDBB !important;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        .glass-navbar {
+            background-color: rgba(42, 36, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (min-width: 1200px) {
+            .navbar-nav {
+                gap: 1.5rem !important;
+            }
+            .navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+            .navbar .dropdown-menu {
+                margin-top: 0;
+                display: none;
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-collapse.collapse {
+            visibility: visible !important;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .card-clay {
+            border: none;
+            border-radius: 16px;
+            background-color: white;
+            transition: transform 0.3s;
+        }
+        .card-clay:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .card-img-wrapper {
+            background-color: #F5F0E8;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-img-wrapper img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        /* Additional Page Specific Styles */
+        .party-hero-wrap {
+            background: linear-gradient(135deg, #FAF6F0 0%, #E1CDBB 100%);
+            border-bottom: 3px solid #C86B47;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+        body.dark .party-hero-wrap {
+            background: linear-gradient(135deg, #1F1A18 0%, #2A2421 100%);
+        }
+        .glass-party-card {
+            background: rgba(200, 107, 71, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            color: white;
+        }
+        body.dark .glass-party-card {
+            background: rgba(42, 36, 33, 0.9);
+            border: 2px solid rgba(200, 107, 71, 0.4) !important;
+        }
+        .party-hero-img-container {
+            position: relative;
+        }
+        .party-hero-img-container img {
+            border-top-left-radius: 120px;
+            border-bottom-right-radius: 120px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border: 4px solid #C86B47 !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: border-radius 0.5s ease;
+        }
+        .party-hero-img-container img:hover {
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 120px;
+            border-bottom-left-radius: 120px;
+        }
+        
+        /* Sticky Navbar Scroll Transition */
+        .navbar-scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            background-color: rgba(42, 36, 33, 0.96) !important;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+        }
+        body.dark .navbar-scrolled {
+            background-color: rgba(26, 21, 18, 0.98) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-3 shadow-sm glass-navbar" style="z-index: 1050;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                <div class="d-flex flex-column leading-none">
+                    <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                    <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                </div>
+            </a>
+            <div class="d-flex align-items-center gap-3 order-xl-last">
+                <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Home</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="index.html">Home 1</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dashboard</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
+                    <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon" id="nav-dark-icon-mobile"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                        <i class="fa-solid fa-right-left"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+                </div>
+            </div>
+            <div class="d-none d-xl-flex align-items-center gap-4 text-white">
+                <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
+                </a>
+                <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                    <i class="fa-solid fa-right-left"></i>
+                </a>
+                <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <div class="party-hero-wrap py-5 relative">
+        <div class="container py-5 z-10 relative">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="party-hero-img-container text-center">
+                        <img src="assets/images/home/workshop-private.jpg" alt="Party Background" class="img-fluid w-full object-cover" style="max-height: 400px; min-height: 350px;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-party-card">
+                        <span class="text-xs uppercase tracking-widest text-clay-secondary dark:text-clay-secondary/80 font-bold mb-2 d-inline-block"><i class="fa-solid fa-champagne-glasses me-1"></i> Studio Event Booking</span>
+                        <span class="cursive-text d-block mb-1 text-white dark:text-clay-primary" style="transform: none; rotate: 0deg;">Celebrate with Clay</span>
+                        <h1 class="display-4 fw-bold text-white mb-3">Private Events &amp; Parties</h1>
+                        <p class="fs-6 text-white text-opacity-90 dark:text-clay-secondary mb-4">Host your birthday, corporate team builder, or bachelorette party at our aesthetic pottery studio. BYOB allowed, packages starting at $35/guest.</p>
+                        <div class="d-flex gap-3">
+                            <a href="#packages" class="btn-primary-clay bg-white text-clay-primary hover:bg-clay-secondary text-decoration-none shadow-md" style="color: #C86B47 !important; background-color: white !important;">View Packages</a>
+                            <a href="#inquiry" class="btn-outline-clay border-white text-white hover:bg-white hover:text-clay-primary text-decoration-none shadow-sm" style="border-color: white !important; color: white !important; background-color: transparent !important;">Book an Event</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Event Types Grid -->
+    <section class="py-5" id="events">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">PERFECT FOR ANY CELEBRATION</span>
+                <h2 class="display-5 fw-bold mt-2">A Unique Way to Celebrate</h2>
+                <p class="text-muted max-w-xl mx-auto">Create beautiful clay memories together. We offer a dedicated host, private studio room, and custom glazing.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 p-4 border border-secondary border-opacity-10 text-center">
+                        <i class="fa-solid fa-cake-candles text-clay-primary fs-1 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Birthday Parties</h4>
+                        <p class="text-muted text-sm">Perfect for kids and adults alike. Bring cake, paint mugs, and celebrate with friends.</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 p-4 border border-secondary border-opacity-10 text-center">
+                        <i class="fa-solid fa-users-gear text-clay-primary fs-1 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Corporate Team Building</h4>
+                        <p class="text-muted text-sm">Foster collaboration through wheel spinning and co-building pottery objects. BYOB friendly.</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 p-4 border border-secondary border-opacity-10 text-center">
+                        <i class="fa-solid fa-glass-cheers text-clay-primary fs-1 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Bachelorette Parties</h4>
+                        <p class="text-muted text-sm">Sip wine, laugh, and shape clay together. Take home matching customized bridesmaids plates.</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-clay h-100 p-4 border border-secondary border-opacity-10 text-center">
+                        <i class="fa-solid fa-people-roof text-clay-primary fs-1 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Family Gatherings</h4>
+                        <p class="text-muted text-sm">Gather all generations for a fun weekend handbuilding afternoon. All skill levels welcome.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Package Options (Pricing Cards) -->
+    <section class="py-5 bg-white" id="packages">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">PRICING PACKAGES</span>
+                <h2 class="display-5 fw-bold mt-2">Private Party Packages</h2>
+                <p class="text-muted max-w-xl mx-auto">Choose the package that fits your event. Minimum 8 guests required for private bookings.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Pack 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-clay p-5 border border-secondary border-opacity-25 h-100 d-flex flex-column">
+                        <h4 class="fw-bold mb-2">Ceramic Painting</h4>
+                        <p class="text-muted text-sm mb-4">Select pre-formed bisque mugs or plates and decorate with colors.</p>
+                        <div class="mb-4">
+                            <span class="display-5 fw-bold">$35</span><span class="text-muted">/guest</span>
+                        </div>
+                        <ul class="list-unstyled mb-5 text-muted text-sm">
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> 2 hours private room</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> 1 Bisque piece per guest</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Underglazes and sponges</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Clear glazing and kiln fire</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Dedicated party host</li>
+                        </ul>
+                        <a href="#inquiry" class="btn btn-outline-clay w-100 mt-auto">Choose Package</a>
+                    </div>
+                </div>
+                <!-- Pack 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-clay p-5 bg-clay-dark text-white h-100 d-flex flex-column relative">
+                        <div class="position-absolute top-0 end-0 bg-clay-primary text-white px-3 py-1 text-xs fw-bold" style="border-bottom-left-radius: 12px;">BEST EXPERIENCE</div>
+                        <h4 class="fw-bold mb-2 text-white">Clay Spinning Party</h4>
+                        <p class="text-clay-secondary text-sm mb-4">Learn basic potter's wheel throwing under dedicated private instructions.</p>
+                        <div class="mb-4">
+                            <span class="display-5 fw-bold text-white">$55</span><span class="text-clay-secondary">/guest</span>
+                        </div>
+                        <ul class="list-unstyled mb-5 text-clay-secondary text-sm opacity-90">
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> 2.5 hours private session</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Dedicated potter guide</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> 2 pieces thrown per guest</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Choose single glaze finishes</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Double kiln firing included</li>
+                        </ul>
+                        <a href="#inquiry" class="btn btn-primary-clay w-100 mt-auto">Choose Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Studio Amenities & Layout -->
+    <section class="py-5" id="amenities">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">WHAT WE PROVIDE</span>
+                <h2 class="display-5 fw-bold mt-2">Studio Amenities</h2>
+                <p class="text-muted max-w-xl mx-auto">We provide a fully equipped space so you can focus entirely on celebration and creation.</p>
+            </div>
+            
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="assets/images/home/workshop-family.jpg" alt="Party inside studio" class="img-fluid rounded-4 shadow-lg object-cover" style="height: 400px; width: 100%;">
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold"><i class="fa-solid fa-beer-mug-empty text-clay-primary me-2"></i> BYOB Allowed</h5>
+                            <p class="text-muted text-sm">Bring your own beer, wine, or soft drinks. We supply cups, corkscrews, and a mini-fridge.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold"><i class="fa-solid fa-music Img text-clay-primary me-2"></i> Custom Sound System</h5>
+                            <p class="text-muted text-sm">Connect your phone to our studio bluetooth speakers and play your private party playlist.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold"><i class="fa-solid fa-clock text-clay-primary me-2"></i> Flexible Scheduling</h5>
+                            <p class="text-muted text-sm">Book slots morning, afternoon, or late night up to 10pm. Weekend slots book fast.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold"><i class="fa-solid fa-truck-ramp-box text-clay-primary me-2"></i> Firing & Shipping</h5>
+                            <p class="text-muted text-sm">Pieces take 2 weeks to glaze and fire. We notify you for pickup, or we can ship them anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. How Booking Works Timeline -->
+    <section class="py-5 bg-white" id="howitworks">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">STEP BY STEP</span>
+                <h2 class="display-5 fw-bold mt-2">How It Works</h2>
+                <p class="text-muted max-w-xl mx-auto">From reservation request to picking up your fired ceramics.</p>
+            </div>
+            
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <div class="text-clay-primary fs-3 fw-bold mb-2">01</div>
+                    <h5 class="fw-bold">Send Request</h5>
+                    <p class="text-muted text-sm">Fill our inquiry form with your date and guest count.</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-clay-primary fs-3 fw-bold mb-2">02</div>
+                    <h5 class="fw-bold">Confirm Date</h5>
+                    <p class="text-muted text-sm">We'll review slot availability and call to finalize details.</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-clay-primary fs-3 fw-bold mb-2">03</div>
+                    <h5 class="fw-bold">Celebrate & Spin</h5>
+                    <p class="text-muted text-sm">Arrive at the studio, get aprons, and throw some mud!</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-clay-primary fs-3 fw-bold mb-2">04</div>
+                    <h5 class="fw-bold">Kiln Firing</h5>
+                    <p class="text-muted text-sm">We fire your pots. Collect your finished artwork in 14 business days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Inquiry Form -->
+    <section class="py-5" id="inquiry">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="bg-clay-bg dark:bg-clay-dark p-5 rounded-[24px] border border-secondary border-opacity-25">
+                        <div class="text-center mb-4">
+                            <span class="text-clay-primary fw-bold text-xs uppercase tracking-widest">GET THE WHEEL SPINNING</span>
+                            <h3 class="fw-bold mt-1">Private Event Inquiry</h3>
+                        </div>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="Jane Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="jane@example.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Event Type</label>
+                                    <select class="form-select">
+                                        <option>Birthday Party</option>
+                                        <option>Team Building Event</option>
+                                        <option>Bachelorette Party</option>
+                                        <option>Other Private Event</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Expected Guest Count</label>
+                                    <input type="number" class="form-control" min="8" value="10" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Preferred Date</label>
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Package Select</label>
+                                    <select class="form-select">
+                                        <option>Ceramic Painting ($35/guest)</option>
+                                        <option>Clay Spinning Party ($55/guest)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-sm fw-bold">Additional Requests or Details</label>
+                                    <textarea class="form-control" rows="4" placeholder="Any dietary details, custom music playlists, or catering details..."></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn-primary-clay px-5">Submit Reservation Request</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-clay-dark text-white pt-5 pb-3">
+        <div class="container mt-4 text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <a class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 text-white text-decoration-none mb-3" href="index.html">
+                        <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                        <div class="d-flex flex-column leading-none text-start">
+                            <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                            <span class="text-[0.5rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                        </div>
+                    </a>
+                    <p class="text-clay-secondary text-sm pe-md-4">A premium pottery painting and ceramic art studio for all ages. Create, relax, and take home beautiful memories.</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-4">
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">QUICK LINKS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-clay-secondary text-decoration-none hover:text-white">About</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Gallery</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Glaze Colors</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="blogs.html" class="text-clay-secondary text-decoration-none hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">SERVICES</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Pottery Painting</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Ceramic Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Kids Classes</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Corporate Events</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Artwork Firing</a></li>
+                        <li class="mb-2"><a href="user-dashboard.html" class="text-clay-secondary text-decoration-none hover:text-white">Studio Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">STUDIO HOURS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-3">
+                            <span class="d-block text-white">Monday - Friday</span>
+                            09:00 AM - 08:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Saturday</span>
+                            09:00 AM - 09:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Sunday</span>
+                            10:00 AM - 06:00 PM
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <h6 class="fw-bold mb-4">NEWSLETTER</h6>
+                    <p class="text-sm text-clay-secondary mb-3">Get pottery tips, workshop updates and exclusive offers!</p>
+                    <form class="d-flex justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white rounded-start-pill text-sm" placeholder="Your email address" style="border-right: none; max-width: 250px;">
+                        <button type="submit" class="btn bg-clay-primary text-white rounded-end-pill px-3"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-sm text-clay-secondary">
+                <p class="mb-2 mb-md-0">&copy; 2026 Clay & Kiln Pottery Studio.</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Privacy Policy</a>
+                    <span class="text-secondary">|</span>
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Terms & Conditions</a>
+                    <span class="text-secondary">|</span>
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg" style="border-radius: 16px;">
+          <div class="modal-header border-secondary border-opacity-25">
+            <h5 class="modal-title font-serif fw-bold" id="settingsModalLabel"><i class="fa-solid fa-gear me-2 text-clay-primary"></i> Site Settings</h5>
+            <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            
+            <!-- Dark Mode Toggle -->
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-moon fs-5" id="modal-dark-icon"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Dark Mode</h6>
+                        <small class="text-muted text-sm">Toggle dark/light theme</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="darkModeSwitch">
+                </div>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="d-flex justify-content-between align-items-center p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-right-left fs-5"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">RTL Layout</h6>
+                        <small class="text-muted text-sm">Right-to-Left orientation</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="rtlSwitch">
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Settings Modal Logic (Dark Mode & RTL)
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+            const bsLink = document.getElementById('bootstrap-css');
+            
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            const rtlSwitch = document.getElementById('rtlSwitch');
+            const modalDarkIcon = document.getElementById('modal-dark-icon');
+            
+            // --- Dark Mode ---
+            function updateThemeUI(isDark) {
+                const navDarkIcon = document.getElementById('nav-dark-icon');
+                const navDarkIconMobile = document.getElementById('nav-dark-icon-mobile');
+                if (isDark) {
+                    htmlEl.setAttribute('data-bs-theme', 'dark');
+                    bodyEl.classList.add('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-moon');
+                        modalDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-moon');
+                        navDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-moon');
+                        navDarkIconMobile.classList.add('fa-sun');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('data-bs-theme', 'light');
+                    bodyEl.classList.remove('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-sun');
+                        modalDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-sun');
+                        navDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-sun');
+                        navDarkIconMobile.classList.add('fa-moon');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = false;
+                } }
+
+            function toggleDarkMode(e) {
+                const isDark = e.target.checked;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            }
+
+            // Init Theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) { updateThemeUI(true); } else { updateThemeUI(false); }
+            
+            if (darkModeSwitch) { darkModeSwitch.addEventListener('change', toggleDarkMode); }
+
+            // --- RTL Layout ---
+            function updateRtlUI(isRtl) { if (isRtl) { htmlEl.setAttribute('dir', 'rtl');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = true; } else { htmlEl.setAttribute('dir', 'ltr');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = false; } }
+
+            function toggleRtl(e) { const isRtl = e.target.checked;
+                localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+                updateRtlUI(isRtl); }
+
+            // Init RTL
+            const savedRtl = localStorage.getItem('rtl') === 'true';
+            updateRtlUI(savedRtl);
+            
+            if (rtlSwitch) { rtlSwitch.addEventListener('change', toggleRtl); }
+
+            // Sticky Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.glass-navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('navbar-scrolled');
+                } else {
+                    nav.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

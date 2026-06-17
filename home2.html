@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clay & Kiln | Pottery Studio - Home 2</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .container {
+            max-width: 1400px !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body:not(.dark) * {
+            border-color: #4A3B32 !important;
+        }
+        body:not(.dark) .text-muted, body:not(.dark) .text-clay-muted {
+            color: #5C4E46 !important;
+            border-color: #4A3B32 !important;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        body.dark * {
+            border-color: #C86B47 !important;
+        }
+        body.dark section {
+            box-shadow: 0 10px 30px rgba(200, 107, 71, 0.15) !important;
+        }
+        section {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+        body.dark .bg-white {
+            background-color: #2A2421 !important;
+        }
+        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
+            color: #FAF6F0 !important;
+        }
+        body.dark .text-clay-primary {
+            color: #E1CDBB !important;
+        }
+        
+        body.dark .card-clay {
+            background-color: #2A2421;
+            border: 1px solid #C86B47 !important;
+        }
+        body.dark .card-img-wrapper {
+            background-color: #352B25;
+        }
+        body.dark .bg-clay-bg {
+            background-color: #2A2421 !important;
+        }
+        body.dark .timeline-img {
+            border-color: #2A2421;
+        }
+        body.dark .center-circle {
+            border-color: #1F1A18;
+        }
+        body.dark .timeline-num {
+            border-color: #1F1A18;
+        }
+        body.dark .glass-navbar {
+            background-color: rgba(31, 26, 24, 0.95) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .cursive-text {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 3.5rem;
+            color: #C86B47;
+            line-height: 0.8;
+            transform: rotate(-2deg);
+        }
+        /* Mobile Responsive Fixes */
+        html {
+            background-color: #E1CDBB;
+        }
+        html.dark {
+            background-color: #1a1513;
+        }
+        body {
+            overflow-x: clip;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .display-3 { font-size: 2.5rem !important; }
+            .display-5 { font-size: 2rem !important; }
+            .display-6 { font-size: 1.75rem !important; }
+            .cursive-text { font-size: 2.5rem !important; }
+            .hero-v2, .hero-section { text-align: center; padding: 2rem 1rem !important; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+            .hero-v2 p, .hero-section p { margin-left: auto; margin-right: auto; }
+            .hero-v2 .d-flex.flex-wrap, .hero-section .d-flex.flex-wrap { flex-direction: column; gap: 0.5rem !important; justify-content: center; align-items: center; }
+            .btn-primary-clay:not(.btn-sm), .btn-outline-clay:not(.btn-sm) { width: 100%; max-width: 300px; padding: 12px 20px; }
+            section { padding-top: 3rem !important; padding-bottom: 3rem !important; margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+            .workshop-card { padding: 2rem !important; text-align: center; }
+            .workshop-card .col-lg-7 { align-items: center; }
+            .workshop-card .d-flex { justify-content: center; }
+            .workshop-card ul { padding-left: 0; }
+            .center-circle, .timeline-line { display: none !important; }
+            .timeline-step { margin-bottom: 2rem; }
+            .footer .text-md-start { text-align: center !important; }
+            .footer .d-flex.justify-content-md-start { justify-content: center !important; }
+            .position-absolute.top-50.end-0.translate-middle-y { display: none !important; } /* Hide absolute circle on about image */
+            .hero-section img, section img.object-cover { border-radius: 20px !important; height: auto !important; max-height: 400px; }
+            .row > * { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .display-3 { font-size: 2rem !important; }
+            .display-5 { font-size: 1.75rem !important; }
+        }
+        /* Custom styles to bridge Bootstrap and Tailwind */
+        .btn-primary-clay {
+            background-color: #C86B47;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-primary-clay:hover {
+            background-color: #A65636;
+            color: white;
+        }
+        .btn-outline-clay {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border: 2px solid #C86B47 !important;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-outline-clay:hover {
+            background-color: #A65636 !important;
+            border-color: #A65636 !important;
+            color: white !important;
+        }
+        .btn-outline-clay-dark {
+            background-color: transparent;
+            color: #2A2421 !important;
+            border: 1px solid #2A2421 !important;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-outline-clay-dark:hover {
+            background-color: #2A2421 !important;
+            color: white !important;
+        }
+        body.dark .btn-outline-clay-dark {
+            color: #E1CDBB !important;
+            border-color: #E1CDBB !important;
+        }
+        body.dark .btn-outline-clay-dark:hover {
+            background-color: #E1CDBB !important;
+            color: #2A2421 !important;
+        }
+        .nav-link {
+            color: #E1CDBB !important;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        .glass-navbar {
+            background-color: rgba(42, 36, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (min-width: 1200px) {
+            .navbar-nav {
+                gap: 1.5rem !important;
+            }
+            .navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+            .navbar .dropdown-menu {
+                margin-top: 0;
+                display: none;
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .navbar-collapse.collapse {
+            visibility: visible !important;
+        }
+        
+        /* New Custom Classes for Home 2 */
+        .hero-v2 {
+            position: relative;
+            min-height: 85vh;
+            background: url('assets/images/home2/hero-studio.png') center/cover no-repeat;
+        }
+        .hero-v2::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(42, 36, 33, 0.9) 0%, rgba(42, 36, 33, 0.4) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+        }
+        .zig-zag-img {
+            border-radius: 20px;
+            object-fit: cover;
+            width: 100%;
+            height: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .grid-item-large {
+            grid-column: span 2;
+            height: 350px;
+        }
+        .grid-item-small {
+            height: 250px;
+        }
+        .grid-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+        .pricing-card {
+            border-radius: 24px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        .pricing-popular {
+            background-color: #2A2421;
+            color: white;
+        }
+        body.dark .pricing-standard {
+            background-color: #2A2421;
+            border: 1px solid #C86B47;
+        }
+        .event-row {
+            border-bottom: 1px solid #E1CDBB;
+            transition: all 0.3s ease;
+        }
+        body.dark .event-row {
+            border-bottom: 1px solid #4A3B32;
+        }
+        .event-row:hover {
+            background-color: rgba(200, 107, 71, 0.05);
+            padding-left: 10px;
+        }
+        .testimonial-card {
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        body.dark .testimonial-card {
+            background-color: #352B25;
+            box-shadow: none;
+        }
+        
+        /* Sticky Navbar Scroll Transition */
+        .navbar-scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            background-color: rgba(42, 36, 33, 0.96) !important;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+        }
+        body.dark .navbar-scrolled {
+            background-color: rgba(26, 21, 18, 0.98) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-3 shadow-sm glass-navbar" style="z-index: 1050;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                    <div class="d-flex flex-column leading-none">
+                        <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                        <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                    </div>
+                </a>
+                <div class="d-flex align-items-center gap-3 order-xl-last">
+                    <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav gap-3">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active text-white" href="index.html" data-bs-toggle="dropdown">Home</a>
+                            <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                                <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="index.html">Home 1</a></li>
+                                <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="home2.html">Home 2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
+                        <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                        <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Dashboard</a>
+                            <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                                <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="user-dashboard.html">User Dashboard</a></li>
+                                <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
+                        <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                            <i class="fa-solid fa-moon" id="nav-dark-icon-mobile"></i>
+                        </a>
+                        <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                            <i class="fa-solid fa-right-left"></i>
+                        </a>
+                        <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+                    </div>
+                </div>
+                <div class="d-none d-xl-flex align-items-center gap-4 text-white">
+                    <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
+                    </a>
+                    <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                        <i class="fa-solid fa-right-left"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+                </div>
+            </div>
+        </nav>
+
+    <!-- 1. Hero Section V2 -->
+    <header class="hero-v2 py-5 d-flex align-items-center">
+        <div class="container position-relative z-10">
+            <div class="row">
+                <div class="col-lg-7 col-xl-6">
+                    <div class="glass-card p-5">
+                        <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs mb-3 d-block">Welcome to Clay & Kiln</span>
+                        <h1 class="display-3 fw-bold text-white leading-tight mb-4">Molding Ideas Into <span class="cursive-text d-inline-block ms-2" style="font-size: 4rem;">Masterpieces</span></h1>
+                        <p class="fs-5 text-clay-secondary mb-5">Experience the meditative art of ceramics. Join our community of makers, dreamers, and artists in a space designed to inspire your next beautiful creation.</p>
+                        
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#membership" class="btn-primary-clay text-decoration-none">Become a Member</a>
+                            <a href="#process" class="btn-outline-clay text-decoration-none">Discover Our Craft</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Our Craft (Zig-Zag Layout) -->
+    <section class="py-5 bg-white" id="process">
+        <div class="container">
+            <div class="text-center mb-5 pb-3">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">BEHIND THE SCENES</span>
+                <h2 class="display-5 fw-bold mt-2">The Art of the Craft</h2>
+                <p class="text-muted max-w-2xl mx-auto mt-3">From a lump of earth to a timeless treasure, discover the meticulous steps we take to ensure your art lasts a lifetime.</p>
+            </div>
+            
+            <!-- Step 1 -->
+            <div class="row align-items-center g-5 mb-5 pb-4">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="assets/images/home2/process-1.png" alt="Shaping Clay" class="zig-zag-img" style="border-top-left-radius: 80px; border-bottom-right-radius: 80px;">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h3 class="display-6 fw-bold mb-3">Shaping the Form</h3>
+                    <p class="fs-5 text-muted mb-4">Every great piece starts on the wheel. Feel the rhythmic spin as the clay rises and falls between your fingertips, slowly taking on a personality of its own.</p>
+                    <ul class="list-unstyled text-clay-dark dark:text-white">
+                        <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Premium stoneware clay</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Expert throwing techniques</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-clay-primary me-2"></i> Custom trimming and detailing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="row align-items-center g-5 flex-lg-row-reverse">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="assets/images/home2/process-2.png" alt="Glazing" class="zig-zag-img" style="border-top-right-radius: 80px; border-bottom-left-radius: 80px;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-5 text-lg-end">
+                    <h3 class="display-6 fw-bold mb-3">The Magic of Glaze</h3>
+                    <p class="fs-5 text-muted mb-4">Color brings your form to life. Choose from our vast library of vibrant, food-safe glazes to add depth, texture, and a stunning finish to your masterpiece.</p>
+                    <ul class="list-unstyled text-clay-dark dark:text-white">
+                        <li class="mb-2">100+ unique glaze combinations <i class="fa-solid fa-check text-clay-primary ms-2"></i></li>
+                        <li class="mb-2">High-fire kiln processing <i class="fa-solid fa-check text-clay-primary ms-2"></i></li>
+                        <li class="mb-2">Durable, food-safe finishes <i class="fa-solid fa-check text-clay-primary ms-2"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Featured Masterpieces (Asymmetric Grid) -->
+    <section class="py-5 bg-clay-dark text-white" id="collections">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-secondary fw-bold text-uppercase tracking-widest text-xs">CURATED WORKS</span>
+                <h2 class="display-5 fw-bold mt-2 mb-4">Featured Masterpieces</h2>
+                <a href="gallery.html" class="btn-outline-clay">View Full Gallery</a>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="grid-item" style="height: 350px;">
+                        <img src="assets/images/home2/collection.png" alt="Minimalist Collection">
+                        <div class="grid-overlay">
+                            <div>
+                                <h4 class="fw-bold text-white mb-1">Minimalist Home</h4>
+                                <p class="text-clay-secondary mb-0">Clean  and neutral for modern spaces.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="grid-item" style="height: 350px;">
+                        <img src="assets/images/home2/testimonials.png" alt="Rustic Collection">
+                        <div class="grid-overlay">
+                            <div>
+                                <h4 class="fw-bold text-white mb-1">Rustic Charm</h4>
+                                <p class="text-clay-secondary mb-0">Warm and cozy pottery for every day.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="grid-item" style="height: 350px;">
+                        <img src="assets/images/home2/events.png" alt="Tableware">
+                        <div class="grid-overlay">
+                            <div>
+                                <h4 class="fw-bold text-white mb-1">Dinner Sets</h4>
+                                <p class="text-clay-secondary mb-0">Elegant designs perfect for any occasion.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="grid-item" style="height: 350px;">
+                        <img src="assets/images/home2/process-1.png" alt="Vases">
+                        <div class="grid-overlay">
+                            <div>
+                                <h4 class="fw-bold text-white mb-1">Sculptural Vases</h4>
+                                <p class="text-clay-secondary mb-0">Statement pieces for any room.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Studio Membership (Pricing Layout) -->
+    <section class="py-5" id="membership">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">JOIN THE STUDIO</span>
+                <h2 class="display-5 fw-bold mt-2">Find Your Creative Rhythm</h2>
+                <p class="text-muted max-w-2xl mx-auto mt-3">Whether you drop by occasionally or want to make the studio your second home, we have a pass that fits your lifestyle.</p>
+            </div>
+            
+            <div class="row justify-content-center g-4 mt-2">
+                <!-- Casual Pass -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pricing-card p-5 h-100 bg-white pricing-standard border border-secondary border-opacity-25 d-flex flex-column">
+                        <h4 class="fw-bold mb-2">Day Pass</h4>
+                        <p class="text-muted text-sm mb-4">Perfect for a spontaneous creative session.</p>
+                        <div class="mb-4">
+                            <span class="display-4 fw-bold">$25</span><span class="text-muted">/day</span>
+                        </div>
+                        <ul class="list-unstyled mb-5">
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> Studio access for 4 hours</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> Basic tools provided</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> 1 Kiln firing included</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> Guidance from instructors</li>
+                            <li class="mb-3 d-flex align-items-center text-muted"><i class="fa-solid fa-xmark me-3"></i> Clay purchased separately</li>
+                        </ul>
+                        <a href="index.html" class="btn-outline-clay-dark w-100 text-center mt-auto">Get Day Pass</a>
+                    </div>
+                </div>
+                
+                <!-- Studio Member -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="pricing-card p-5 h-100 pricing-popular d-flex flex-column">
+                        <div class="position-absolute top-0 end-0 bg-clay-primary text-white px-3 py-1 text-xs fw-bold" style="border-bottom-left-radius: 12px;">MOST POPULAR</div>
+                        <h4 class="fw-bold mb-2 text-white">Studio Member</h4>
+                        <p class="text-clay-secondary text-sm mb-4">For the dedicated artist who wants it all.</p>
+                        <div class="mb-4">
+                            <span class="display-4 fw-bold text-white">$150</span><span class="text-clay-secondary">/month</span>
+                        </div>
+                        <ul class="list-unstyled mb-5 text-white opacity-90">
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> Unlimited 24/7 studio access</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> Premium tools & wheels</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> Unlimited kiln firings</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> 25lbs of clay included monthly</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3"></i> 20% off all workshops</li>
+                        </ul>
+                        <a href="index.html" class="btn-primary-clay w-100 text-center mt-auto">Become a Member</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Voices of our Artists (Testimonials Grid) -->
+    <section class="py-5 bg-white" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">COMMUNITY LOVE</span>
+                <h2 class="display-5 fw-bold mt-2">Voices of Our Artists</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 p-lg-5 h-100 position-relative">
+                        <i class="fa-solid fa-quote-left fs-1 text-clay-primary opacity-20 position-absolute top-0 start-0 ms-4 mt-4"></i>
+                        <div class="d-flex text-warning mb-3 mt-3 relative z-10">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="fs-6 fst-italic mb-4 relative z-10">"I've never touched clay before coming here, and now I'm completely addicted. The atmosphere is so calming and the staff is incredibly supportive!"</p>
+                        <div class="d-flex align-items-center gap-3 mt-auto">
+                            <div class="bg-clay-primary rounded-circle text-white d-flex align-items-center justify-content-center fw-bold" style="width: 50px; height: 50px;">SJ</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Sarah Jenkins</h6>
+                                <span class="text-muted text-sm">Beginner Painter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 p-lg-5 h-100 position-relative">
+                        <i class="fa-solid fa-quote-left fs-1 text-clay-primary opacity-20 position-absolute top-0 start-0 ms-4 mt-4"></i>
+                        <div class="d-flex text-warning mb-3 mt-3 relative z-10">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="fs-6 fst-italic mb-4 relative z-10">"We hosted my daughter's 10th birthday party here. It was flawless! The kids loved painting their mugs, and the instructors were very helpful."</p>
+                        <div class="d-flex align-items-center gap-3 mt-auto">
+                            <div class="bg-clay-dark rounded-circle text-white d-flex align-items-center justify-content-center fw-bold" style="width: 50px; height: 50px;">MD</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Marcus Davies</h6>
+                                <span class="text-muted text-sm">Event Host</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 p-lg-5 h-100 position-relative d-flex flex-column">
+                        <i class="fa-solid fa-quote-left fs-1 text-clay-primary opacity-20 position-absolute top-0 start-0 ms-4 mt-4"></i>
+                        <div class="d-flex text-warning mb-3 mt-3 relative z-10">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="fs-6 fst-italic mb-4 relative z-10">"As an experienced ceramicist, I appreciate the high-quality wheels and kilns. The studio membership is the best investment I've made for my art of gallery."</p>
+                        <div class="d-flex align-items-center gap-3 mt-auto">
+                            <div class="bg-secondary rounded-circle text-white d-flex align-items-center justify-content-center fw-bold" style="width: 50px; height: 50px;">ER</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Elena Rodriguez</h6>
+                                <span class="text-muted text-sm">Studio Member</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Upcoming Themed Nights (Events List) -->
+    <section class="py-5" id="events">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">WHAT'S HAPPENING</span>
+                <h2 class="display-5 fw-bold mt-2 mb-4">Upcoming Themed Nights</h2>
+                <p class="text-muted fs-5 max-w-2xl mx-auto mb-4">Join us for special evenings filled with creativity, themed music, specialized techniques, and wonderful company.</p>
+                <a href="index.html" class="btn-outline-clay-dark mb-4">View Full Calendar</a>
+            </div>
+            <div class="row align-items-center g-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="d-flex flex-column">
+                        <!-- Event 1 -->
+                        <div class="event-row d-flex flex-column flex-sm-row align-items-sm-center py-4 gap-4">
+                            <div class="text-clay-primary text-center bg-clay-bg dark:bg-clay-dark p-3 rounded" style="min-width: 100px;">
+                                <span class="d-block fs-3 fw-bold leading-none">14</span>
+                                <span class="text-sm fw-bold text-uppercase tracking-widest">OCT</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">Sip & Spin: Wine Tasting Night</h5>
+                                <p class="text-muted text-sm mb-2">Learn wheel throwing basics while enjoying a curated selection of local wines.</p>
+                                <span class="badge bg-clay-primary bg-opacity-10 text-clay-primary border border-clay-primary border-opacity-25 rounded-pill fw-normal">Adults Only</span>
+                            </div>
+                            <div class="mt-3 mt-sm-0">
+                                <a href="index.html" class="btn btn-sm btn-primary-clay rounded-pill px-3">RSVP</a>
+                            </div>
+                        </div>
+                        <!-- Event 2 -->
+                        <div class="event-row d-flex flex-column flex-sm-row align-items-sm-center py-4 gap-4">
+                            <div class="text-clay-primary text-center bg-clay-bg dark:bg-clay-dark p-3 rounded" style="min-width: 100px;">
+                                <span class="d-block fs-3 fw-bold leading-none">22</span>
+                                <span class="text-sm fw-bold text-uppercase tracking-widest">OCT</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">Mug Decorating Workshop</h5>
+                                <p class="text-muted text-sm mb-2">Master advanced glazing techniques and sgraffito to create a coffee mug.</p>
+                                <span class="badge bg-clay-primary bg-opacity-10 text-clay-primary border border-clay-primary border-opacity-25 rounded-pill fw-normal">All Skill Levels</span>
+                            </div>
+                            <div class="mt-3 mt-sm-0">
+                                <a href="index.html" class="btn btn-sm btn-primary-clay rounded-pill px-3">RSVP</a>
+                            </div>
+                        </div>
+                        <!-- Event 3 -->
+                        <div class="event-row d-flex flex-column flex-sm-row align-items-sm-center py-4 gap-4">
+                            <div class="text-clay-primary text-center bg-clay-bg dark:bg-clay-dark p-3 rounded" style="min-width: 100px;">
+                                <span class="d-block fs-3 fw-bold leading-none">05</span>
+                                <span class="text-sm fw-bold text-uppercase tracking-widest">NOV</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold mb-1">Family Handbuilding Day</h5>
+                                <p class="text-muted text-sm mb-2">Bring the whole family for a fun session making pinch pots and animal figurines.</p>
+                                <span class="badge bg-clay-primary bg-opacity-10 text-clay-primary border border-clay-primary border-opacity-25 rounded-pill fw-normal">Family Friendly</span>
+                            </div>
+                            <div class="mt-3 mt-sm-0">
+                                <a href="index.html" class="btn btn-sm btn-primary-clay rounded-pill px-3">RSVP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-clay-dark text-white pt-5 pb-3">
+        <div class="container mt-4 text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <a class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 text-white text-decoration-none mb-3" href="index.html">
+                        <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                        <div class="d-flex flex-column leading-none text-start">
+                            <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                            <span class="text-[0.5rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                        </div>
+                    </a>
+                    <p class="text-clay-secondary text-sm pe-md-4">A premium pottery painting and ceramic art studio for all ages. Create, relax, and take home beautiful memories.</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-4">
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="index.html" class="text-white hover:text-clay-primary"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">QUICK LINKS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-clay-secondary text-decoration-none hover:text-white">About</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Gallery</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-clay-secondary text-decoration-none hover:text-white">About</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Workshops</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Glaze Colors</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">SERVICES</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Pottery Painting</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Ceramic Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Kids Classes</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Corporate Events</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Artwork Firing</a></li>
+                        <li class="mb-2"><a href="user-dashboard.html" class="text-clay-secondary text-decoration-none hover:text-white">Studio Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">STUDIO HOURS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-3">
+                            <span class="d-block text-white">Monday - Friday</span>
+                            09:00 AM - 08:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Saturday</span>
+                            09:00 AM - 09:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Sunday</span>
+                            10:00 AM - 06:00 PM
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <h6 class="fw-bold mb-4">NEWSLETTER</h6>
+                    <p class="text-sm text-clay-secondary mb-3">Get pottery tips, workshop updates and exclusive offers!</p>
+                    <form class="d-flex justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white rounded-start-pill text-sm" placeholder="Your email address" style="border-right: none; max-width: 250px;">
+                        <button type="submit" class="btn bg-clay-primary text-white rounded-end-pill px-3"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-sm text-clay-secondary">
+                <p class="mb-2 mb-md-0">&copy; 2026 Clay & Kiln Pottery Studio.</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Privacy Policy</a>
+                    <span class="text-secondary">|</span>
+                    <a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Terms & Conditions</a>
+                    <span class="text-secondary">|</span>
+                    <a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Settings Modal Logic (Dark Mode & RTL)
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+            const bsLink = document.getElementById('bootstrap-css');
+            
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            const rtlSwitch = document.getElementById('rtlSwitch');
+            const modalDarkIcon = document.getElementById('modal-dark-icon');
+            
+            // --- Dark Mode ---
+            function updateThemeUI(isDark) {
+                const navDarkIcon = document.getElementById('nav-dark-icon');
+                const navDarkIconMobile = document.getElementById('nav-dark-icon-mobile');
+                if (isDark) {
+                    htmlEl.setAttribute('data-bs-theme', 'dark');
+                    bodyEl.classList.add('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-moon');
+                        modalDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-moon');
+                        navDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-moon');
+                        navDarkIconMobile.classList.add('fa-sun');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('data-bs-theme', 'light');
+                    bodyEl.classList.remove('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-sun');
+                        modalDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-sun');
+                        navDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-sun');
+                        navDarkIconMobile.classList.add('fa-moon');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = false;
+                }
+            }
+
+            function toggleDarkMode(e) {
+                const isDark = e.target.checked;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            }
+
+            // Init Theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                updateThemeUI(true);
+            } else {
+                updateThemeUI(false);
+            }
+            
+            if (darkModeSwitch) {
+                darkModeSwitch.addEventListener('change', toggleDarkMode);
+            }
+
+            // --- RTL Layout ---
+            function updateRtlUI(isRtl) {
+                if (isRtl) {
+                    htmlEl.setAttribute('dir', 'rtl');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('dir', 'ltr');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = false;
+                }
+            }
+
+            function toggleRtl(e) {
+                const isRtl = e.target.checked;
+                localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+                updateRtlUI(isRtl);
+            }
+
+            // Init RTL
+            const savedRtl = localStorage.getItem('rtl') === 'true';
+            updateRtlUI(savedRtl);
+            
+            if (rtlSwitch) {
+                rtlSwitch.addEventListener('change', toggleRtl);
+            }
+
+            // Sticky Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.glass-navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('navbar-scrolled');
+                } else {
+                    nav.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg" style="border-radius: 16px;">
+          <div class="modal-header border-secondary border-opacity-25">
+            <h5 class="modal-title font-serif fw-bold" id="settingsModalLabel"><i class="fa-solid fa-gear me-2 text-clay-primary"></i> Site Settings</h5>
+            <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            
+            <!-- Dark Mode Toggle -->
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-moon fs-5" id="modal-dark-icon"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Dark Mode</h6>
+                        <small class="text-muted text-sm">Toggle dark/light theme</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="darkModeSwitch">
+                </div>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="d-flex justify-content-between align-items-center p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-right-left fs-5"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">RTL Layout</h6>
+                        <small class="text-muted text-sm">Right-to-Left orientation</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="rtlSwitch">
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

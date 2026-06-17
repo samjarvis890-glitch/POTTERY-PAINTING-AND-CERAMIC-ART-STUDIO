@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Clay & Kiln Pottery Studio</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'clay-bg': '#FAF6F0',
+                        'clay-dark': '#2A2421',
+                        'clay-primary': '#C86B47',
+                        'clay-secondary': '#E1CDBB',
+                        'clay-text': '#4A3B32',
+                        'clay-muted': '#8A7B72'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Outfit', 'sans-serif'],
+                        'cursive': ['"Qwitcher Grypen"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .container {
+            max-width: 1400px !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF6F0;
+            color: #4A3B32;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: clip;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            overflow-x: clip;
+            box-sizing: border-box;
+            background-color: #E1CDBB;
+        }
+        html.dark {
+            background-color: #1a1513;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        body:not(.dark) * {
+            border-color: #4A3B32 !important;
+        }
+        body:not(.dark) .text-muted, body:not(.dark) .text-clay-muted {
+            color: #5C4E46 !important;
+            border-color: #4A3B32 !important;
+        }
+        body.dark {
+            background-color: #1F1A18;
+            color: #E1CDBB;
+        }
+        body.dark * {
+            border-color: #C86B47 !important;
+        }
+        body.dark section {
+            box-shadow: 0 10px 30px rgba(200, 107, 71, 0.15) !important;
+        }
+        section {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+        body.dark .bg-white {
+            background-color: #2A2421 !important;
+        }
+        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
+            color: #FAF6F0 !important;
+        }
+        body.dark .text-clay-primary {
+            color: #E1CDBB !important;
+        }
+        
+        body.dark .card-clay {
+            background-color: #2A2421;
+            border: 1px solid #C86B47 !important;
+        }
+        body.dark .bg-clay-bg {
+            background-color: #2A2421 !important;
+        }
+        body.dark .glass-navbar {
+            background-color: rgba(31, 26, 24, 0.95) !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .cursive-text {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 3.5rem;
+            color: #C86B47;
+            line-height: 0.8;
+            transform: rotate(-2deg);
+        }
+        
+        /* Mobile Responsive Fixes */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .display-3 { font-size: 2.5rem !important; }
+            .display-5 { font-size: 2rem !important; }
+            .display-6 { font-size: 1.75rem !important; }
+            .cursive-text { font-size: 2.5rem !important; }
+            .hero-section { text-align: center; padding: 2.5rem 1rem !important; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+            .hero-section p { margin-left: auto; margin-right: auto; }
+            .hero-section .d-flex.flex-wrap { flex-direction: column; gap: 0.5rem !important; justify-content: center; align-items: center; }
+            .btn-primary-clay:not(.btn-sm), .btn-outline-clay:not(.btn-sm) { width: 100%; max-width: 300px; padding: 12px 20px; display: inline-block; margin: 0 auto; text-align: center; }
+            section { padding-top: 3rem !important; padding-bottom: 3rem !important; margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+            .workshop-card { padding: 2rem !important; text-align: center; }
+            .workshop-card .col-lg-7 { align-items: center; }
+            .workshop-card .d-flex { justify-content: center; }
+            .workshop-card ul { padding-left: 0; }
+            .center-circle, .timeline-line { display: none !important; }
+            .timeline-step { margin-bottom: 2rem; }
+            .footer .text-md-start { text-align: center !important; }
+            .footer .d-flex.justify-content-md-start { justify-content: center !important; }
+            .position-absolute.top-50.end-0.translate-middle-y { display: none !important; }
+            .hero-section img, section img.object-cover { border-radius: 20px !important; height: auto !important; max-height: 400px; }
+            .row > * { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .display-3 { font-size: 2rem !important; }
+            .display-5 { font-size: 1.75rem !important; }
+        }
+        
+        .btn-primary-clay {
+            background-color: #C86B47;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary-clay:hover {
+            background-color: #A65636;
+            color: white;
+        }
+        .btn-outline-clay {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border: 2px solid #C86B47 !important;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-outline-clay:hover {
+            background-color: #A65636 !important;
+            border-color: #A65636 !important;
+            color: white !important;
+        }
+        .hero-section {
+            background-color: #2A2421;
+            color: white;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            position: relative;
+        }
+        .nav-link {
+            color: #E1CDBB !important;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        .glass-navbar {
+            background-color: rgba(42, 36, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (min-width: 1200px) {
+            .navbar-nav {
+                gap: 1.5rem !important;
+            }
+            .navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+            .navbar .dropdown-menu {
+                margin-top: 0;
+                display: none;
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-collapse.collapse {
+            visibility: visible !important;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .card-clay {
+            border: none;
+            border-radius: 16px;
+            background-color: white;
+            transition: transform 0.3s;
+        }
+        .card-clay:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .card-img-wrapper {
+            background-color: #F5F0E8;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-img-wrapper img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        /* Additional Page Specific Styles */
+        .contact-hero-wrap {
+            background: linear-gradient(135deg, #1F1A18 0%, #2A2421 100%);
+            border-bottom: 3px solid #C86B47;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+        body.dark .contact-hero-wrap {
+            background: linear-gradient(135deg, #121212 0%, #1a1513 100%);
+        }
+        .contact-info-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(225, 205, 187, 0.2) !important;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            color: white;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        .contact-info-card:hover {
+            border-color: #C86B47 !important;
+            background-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-3px);
+        }
+        body.dark .contact-info-card {
+            background-color: rgba(200, 107, 71, 0.05);
+            border: 1.5px solid rgba(200, 107, 71, 0.3) !important;
+        }
+        body.dark .contact-info-card:hover {
+            border-color: #C86B47 !important;
+            background-color: rgba(200, 107, 71, 0.1);
+        }
+        .contact-hero-img-frame {
+            border-radius: 30px;
+            border: 4px solid #C86B47 !important;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        /* Sticky Navbar Scroll Transition */
+        .navbar-scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            background-color: rgba(42, 36, 33, 0.96) !important;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+        }
+        body.dark .navbar-scrolled {
+            background-color: rgba(26, 21, 18, 0.98) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-3 shadow-sm glass-navbar" style="z-index: 1050;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                <div class="d-flex flex-column leading-none">
+                    <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                    <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                </div>
+            </a>
+            <div class="d-flex align-items-center gap-3 order-xl-last">
+                <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Home</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="index.html">Home 1</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dashboard</a>
+                        <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
+                    <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon" id="nav-dark-icon-mobile"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                        <i class="fa-solid fa-right-left"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+                </div>
+            </div>
+            <div class="d-none d-xl-flex align-items-center gap-4 text-white">
+                <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
+                </a>
+                <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('rtlSwitch').click(); event.preventDefault();" title="Toggle RTL/LTR">
+                    <i class="fa-solid fa-right-left"></i>
+                </a>
+                <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <div class="contact-hero-wrap py-5 relative">
+        <div class="container py-5 z-10 relative">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <span class="cursive-text d-block mb-2 text-clay-primary" style="transform: none; rotate: 0deg;">Get Muddy Hands with Us</span>
+                    <h1 class="display-3 fw-bold text-white mb-3">Contact Clay &amp; Kiln</h1>
+                    <p class="fs-5 text-clay-secondary mb-4">Have questions about class bookings, private parties, or picking up fired pottery? Drop us a line or visit the studio in person.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-3 mb-5">
+                        <a href="#form" class="btn-primary-clay text-decoration-none shadow-md">Send Message</a>
+                        <a href="#location" class="btn-outline-clay text-decoration-none shadow-sm">Studio Location</a>
+                    </div>
+                    <!-- Direct Contact Quick Grid -->
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="contact-info-card d-flex align-items-center gap-3">
+                                <div class="bg-clay-primary bg-opacity-20 p-3 rounded-circle text-clay-primary" style="background-color: rgba(200, 107, 71, 0.2) !important;">
+                                    <i class="fa-solid fa-phone fs-5 text-clay-primary"></i>
+                                </div>
+                                <div class="text-start">
+                                    <small class="text-clay-secondary uppercase text-[10px] tracking-wider font-bold">Call Us</small>
+                                    <p class="mb-0 fw-bold text-white text-sm">(555) 123-4567</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="contact-info-card d-flex align-items-center gap-3">
+                                <div class="bg-clay-primary bg-opacity-20 p-3 rounded-circle text-clay-primary" style="background-color: rgba(200, 107, 71, 0.2) !important;">
+                                    <i class="fa-solid fa-envelope fs-5 text-clay-primary"></i>
+                                </div>
+                                <div class="text-start">
+                                    <small class="text-clay-secondary uppercase text-[10px] tracking-wider font-bold">Email Us</small>
+                                    <p class="mb-0 fw-bold text-white text-sm">hello@clayandkiln.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-hero-img-frame">
+                        <img src="assets/images/about/mission.jpg" alt="Map graphic placeholder" class="w-full object-cover" style="height: 380px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Location Card -->
+    <section class="py-5 bg-white" id="location">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="p-4 bg-clay-bg dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10">
+                        <span class="text-clay-primary fw-bold text-xs uppercase tracking-widest d-block mb-2">VISIT IN PERSON</span>
+                        <h3 class="fw-bold mb-3">Our Pottery Studio</h3>
+                        <p class="text-muted fs-5 mb-4"><i class="fa-solid fa-map-location-dot me-3 text-clay-primary"></i> 450 Ceramic Way, Arts District, Sector 4<br>New York, NY 10001</p>
+                        <p class="text-muted text-sm mb-4">Located right behind the Arts Center. Validated parking is available in the parking garage directly opposite the studio entrance (bring your ticket for a 2-hour stamp).</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline-clay-dark px-4 rounded-pill">Directions on Map</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Interactive Google Map -->
+                    <div class="map-graphic-holder rounded-4 border border-2 border-secondary border-opacity-25 relative overflow-hidden" style="height: 350px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1718301594944!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Studio Hours -->
+    <section class="py-5" id="hours">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">OPEN TIMES</span>
+                <h2 class="display-5 fw-bold mt-2">Studio Hours</h2>
+                <p class="text-muted max-w-xl mx-auto">Open for clay building, firing dropoffs, and final piece pickup. some extra comtent add</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="table-responsive">
+                        <table class="table table-bordered border-secondary border-opacity-25 align-middle">
+                            <tbody class="text-clay-dark dark:text-white">
+                                <tr>
+                                    <td class="fw-bold p-3">Monday - Friday</td>
+                                    <td class="p-3">09:00 AM - 08:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold p-3">Saturday</td>
+                                    <td class="p-3">09:00 AM - 09:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold p-3">Sunday</td>
+                                    <td class="p-3">10:00 AM - 06:00 PM</td>
+                                </tr>
+                                <tr class="bg-clay-secondary/20 dark:bg-clay-primary/20 border-clay-primary/30">
+                                    <td class="fw-bold p-3 text-clay-primary dark:text-clay-secondary">Clay Pickup Hour Window</td>
+                                    <td class="p-3 text-clay-primary dark:text-clay-secondary fw-bold fs-5 font-serif">Saturdays & Sundays, 12:00 PM - 4:00 PM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Contact Form -->
+    <section class="py-5 bg-white" id="form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="p-5 bg-clay-bg dark:bg-clay-dark rounded-[24px] border border-secondary border-opacity-25">
+                        <div class="text-center mb-4">
+                            <span class="text-clay-primary fw-bold text-xs uppercase tracking-widest">SEND MESSAGE</span>
+                            <h3 class="fw-bold mt-1">Get in Touch</h3>
+                        </div>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Name</label>
+                                    <input type="text" class="form-control" placeholder="Jane Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-sm fw-bold">Email</label>
+                                    <input type="email" class="form-control" placeholder="jane@example.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-sm fw-bold">Inquiry Category</label>
+                                    <select class="form-select">
+                                        <option>Class Bookings</option>
+                                        <option>Private Event Reservations</option>
+                                        <option>Fired Pottery Pickup Question</option>
+                                        <option>Other / General Inquiry</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-sm fw-bold">Message</label>
+                                    <textarea class="form-control" rows="5" placeholder="Write details about your question..." required></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn-primary-clay px-5">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Department Contacts -->
+    <section class="py-5" id="departments">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">DIRECT CHANNELS</span>
+                <h2 class="display-5 fw-bold mt-2">Studio Departments</h2>
+            </div>
+            
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10 h-100">
+                        <i class="fa-solid fa-paintbrush text-clay-primary fs-2 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Workshops Coordinator</h4>
+                        <p class="text-muted text-sm">questions regarding bookings, refunds, and calendar scheduling.</p>
+                        <a href="mailto:workshops@clayandkiln.com" class="text-clay-primary fw-bold text-sm">workshops@clayandkiln.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10 h-100">
+                        <i class="fa-solid fa-glass-cheers text-clay-primary fs-2 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Events & Parties Planner</h4>
+                        <p class="text-muted text-sm">Questions regarding catering,custom packages, and event dates.</p>
+                        <a href="mailto:events@clayandkiln.com" class="text-clay-primary fw-bold text-sm">events@clayandkiln.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white dark:bg-clay-dark rounded-4 border border-secondary border-opacity-10 h-100">
+                        <i class="fa-solid fa-fire text-clay-primary fs-2 mb-3"></i>
+                        <h4 class="fw-bold mb-2">Kiln Operations Manager</h4>
+                        <p class="text-muted text-sm">Questions regarding clay types, custom glaze firing rules, and pickup times.</p>
+                        <a href="mailto:kiln@clayandkiln.com" class="text-clay-primary fw-bold text-sm">kiln@clayandkiln.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ Accordion -->
+    <section class="py-5 bg-white" id="faq">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">COMMON ANSWERS</span>
+                <h2 class="display-5 fw-bold mt-2">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion border border-secondary border-opacity-25" id="faqAccordion" style="border-radius:12px; overflow:hidden;">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    Do you validate parking for classes?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Yes! Bring your parking garage ticket inside and show it to the check-in desk. We stamp it to validate 2 hours of free parking.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Can I bring my own clay to fire in your kiln?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Only if it maturates at Cone 06 (for bisque) or Cone 6 (for stoneware). Unapproved low-fire clays will melt and ruin our kiln shelves. Please verify with our Kiln operations manager.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    What is the pickup window if I miss clay collection hours?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Send us an email. We can arrange a custom drop-box locker collection behind the studio door, or we can ship it to you.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-clay-dark text-white pt-5 pb-3">
+        <div class="container mt-4 text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <a class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 text-white text-decoration-none mb-3" href="index.html">
+                        <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
+                        <div class="d-flex flex-column leading-none text-start">
+                            <span class="font-serif fw-bold text-white fs-5 tracking-wide">CLAY & KILN</span>
+                            <span class="text-[0.5rem] text-clay-secondary tracking-[0.2em] mt-1">POTTERY STUDIO</span>
+                        </div>
+                    </a>
+                    <p class="text-clay-secondary text-sm pe-md-4">A premium pottery painting and ceramic art studio for all ages. Create, relax, and take home beautiful memories.</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-4">
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="javascript:void(0)" class="text-white hover:text-clay-primary"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">QUICK LINKS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-clay-secondary text-decoration-none hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-clay-secondary text-decoration-none hover:text-white">About</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Gallery</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Glaze Colors</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="blogs.html" class="text-clay-secondary text-decoration-none hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">SERVICES</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-2"><a href="gallery.html" class="text-clay-secondary text-decoration-none hover:text-white">Pottery Painting</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Ceramic Workshops</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Private Parties</a></li>
+                        <li class="mb-2"><a href="workshops.html" class="text-clay-secondary text-decoration-none hover:text-white">Kids Classes</a></li>
+                        <li class="mb-2"><a href="private-parties.html" class="text-clay-secondary text-decoration-none hover:text-white">Corporate Events</a></li>
+                        <li class="mb-2"><a href="glazecolors.html" class="text-clay-secondary text-decoration-none hover:text-white">Artwork Firing</a></li>
+                        <li class="mb-2"><a href="user-dashboard.html" class="text-clay-secondary text-decoration-none hover:text-white">Studio Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">STUDIO HOURS</h6>
+                    <ul class="list-unstyled text-sm text-clay-secondary">
+                        <li class="mb-3">
+                            <span class="d-block text-white">Monday - Friday</span>
+                            09:00 AM - 08:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Saturday</span>
+                            09:00 AM - 09:00 PM
+                        </li>
+                        <li class="mb-3">
+                            <span class="d-block text-white">Sunday</span>
+                            10:00 AM - 06:00 PM
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <h6 class="fw-bold mb-4">NEWSLETTER</h6>
+                    <p class="text-sm text-clay-secondary mb-3">Get pottery tips, workshop updates and exclusive offers!</p>
+                    <form class="d-flex justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white rounded-start-pill text-sm" placeholder="Your email address" style="border-right: none; max-width: 250px;">
+                        <button type="submit" class="btn bg-clay-primary text-white rounded-end-pill px-3"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-sm text-clay-secondary">
+                <p class="mb-2 mb-md-0">&copy; 2026 Clay & Kiln Pottery Studio.</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Privacy Policy</a>
+                    <span class="text-secondary">|</span>
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Terms & Conditions</a>
+                    <span class="text-secondary">|</span>
+                    <a href="javascript:void(0)" class="text-clay-secondary text-decoration-none hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-clay-bg text-clay-dark dark:bg-clay-dark dark:text-white border border-2 shadow-lg" style="border-radius: 16px;">
+          <div class="modal-header border-secondary border-opacity-25">
+            <h5 class="modal-title font-serif fw-bold" id="settingsModalLabel"><i class="fa-solid fa-gear me-2 text-clay-primary"></i> Site Settings</h5>
+            <button type="button" class="btn-close dark:filter dark:invert" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            
+            <!-- Dark Mode Toggle -->
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-moon fs-5" id="modal-dark-icon"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Dark Mode</h6>
+                        <small class="text-muted text-sm">Toggle dark/light theme</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="darkModeSwitch">
+                </div>
+            </div>
+
+            <!-- RTL Toggle -->
+            <div class="d-flex justify-content-between align-items-center p-3 bg-white dark:bg-clay-dark rounded shadow-sm border border-secondary border-opacity-10">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-clay-primary bg-opacity-10 p-2 rounded-circle text-clay-primary">
+                        <i class="fa-solid fa-right-left fs-5"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">RTL Layout</h6>
+                        <small class="text-muted text-sm">Right-to-Left orientation</small>
+                    </div>
+                </div>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input focus:ring-clay-primary" type="checkbox" role="switch" id="rtlSwitch">
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Settings Modal Logic (Dark Mode & RTL)
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+            const bsLink = document.getElementById('bootstrap-css');
+            
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            const rtlSwitch = document.getElementById('rtlSwitch');
+            const modalDarkIcon = document.getElementById('modal-dark-icon');
+            
+            // --- Dark Mode ---
+            function updateThemeUI(isDark) {
+                const navDarkIcon = document.getElementById('nav-dark-icon');
+                const navDarkIconMobile = document.getElementById('nav-dark-icon-mobile');
+                if (isDark) {
+                    htmlEl.setAttribute('data-bs-theme', 'dark');
+                    bodyEl.classList.add('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-moon');
+                        modalDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-moon');
+                        navDarkIcon.classList.add('fa-sun');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-moon');
+                        navDarkIconMobile.classList.add('fa-sun');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = true;
+                } else {
+                    htmlEl.setAttribute('data-bs-theme', 'light');
+                    bodyEl.classList.remove('dark');
+                    if (modalDarkIcon) {
+                        modalDarkIcon.classList.remove('fa-sun');
+                        modalDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIcon) {
+                        navDarkIcon.classList.remove('fa-sun');
+                        navDarkIcon.classList.add('fa-moon');
+                    }
+                    if (navDarkIconMobile) {
+                        navDarkIconMobile.classList.remove('fa-sun');
+                        navDarkIconMobile.classList.add('fa-moon');
+                    }
+                    if (darkModeSwitch) darkModeSwitch.checked = false;
+                } }
+
+            function toggleDarkMode(e) {
+                const isDark = e.target.checked;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            }
+
+            // Init Theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) { updateThemeUI(true); } else { updateThemeUI(false); }
+            
+            if (darkModeSwitch) { darkModeSwitch.addEventListener('change', toggleDarkMode); }
+
+            // --- RTL Layout ---
+            function updateRtlUI(isRtl) { if (isRtl) { htmlEl.setAttribute('dir', 'rtl');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = true; } else { htmlEl.setAttribute('dir', 'ltr');
+                    if (bsLink) bsLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+                    if (rtlSwitch) rtlSwitch.checked = false; } }
+
+            function toggleRtl(e) { const isRtl = e.target.checked;
+                localStorage.setItem('rtl', isRtl ? 'true' : 'false');
+                updateRtlUI(isRtl); }
+
+            // Init RTL
+            const savedRtl = localStorage.getItem('rtl') === 'true';
+            updateRtlUI(savedRtl);
+            
+            if (rtlSwitch) { rtlSwitch.addEventListener('change', toggleRtl); }
+
+            // Sticky Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.glass-navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('navbar-scrolled');
+                } else {
+                    nav.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
