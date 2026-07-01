@@ -43,13 +43,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .container {
-            max-width: 1400px !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF6F0;
@@ -106,6 +99,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -159,6 +159,33 @@
         .navbar-collapse.collapse {
             visibility: visible !important;
         }
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(42, 36, 33, 0.98) !important;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+            body.dark .navbar-collapse {
+                background-color: rgba(26, 21, 18, 0.98) !important;
+            }
+        }
+        /* Newsletter input visibility override */
+        footer input[type="email"], #newsletter input[type="email"] {
+            color: #ffffff !important;
+        }
+        footer input[type="email"]::placeholder, #newsletter input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        footer input[type="email"]:focus, #newsletter input[type="email"]:focus {
+            color: #ffffff !important;
+            background-color: transparent !important;
+        }
         .nav-link {
             color: #E1CDBB !important;
             font-size: 0.9rem;
@@ -185,17 +212,27 @@
             50% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
         }
 
-        /* Hexagon Category Clip Path */
+        /* Rounded Category Card Layout (Curved Corner Radius) */
         .hexagon-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 115.47%; /* Aspect ratio for regular hexagons */
+            aspect-ratio: 1 / 1; /* Aspect ratio for modern square cards */
             overflow: hidden;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-radius: 24px; /* Curved corner radius */
+            border: 2px solid rgba(200, 107, 71, 0.12); /* Subtle primary border */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                        border-color 0.4s ease;
         }
         .hexagon-wrapper:hover {
             transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 30px rgba(200, 107, 71, 0.15);
+            border-color: rgba(200, 107, 71, 0.4);
+        }
+        .hexagon-wrapper.border-clay-primary {
+            border-color: #C86B47 !important;
+            box-shadow: 0 12px 30px rgba(200, 107, 71, 0.25) !important;
         }
         .hexagon-inner {
             position: absolute;
@@ -216,12 +253,12 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(42, 36, 33, 0.9), rgba(200, 107, 71, 0.6));
+            background: linear-gradient(135deg, rgba(42, 36, 33, 0.85), rgba(200, 107, 71, 0.5));
             z-index: 1;
             transition: opacity 0.3s ease;
         }
         .hexagon-wrapper:hover .hexagon-inner::after {
-            opacity: 0.75;
+            opacity: 0.7;
         }
         .hexagon-content {
             position: relative;
@@ -390,7 +427,7 @@
             }
             
             .hexagon-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: repeat(2, 1fr) !important;
             }
             .btn-primary-clay:not(.btn-sm), .btn-outline-clay:not(.btn-sm) {
                 width: 100%;
@@ -402,7 +439,7 @@
             .display-3 { font-size: 2.25rem !important; }
             .display-5 { font-size: 1.85rem !important; }
             .hexagon-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: repeat(2, 1fr) !important;
             }
         }
         
@@ -450,6 +487,7 @@
                     <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                     <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Dashboard</a>
                         <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -457,7 +495,6 @@
                             <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
                     <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
@@ -482,7 +519,7 @@
     </nav>
 
     <!-- SECTION 1: Creative Hero (Asymmetric Collage Layout) -->
-    <section class="relative text-white overflow-hidden py-24 lg:py-36 border-bottom-left-radius-[50px] border-bottom-right-radius-[50px]" style="background: radial-gradient(circle at 10% 20%, rgba(74, 59, 50, 1) 0%, rgba(42, 36, 33, 1) 90%);">
+    <section class="relative text-white overflow-hidden py-24 lg:py-36 border-bottom-left-radius-[50px] border-bottom-right-radius-[50px]" style="background-image: linear-gradient(rgba(74, 59, 50, 0.9), rgba(42, 36, 33, 0.95)), url('assets/images/gallery/gallery-hero.jpg'); background-size: cover; background-position: center;">
         <!-- Background organic SVG lines pattern overlay -->
         <div class="absolute inset-0 opacity-5 pointer-events-none mix-blend-overlay">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -643,90 +680,92 @@
         </div>
     </section>
 
-    <!-- SECTION 3: Pottery Categories (Honeycomb Hexagon Grid) -->
-    <section class="py-20 bg-clay-bg dark:bg-clay-dark border-top border-bottom border-clay-secondary border-opacity-20">
+    <!-- SECTION 3: Pottery Categories (Modern Curved Card Layout) -->
+    <section class="py-16 bg-white dark:bg-clay-dark/10">
         <div class="container">
-            <div class="text-center mb-16">
-                <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">EXPLORE STYLES</span>
-                <h2 class="display-5 fw-bold mt-2">Pottery Categories</h2>
-                <p class="text-muted mt-2">Click any category below to filter customer masterpieces</p>
-                <div class="w-16 h-1 bg-clay-primary mx-auto mt-4 rounded-pill"></div>
-            </div>
+            <div class="bg-clay-bg dark:bg-clay-dark rounded-[32px] p-8 md:p-12 border border-clay-secondary border-opacity-20 shadow-sm">
+                <div class="text-center mb-12">
+                    <span class="text-clay-primary fw-bold text-uppercase tracking-widest text-xs">EXPLORE STYLES</span>
+                    <h2 class="display-5 fw-bold mt-2 text-clay-dark dark:text-white">Pottery Categories</h2>
+                    <p class="text-muted mt-2">Click any category below to filter customer masterpieces</p>
+                    <div class="w-16 h-1 bg-clay-primary mx-auto mt-4 rounded-pill"></div>
+                </div>
 
-            <!-- Asymmetrical Hexagonal Layout -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 hexagon-grid">
-                <!-- Hexagon 1: Mugs -->
-                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('mugs', this)">
-                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/mug-gallery.jpg');">
-                        <div class="hexagon-content">
-                            <i class="fa-solid fa-mug-hot fs-3 mb-2"></i>
-                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Mugs</h4>
-                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                <!-- Asymmetrical Hexagonal Layout -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 hexagon-grid">
+                    <!-- Hexagon 1: Mugs -->
+                    <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('mugs', this)">
+                        <div class="hexagon-inner" style="background-image: url('assets/images/gallery/mug-gallery.jpg');">
+                            <div class="hexagon-content">
+                                <i class="fa-solid fa-mug-hot fs-3 mb-2"></i>
+                                <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Mugs</h4>
+                                <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hexagon 2: Bowls -->
+                    <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('bowls', this)">
+                        <div class="hexagon-inner" style="background-image: url('assets/images/gallery/bowl-gallery.jpg');">
+                            <div class="hexagon-content">
+                                <i class="fa-solid fa-bowl-food fs-3 mb-2"></i>
+                                <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Bowls</h4>
+                                <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hexagon 3: Plates -->
+                    <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('plates', this)">
+                        <div class="hexagon-inner" style="background-image: url('assets/images/gallery/plate-gallery.jpg');">
+                            <div class="hexagon-content">
+                                <i class="fa-solid fa-compact-disc fs-3 mb-2"></i>
+                                <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Plates</h4>
+                                <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hexagon 4: Vases -->
+                    <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('vases', this)">
+                        <div class="hexagon-inner" style="background-image: url('assets/images/gallery/vase-gallery.jpg');">
+                            <div class="hexagon-content">
+                                <i class="fa-solid fa-whiskey-glass fs-3 mb-2"></i>
+                                <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Vases</h4>
+                                <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hexagon 5: Figurines -->
+                    <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('figurines', this)">
+                        <div class="hexagon-inner" style="background-image: url('assets/images/gallery/figurine-gallery.jpg');">
+                            <div class="hexagon-content">
+                                <i class="fa-solid fa-cat fs-3 mb-2"></i>
+                                <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Figurines</h4>
+                                <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hexagon 6: Home Decor -->
+                    <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('decor', this)">
+                        <div class="hexagon-inner" style="background-image: url('assets/images/gallery/decor-gallery.jpg');">
+                            <div class="hexagon-content">
+                                <i class="fa-solid fa-house-chimney-window fs-3 mb-2"></i>
+                                <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Decor</h4>
+                                <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hexagon 2: Bowls -->
-                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('bowls', this)">
-                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/bowl-gallery.jpg');">
-                        <div class="hexagon-content">
-                            <i class="fa-solid fa-bowl-food fs-3 mb-2"></i>
-                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Bowls</h4>
-                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
-                        </div>
-                    </div>
+                <!-- Clear Filter Button -->
+                <div class="text-center mt-10">
+                    <button id="clearFilterBtn" class="btn btn-outline-clay px-4 py-2 text-xs rounded-pill d-none" onclick="clearFilter()">
+                        <i class="fa-solid fa-filter-circle-xmark me-2"></i> Clear Category Filter
+                    </button>
                 </div>
-
-                <!-- Hexagon 3: Plates -->
-                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('plates', this)">
-                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/plate-gallery.jpg');">
-                        <div class="hexagon-content">
-                            <i class="fa-solid fa-compact-disc fs-3 mb-2"></i>
-                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Plates</h4>
-                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hexagon 4: Vases -->
-                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('vases', this)">
-                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/vase-gallery.jpg');">
-                        <div class="hexagon-content">
-                            <i class="fa-solid fa-whiskey-glass fs-3 mb-2"></i>
-                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Vases</h4>
-                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hexagon 5: Figurines -->
-                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('figurines', this)">
-                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/figurine-gallery.jpg');">
-                        <div class="hexagon-content">
-                            <i class="fa-solid fa-cat fs-3 mb-2"></i>
-                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Figurines</h4>
-                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hexagon 6: Home Decor -->
-                <div class="hexagon-wrapper cursor-pointer" onclick="filterGallery('decor', this)">
-                    <div class="hexagon-inner" style="background-image: url('assets/images/gallery/decor-gallery.jpg');">
-                        <div class="hexagon-content">
-                            <i class="fa-solid fa-house-chimney-window fs-3 mb-2"></i>
-                            <h4 class="font-serif fw-bold text-sm tracking-wider uppercase mb-0 text-white">Decor</h4>
-                            <span class="text-[0.6rem] text-clay-secondary tracking-[0.2em]">Collection</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Clear Filter Button -->
-            <div class="text-center mt-10">
-                <button id="clearFilterBtn" class="btn btn-outline-clay px-4 py-2 text-xs rounded-pill d-none" onclick="clearFilter()">
-                    <i class="fa-solid fa-filter-circle-xmark me-2"></i> Clear Category Filter
-                </button>
             </div>
         </div>
     </section>
@@ -814,13 +853,13 @@
                 
                 <!-- Step 1: Raw Piece -->
                 <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between mb-20 gap-8 md:gap-12">
-                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-end order-1 order-md-1">
-                        <div class="glass-journey-card text-start text-md-end">
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-1 order-md-1">
+                        <div class="glass-journey-card text-start">
                             <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 01</span>
                             <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">Raw Piece (Clay Throwing)</h3>
                             
                             <!-- Metadata Grid -->
-                            <div class="d-flex flex-wrap gap-2 justify-start justify-content-md-end mb-4">
+                            <div class="d-flex flex-wrap gap-2 justify-start mb-4">
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
                                     <i class="fa-solid fa-temperature-low text-[10px]"></i> Room Temp (68°F)
                                 </span>
@@ -895,13 +934,13 @@
 
                 <!-- Step 3: Glazing -->
                 <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between mb-20 gap-8 md:gap-12">
-                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-end order-1 order-md-1">
-                        <div class="glass-journey-card text-start text-md-end">
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-1 order-md-1">
+                        <div class="glass-journey-card text-start">
                             <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 03</span>
                             <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">Liquid Glazing</h3>
                             
                             <!-- Metadata Grid -->
-                            <div class="d-flex flex-wrap gap-2 justify-start justify-content-md-end mb-4">
+                            <div class="d-flex flex-wrap gap-2 justify-start mb-4">
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
                                     <i class="fa-solid fa-droplet text-[10px]"></i> Liquid Glaze suspension
                                 </span>
@@ -975,13 +1014,13 @@
 
                 <!-- Step 5: Finished Artwork -->
                 <div class="journey-step d-flex flex-column flex-md-row items-center justify-content-between gap-8 md:gap-12">
-                    <div class="journey-content-wrapper w-full md:w-[44%] text-md-end order-1 order-md-1">
-                        <div class="glass-journey-card text-start text-md-end">
+                    <div class="journey-content-wrapper w-full md:w-[44%] order-1 order-md-1">
+                        <div class="glass-journey-card text-start">
                             <span class="text-clay-primary dark:text-clay-secondary text-xs font-semibold uppercase tracking-wider block mb-1">Stage 05</span>
                             <h3 class="fw-bold fs-4 mb-2 font-serif text-clay-dark dark:text-white">The Finished Masterpiece</h3>
                             
                             <!-- Metadata Grid -->
-                            <div class="d-flex flex-wrap gap-2 justify-start justify-content-md-end mb-4">
+                            <div class="d-flex flex-wrap gap-2 justify-start mb-4">
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-clay-primary/10 text-clay-primary dark:text-clay-secondary border border-clay-primary/25">
                                     <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i> Glossy & Safe
                                 </span>

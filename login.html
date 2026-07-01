@@ -58,6 +58,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         /* High Contrast Overrides */
         .text-clay-muted, .text-muted {
@@ -128,7 +135,7 @@
         <form action="user-dashboard.html" class="space-y-4">
             <div>
                 <label class="form-label text-xs font-bold uppercase tracking-wider text-clay-text dark:text-white mb-1.5 block">Email address</label>
-                <input type="email" class="form-control rounded-xl border-clay-secondary/50 dark:bg-clay-dark/30 dark:border-clay-text/50 dark:text-white py-2.5 px-4 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary text-sm" placeholder="hello@clayandkiln.com" value="sam.john@example.com" required>
+                <input type="email" class="form-control rounded-xl border-clay-secondary/50 dark:bg-clay-dark/30 dark:border-clay-text/50 dark:text-white py-2.5 px-4 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary text-sm" placeholder="hello@clayandkiln.com" required>
             </div>
             
             <div class="relative">
@@ -137,7 +144,7 @@
                     <a href="javascript:void(0)" onclick="alert('Password reset link sent to email!');" class="text-clay-primary dark:text-clay-accent text-[11px] font-semibold text-decoration-none hover:underline">Forgot password?</a>
                 </div>
                 <div class="relative">
-                    <input type="password" id="loginPassword" class="form-control rounded-xl border-clay-secondary/50 dark:bg-clay-dark/30 dark:border-clay-text/50 dark:text-white py-2.5 pl-4 pr-10 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary text-sm" placeholder="••••••••" value="password123" required>
+                    <input type="password" id="loginPassword" class="form-control rounded-xl border-clay-secondary/50 dark:bg-clay-dark/30 dark:border-clay-text/50 dark:text-white py-2.5 pl-4 pr-10 focus:border-clay-primary focus:ring-1 focus:ring-clay-primary text-sm" placeholder="••••••••" required>
                     <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeIcon')" class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-clay-muted dark:text-clay-secondary/70 hover:text-clay-primary">
                         <i class="fa-solid fa-eye text-sm" id="eyeIcon"></i>
                     </button>

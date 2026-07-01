@@ -43,13 +43,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .container {
-            max-width: 1400px !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF6F0;
@@ -103,6 +96,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -215,6 +215,33 @@
         .navbar-collapse.collapse {
             visibility: visible !important;
         }
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(42, 36, 33, 0.98) !important;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+            body.dark .navbar-collapse {
+                background-color: rgba(26, 21, 18, 0.98) !important;
+            }
+        }
+        /* Newsletter input visibility override */
+        footer input[type="email"], #newsletter input[type="email"] {
+            color: #ffffff !important;
+        }
+        footer input[type="email"]::placeholder, #newsletter input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        footer input[type="email"]:focus, #newsletter input[type="email"]:focus {
+            color: #ffffff !important;
+            background-color: transparent !important;
+        }
         
         /* About Unique Layouts */
         .hero-section-about {
@@ -231,6 +258,61 @@
             border-radius: 30px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             object-fit: cover;
+        }
+        .est-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(200, 107, 71, 0.3) !important;
+            background-color: #FAF6F0;
+            margin-top: 1.5rem;
+        }
+        body:not(.dark) .est-badge {
+            background-color: #FAF6F0 !important;
+            border-color: rgba(200, 107, 71, 0.3) !important;
+        }
+        body.dark .est-badge {
+            background-color: rgba(42, 36, 33, 0.5) !important;
+            border-color: rgba(200, 107, 71, 0.5) !important;
+        }
+        .est-badge-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background-color: #C86B47 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+        }
+        .est-badge-text {
+            text-align: left;
+        }
+        .est-badge-text h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.2;
+            color: #C86B47 !important;
+            margin-bottom: 2px;
+        }
+        body.dark .est-badge-text h5 {
+            color: #E1CDBB !important;
+        }
+        .est-badge-text small {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            color: #8A7B72 !important;
+            display: block;
+        }
+        body.dark .est-badge-text small {
+            color: #C8B8AD !important;
         }
         .philosophy-card {
             border-radius: 20px;
@@ -328,6 +410,7 @@
                     <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                     <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Dashboard</a>
                         <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -335,7 +418,6 @@
                             <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
                     <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
@@ -360,11 +442,20 @@
     </nav>
 
     <!-- SECTION 1: Full Width Hero -->
-    <section class="hero-section-about">
-        <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
-            <span class="cursive-text mb-3">Our Roots</span>
-            <h1 class="display-3 fw-bold mb-4">Shaping Art,<br>Building Community</h1>
-            <p class="fs-5 text-clay-secondary max-w-2xl mx-auto mb-5">At Clay & Kiln, we believe that within every piece of earth lies a masterpiece waiting to be discovered. Welcome to our story.</p>
+    <section class="py-5 bg-clay-bg dark:bg-clay-dark">
+        <div class="container">
+            <div class="about-hero-card overflow-hidden text-white rounded-[32px] border border-white border-opacity-10 shadow-2xl relative py-5 d-flex flex-column justify-content-center align-items-center text-center">
+                <!-- Background Image with Overlay -->
+                <div class="absolute inset-0 bg-cover bg-center z-0" 
+                     style="background-image: linear-gradient(rgba(42, 36, 33, 0.75), rgba(42, 36, 33, 0.85)), url('assets/images/about/hero.png');">
+                </div>
+                
+                <div class="position-relative z-10 px-4 py-5 max-w-2xl mx-auto">
+                    <span class="cursive-text d-block text-clay-secondary mb-3" style="font-size: 2.2rem;">Our Roots</span>
+                    <h1 class="display-4 fw-bold text-white mb-4 leading-tight">Shaping Art,<br>Building Community</h1>
+                    <p class="fs-6 text-clay-secondary text-opacity-90 mx-auto mb-0">At Clay & Kiln, we believe that within every piece of earth lies a masterpiece waiting to be discovered. Welcome to our story.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -385,15 +476,19 @@
                         <li class="d-flex align-items-center mb-2"><i class="fa-solid fa-check text-clay-primary me-3 fs-5"></i> <span class="text-muted fs-6">Premium quality clay and vibrant glazes</span></li>
                         <li class="d-flex align-items-center"><i class="fa-solid fa-check text-clay-primary me-3 fs-5"></i> <span class="text-muted fs-6">A welcoming, inspiring creative community</span></li>
                     </ul>
-                    <div class="mt-4 pt-3 border-top border-2 border-clay-secondary border-opacity-25 w-50">
-                        <h4 class="font-serif fw-bold text-clay-primary mb-0">Est. 2021</h4>
-                        <small class="text-uppercase tracking-widest text-muted">Original Studio</small>
+                    <div class="est-badge">
+                        <div class="est-badge-icon">
+                            <i class="fa-solid fa-calendar-days fs-5 text-white"></i>
+                        </div>
+                        <div class="est-badge-text">
+                            <h5>Est. 2021</h5>
+                            <small>Original Studio</small>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-7 order-1 order-lg-2 position-relative text-center">
                     <div class="d-flex justify-content-center position-relative">
                         <img src="assets/images/about/story.png" alt="Pottery creation" class="img-fluid about-image-overlap w-75 z-10 position-relative">
-                        <div class="position-absolute bg-clay-secondary rounded-[30px] w-75 h-100" style="top: 20px; left: 15%; z-index: 0; opacity: 0.5;"></div>
                     </div>
                 </div>
             </div>

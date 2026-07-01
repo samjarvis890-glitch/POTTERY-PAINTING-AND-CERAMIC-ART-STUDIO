@@ -70,9 +70,17 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
     margin-bottom: 1rem;
+}
+
+p {
+    font-weight: 400;
+}
+
+p strong, p b {
+    font-weight: 550;
 }
 
 a {

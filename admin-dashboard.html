@@ -58,6 +58,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -171,8 +178,8 @@
         <div class="px-6 py-6 border-t !border-clay-secondary/30 dark:!border-clay-text/30 space-y-2">
             <!-- Mobile/Tablet Utility Icons -->
             <div class="lg:hidden flex items-center justify-between px-2 pb-4 mb-2 border-b !border-clay-secondary/30 dark:!border-clay-text/30">
-                <a href="index.html" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Main Home">
-                    <i class="fa-solid fa-house"></i>
+                <a href="user-dashboard.html#settings" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Profile Settings">
+                    <i class="fa-solid fa-user"></i>
                 </a>
                 <button onclick="toggleTheme()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Toggle Theme">
                     <i class="fa-solid fa-moon nav-dark-icon"></i>
@@ -231,8 +238,8 @@
 
             <!-- Right side toggles -->
             <div class="hidden lg:flex items-center gap-4 text-clay-text dark:text-white">
-                <a href="index.html" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Main Home">
-                    <i class="fa-solid fa-house"></i>
+                <a href="user-dashboard.html#settings" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Profile Settings">
+                    <i class="fa-solid fa-user"></i>
                 </a>
                 <button onclick="toggleTheme()" class="text-clay-text/70 dark:text-clay-secondary/70 hover:text-clay-primary transition text-lg" title="Toggle Theme">
                     <i class="fa-solid fa-moon nav-dark-icon" id="nav-dark-icon"></i>

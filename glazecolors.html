@@ -43,13 +43,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .container {
-            max-width: 1400px !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF6F0;
@@ -114,6 +107,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -121,6 +121,87 @@
             color: #C86B47;
             line-height: 0.8;
             transform: rotate(-2deg);
+        }
+        
+        /* Accordion Clay Customization */
+        .custom-clay-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .custom-clay-accordion .accordion-item {
+            border: none;
+            background: transparent;
+            margin-bottom: 1rem;
+        }
+        .custom-clay-accordion .accordion-button {
+            border-radius: 12px !important;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            padding: 1.25rem 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+        body:not(.dark) .custom-clay-accordion .accordion-button {
+            background-color: #FAF6F0 !important;
+            color: #4A3B32 !important;
+            border: 1px solid rgba(74, 59, 50, 0.15) !important;
+        }
+        body:not(.dark) .custom-clay-accordion .accordion-button:not(.collapsed) {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border-color: #C86B47 !important;
+        }
+        body:not(.dark) .custom-clay-accordion .accordion-button:not(.collapsed) .text-clay-primary {
+            color: white !important;
+        }
+        body.dark .custom-clay-accordion .accordion-button {
+            background-color: #2A2421 !important;
+            color: #FAF6F0 !important;
+            border: 1px solid rgba(200, 107, 71, 0.3) !important;
+        }
+        body.dark .custom-clay-accordion .accordion-button:not(.collapsed) {
+            background-color: #C86B47 !important;
+            color: white !important;
+            border-color: #C86B47 !important;
+        }
+        .custom-clay-accordion .accordion-button:not(.collapsed) {
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+        }
+        .custom-clay-accordion .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234a3b32'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+            transition: transform 0.2s ease-in-out;
+        }
+        body.dark .custom-clay-accordion .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23faf6f0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+        }
+        .custom-clay-accordion .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+            transform: rotate(-180deg);
+        }
+        .custom-clay-accordion .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(200, 107, 71, 0.25);
+            border-color: #C86B47 !important;
+        }
+        .custom-clay-accordion .accordion-collapse {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            overflow: hidden;
+        }
+        body:not(.dark) .custom-clay-accordion .accordion-collapse {
+            border: 1px solid rgba(74, 59, 50, 0.15) !important;
+            border-top: 0 !important;
+        }
+        body.dark .custom-clay-accordion .accordion-collapse {
+            border: 1px solid rgba(200, 107, 71, 0.3) !important;
+            border-top: 0 !important;
+        }
+        .custom-clay-accordion .accordion-body {
+            background-color: white !important;
+            padding: 1.5rem !important;
+        }
+        body.dark .custom-clay-accordion .accordion-body {
+            background-color: #2A2421 !important;
         }
         
         /* Mobile Responsive Fixes */
@@ -225,8 +306,35 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .navbar-collapse.collapse {
+        .navbar-collapse.collapse, .accordion-collapse.collapse {
             visibility: visible !important;
+        }
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(42, 36, 33, 0.98) !important;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+            body.dark .navbar-collapse {
+                background-color: rgba(26, 21, 18, 0.98) !important;
+            }
+        }
+        /* Newsletter input visibility override */
+        footer input[type="email"], #newsletter input[type="email"] {
+            color: #ffffff !important;
+        }
+        footer input[type="email"]::placeholder, #newsletter input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        footer input[type="email"]:focus, #newsletter input[type="email"]:focus {
+            color: #ffffff !important;
+            background-color: transparent !important;
         }
         .navbar-brand img {
             height: 40px;
@@ -256,7 +364,9 @@
         }
         /* Additional Page Specific Styles */
         .glaze-hero-wrap {
-            background: linear-gradient(135deg, #2A2421 0%, #1a1513 100%);
+            background: linear-gradient(135deg, rgba(42, 36, 33, 0.92) 0%, rgba(26, 21, 19, 0.95) 100%), url('assets/images/gallery/chemistry_kiln.jpg');
+            background-size: cover;
+            background-position: center;
             border-bottom: 3px solid #C86B47;
             position: relative;
             overflow: hidden;
@@ -264,7 +374,7 @@
             border-bottom-right-radius: 40px;
         }
         body.dark .glaze-hero-wrap {
-            background: linear-gradient(135deg, #181311 0%, #0d0a09 100%);
+            background: linear-gradient(135deg, rgba(24, 19, 17, 0.94) 0%, rgba(13, 10, 9, 0.96) 100%), url('assets/images/gallery/chemistry_kiln.jpg') !important;
         }
         .hero-arched-card {
             border-radius: 120px 120px 20px 20px;
@@ -381,10 +491,11 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="glazecolors.html">Glaze Colors</a></li>
                     <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                     <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dashboard</a>
                         <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -392,7 +503,6 @@
                             <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
                     <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
@@ -510,7 +620,7 @@
             
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <img src="assets/images/gallery/chemistry_kiln.jpg" alt="Chemistry of Kiln Melting" class="img-fluid rounded-4 shadow-lg object-cover" style="height: 400px; width: 100%;">
+                    <img src="assets/images/gallery/chemistry_kiln.png" alt="Chemistry of Kiln Melting" class="img-fluid rounded-4 shadow-lg object-cover" style="height: 400px; width: 100%;">
                 </div>
                 <div class="col-lg-6">
                     <div class="d-flex gap-4 mb-4">
@@ -632,29 +742,61 @@
                 <p class="text-muted max-w-xl mx-auto">Answers to common questions regarding lead content, food compatibility, and washing.</p>
             </div>
             
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card card-clay p-4 h-100 border border-secondary border-opacity-10">
-                        <h4 class="fw-bold mb-2"><i class="fa-solid fa-shield-halved text-clay-primary me-2"></i> Are your glazes lead-free?</h4>
-                        <p class="text-muted mb-0">Yes! Every glaze used in the Clay & Kiln studio is 100% lead-free, non-toxic, and conforming to ASTM D-4236 safety standards.</p>
+            <div class="accordion custom-clay-accordion" id="potSafetyAccordion">
+                <!-- Item 1: Lead-Free -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa-solid fa-shield-halved text-clay-primary me-3 fs-5"></i>
+                            <span class="fw-bold">Are your glazes lead-free?</span>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#potSafetyAccordion">
+                        <div class="accordion-body">
+                            <p class="text-muted dark:text-gray-300 mb-0">Yes! Every glaze used in the Clay & Kiln studio is 100% lead-free, non-toxic, and conforming to ASTM D-4236 safety standards.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card card-clay p-4 h-100 border border-secondary border-opacity-10">
-                        <h4 class="fw-bold mb-2"><i class="fa-solid fa-utensils text-clay-primary me-2"></i> Can I eat/drink out of my piece?</h4>
-                        <p class="text-muted mb-0">Any glaze marked "Food Safe" on the jar is perfect for dinnerware, cups, and bowls once fired to Cone 6. Crackle glazes are decorative only.</p>
+                <!-- Item 2: Food Safe -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fa-solid fa-utensils text-clay-primary me-3 fs-5"></i>
+                            <span class="fw-bold">Can I eat/drink out of my piece?</span>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#potSafetyAccordion">
+                        <div class="accordion-body">
+                            <p class="text-muted dark:text-gray-300 mb-0">Any glaze marked "Food Safe" on the jar is perfect for dinnerware, cups, and bowls once fired to Cone 6. Crackle glazes are decorative only.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card card-clay p-4 h-100 border border-secondary border-opacity-10">
-                        <h4 class="fw-bold mb-2"><i class="fa-solid fa-soap text-clay-primary me-2"></i> Are fired pieces dishwasher safe?</h4>
-                        <p class="text-muted mb-0">Yes, stoneware fired in our studio can go in the top rack of the dishwasher. Handwashing is recommended for delicate handles.</p>
+                <!-- Item 3: Dishwasher Safe -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <i class="fa-solid fa-soap text-clay-primary me-3 fs-5"></i>
+                            <span class="fw-bold">Are fired pieces dishwasher safe?</span>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#potSafetyAccordion">
+                        <div class="accordion-body">
+                            <p class="text-muted dark:text-gray-300 mb-0">Yes, stoneware fired in our studio can go in the top rack of the dishwasher. Handwashing is recommended for delicate handles.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card card-clay p-4 h-100 border border-secondary border-opacity-10">
-                        <h4 class="fw-bold mb-2"><i class="fa-solid fa-circle-exclamation text-clay-primary me-2"></i> Can stoneware go in the microwave?</h4>
-                        <p class="text-muted mb-0">Yes, but avoid extreme heat shocks (e.g. freezer to boiling oven) to prevent structural cracking. Avoid metallic luster paints in microwaves.</p>
+                <!-- Item 4: Microwave Safe -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <i class="fa-solid fa-circle-exclamation text-clay-primary me-3 fs-5"></i>
+                            <span class="fw-bold">Can stoneware go in the microwave?</span>
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#potSafetyAccordion">
+                        <div class="accordion-body">
+                            <p class="text-muted dark:text-gray-300 mb-0">Yes, but avoid extreme heat shocks (e.g. freezer to boiling oven) to prevent structural cracking. Avoid metallic luster paints in microwaves.</p>
+                        </div>
                     </div>
                 </div>
             </div>

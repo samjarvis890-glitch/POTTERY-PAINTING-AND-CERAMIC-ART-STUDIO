@@ -43,13 +43,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .container {
-            max-width: 1400px !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF6F0;
@@ -112,6 +105,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -195,7 +195,9 @@
             color: white !important;
         }
         .hero-section {
-            background-color: #2A2421;
+            background-image: linear-gradient(rgba(42, 36, 33, 0.92), rgba(42, 36, 33, 0.96)), url('assets/images/home/hero-pottery-studio.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
             border-bottom-left-radius: 60px;
             border-bottom-right-radius: 60px;
@@ -242,6 +244,33 @@
         /* Fix for Tailwind and Bootstrap .collapse class collision */
         .navbar-collapse.collapse {
             visibility: visible !important;
+        }
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(42, 36, 33, 0.98) !important;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+            body.dark .navbar-collapse {
+                background-color: rgba(26, 21, 18, 0.98) !important;
+            }
+        }
+        /* Newsletter input visibility override */
+        footer input[type="email"], #newsletter input[type="email"] {
+            color: #ffffff !important;
+        }
+        footer input[type="email"]::placeholder, #newsletter input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        footer input[type="email"]:focus, #newsletter input[type="email"]:focus {
+            color: #ffffff !important;
+            background-color: transparent !important;
         }
         .navbar-brand img {
             height: 40px;
@@ -409,6 +438,7 @@
                         <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                         <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
                         <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Dashboard</a>
                             <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -416,7 +446,6 @@
                                 <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
                     <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
                         <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
@@ -441,70 +470,70 @@
         </nav>
 
     <!-- Hero Section -->
-    <div class="hero-section py-5">
-        <!-- Hero Content -->
-        <div class="container mb-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 z-10 relative">
-                    <div class="mb-2">
-                        <span class="cursive-text d-block mb-n2">Handmade Memories,</span>
-                        <h1 class="display-3 fw-bold text-white mb-0 leading-tight">Painted by You,</h1>
-                        <h1 class="display-3 fw-bold text-white leading-tight">Treasured Forever.</h1>
+    <section class="py-5 bg-clay-bg dark:bg-clay-dark">
+        <div class="container">
+            <div class="hero-card overflow-hidden bg-clay-dark text-white rounded-[32px] border border-white border-opacity-10 shadow-2xl relative">
+                <!-- Background texture for card -->
+                <div class="absolute inset-0 opacity-10 bg-[url('assets/images/home/collection-homedecor.jpg')] bg-cover bg-center mix-blend-overlay"></div>
+                
+                <div class="row g-0 align-items-stretch relative z-10">
+                    <!-- Left Column: Content -->
+                    <div class="col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center order-2 order-lg-1">
+                        <div class="mb-3">
+                            <span class="cursive-text d-block text-clay-secondary mb-n2" style="font-size: 2.2rem;">Handmade Memories</span>
+                            <h1 class="display-4 fw-bold text-white mb-0 leading-tight">Painted by You,</h1>
+                            <h1 class="display-4 fw-bold text-white leading-tight">Treasured Forever.</h1>
+                        </div>
+                        <p class="fs-6 text-clay-secondary text-opacity-90 mb-4 max-w-md">A creative pottery studio for all ages. Relax, paint, and bring your imagination to life.</p>
+                        
+                        <div class="d-flex flex-wrap gap-3 mb-5">
+                            <a href="index.html" class="btn-primary-clay text-decoration-none">Book a Session <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                            <a href="index.html" class="btn-outline-clay text-decoration-none text-white border-white">Explore Studio <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                        </div>
+                        
+                        <!-- Stats Grid -->
+                        <div class="row g-3 mt-auto pt-3 border-top border-white border-opacity-10">
+                            <div class="col-6 col-md-3">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="fa-solid fa-bag-shopping fs-5 text-clay-primary"></i>
+                                    <h4 class="mb-0 fs-6 fw-bold">10,000+</h4>
+                                </div>
+                                <small class="text-clay-secondary text-[9px] uppercase tracking-wider d-block lh-sm">Happy<br>Customers</small>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="fa-solid fa-paint-roller fs-5 text-clay-primary"></i>
+                                    <h4 class="mb-0 fs-6 fw-bold">25,000+</h4>
+                                </div>
+                                <small class="text-clay-secondary text-[9px] uppercase tracking-wider d-block lh-sm">Pieces<br>Created</small>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="fa-regular fa-calendar fs-5 text-clay-primary"></i>
+                                    <h4 class="mb-0 fs-6 fw-bold">120+</h4>
+                                </div>
+                                <small class="text-clay-secondary text-[9px] uppercase tracking-wider d-block lh-sm">Workshops<br>Monthly</small>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="d-flex align-items-center gap-2 mb-1">
+                                    <i class="fa-solid fa-star fs-5 text-clay-primary"></i>
+                                    <h4 class="mb-0 fs-6 fw-bold">4.9</h4>
+                                </div>
+                                <small class="text-clay-secondary text-[9px] uppercase tracking-wider d-block lh-sm">Average<br>Rating</small>
+                            </div>
+                        </div>
                     </div>
-                    <p class="fs-5 text-clay-secondary mb-4 max-w-md">A creative pottery studio for all ages.<br>Relax, paint, and bring your imagination to life.</p>
                     
-                    <div class="d-flex flex-wrap gap-3 mb-5">
-                        <a href="index.html" class="btn-primary-clay text-decoration-none">Book a Session <i class="fa-solid fa-arrow-right ms-2"></i></a>
-                        <a href="index.html" class="btn-outline-clay text-decoration-none">Explore Studio <i class="fa-solid fa-arrow-right ms-2"></i></a>
-                    </div>
-                    
-                    <div class="row g-4 mt-2">
-                        <div class="col-6 col-md-3 d-flex align-items-start gap-2">
-                            <i class="fa-solid fa-bag-shopping fs-4 text-clay-secondary mt-1"></i>
-                            <div>
-                                <h4 class="mb-0 fs-5">10,000+</h4>
-                                <small class="text-clay-secondary text-xs uppercase tracking-wider d-block lh-sm mt-1">Happy<br>Customers</small>
-                            </div>
+                    <!-- Right Column: Image -->
+                    <div class="col-lg-6 order-1 order-lg-2">
+                        <div class="w-full h-full min-h-[320px] lg:min-h-[500px] bg-cover bg-center lg:rounded-l-[120px]" 
+                             style="background-image: url('assets/images/home/hero-pottery-studio.png');">
                         </div>
-                        <div class="col-6 col-md-3 d-flex align-items-start gap-2">
-                            <i class="fa-solid fa-paint-roller fs-4 text-clay-secondary mt-1"></i>
-                            <div>
-                                <h4 class="mb-0 fs-5">25,000+</h4>
-                                <small class="text-clay-secondary text-xs uppercase tracking-wider d-block lh-sm mt-1">Pieces<br>Created</small>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 d-flex align-items-start gap-2">
-                            <i class="fa-regular fa-calendar fs-4 text-clay-secondary mt-1"></i>
-                            <div>
-                                <h4 class="mb-0 fs-5">120+</h4>
-                                <small class="text-clay-secondary text-xs uppercase tracking-wider d-block lh-sm mt-1">Workshops<br>Monthly</small>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 d-flex align-items-start gap-2">
-                            <i class="fa-solid fa-star fs-4 text-clay-secondary mt-1"></i>
-                            <div>
-                                <h4 class="mb-0 fs-5">4.9</h4>
-                                <small class="text-clay-secondary text-xs uppercase tracking-wider d-block lh-sm mt-1">Average<br>Rating</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-5 mt-lg-0 relative">
-                    <!-- Right Image -->
-                    <div class="position-relative">
-                        <img src="assets/images/home/hero-pottery-studio.jpg" alt="Woman painting pottery" class="img-fluid shadow-lg w-100 object-cover" style="height: 500px; border-radius: 20px; border-bottom-left-radius: 100px !important; border-top-right-radius: 100px !important;">
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Bottom Curve SVG (decorative) -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 opacity-10">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-[150px]">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#FAF6F0"></path>
-            </svg>
-        </div>
-    </div>
+    </section>
 
     <!-- Section: Our Studio -->
     <section class="py-5 my-5" id="about">
@@ -644,7 +673,7 @@
     <section class="dark-section py-5 relative overflow-hidden">
         <!-- Background images -->
         <div class="absolute inset-y-0 left-0 w-1/4 opacity-20 bg-[url('assets/images/home/workshop-private.jpg')] bg-cover bg-center"></div>
-        <div class="absolute inset-y-0 right-0 w-1/4 opacity-20 bg-[url('assets/images/home/workshop-family.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-y-0 right-0 w-1/4 opacity-20 bg-[url('assets/images/home/workshop-family.png')] bg-cover bg-center"></div>
         
         <div class="container relative z-10">
             <div class="text-center mb-5">
@@ -772,7 +801,7 @@
                     <img src="assets/images/home/collection-vases.jpg" alt="Gallery Image" class="gallery-img">
                 </div>
                 <div class="col-12 col-md-4 col-lg-2">
-                    <img src="assets/images/home/workshop-kids.jpg" alt="Gallery Image" class="gallery-img">
+                    <img src="assets/images/home/collection-mugs.png" alt="Gallery Image" class="gallery-img">
                 </div>
                 <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center justify-content-center bg-clay-bg rounded-[12px] h-[200px]">
                     <a href="gallery.html" class="btn-primary-clay text-decoration-none text-center px-3 w-75">View Full Gallery</a>

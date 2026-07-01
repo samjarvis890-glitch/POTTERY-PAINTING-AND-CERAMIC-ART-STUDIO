@@ -43,13 +43,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .container {
-            max-width: 1400px !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF6F0;
@@ -114,6 +107,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -228,6 +228,33 @@
         .navbar-collapse.collapse {
             visibility: visible !important;
         }
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(42, 36, 33, 0.98) !important;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+            body.dark .navbar-collapse {
+                background-color: rgba(26, 21, 18, 0.98) !important;
+            }
+        }
+        /* Newsletter input visibility override */
+        footer input[type="email"], #newsletter input[type="email"] {
+            color: #ffffff !important;
+        }
+        footer input[type="email"]::placeholder, #newsletter input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        footer input[type="email"]:focus, #newsletter input[type="email"]:focus {
+            color: #ffffff !important;
+            background-color: transparent !important;
+        }
         .navbar-brand img {
             height: 40px;
         }
@@ -254,14 +281,13 @@
             object-fit: cover;
             border-radius: 8px;
         }
-        /* Additional Page Specific Styles */
-        .workshop-hero-wrap {
-            background: linear-gradient(135deg, #1F1A18 0%, #2A2421 100%);
-            border-bottom: 3px solid #C86B47;
-            position: relative;
-            overflow: hidden;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
+        .workshop-hero-bg {
+            background-image: linear-gradient(rgba(250, 246, 240, 0.93), rgba(250, 246, 240, 0.95)), url('assets/images/home/workshop-beginner.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        body.dark .workshop-hero-bg {
+            background-image: linear-gradient(rgba(42, 36, 33, 0.92), rgba(42, 36, 33, 0.95)), url('assets/images/home/workshop-beginner.jpg') !important;
         }
         .spinning-wheel-container {
             position: relative;
@@ -361,9 +387,10 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="glazecolors.html">Glaze Colors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="workshops.html">Workshops</a></li>
                     <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dashboard</a>
                         <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -371,7 +398,6 @@
                             <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
                     <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
@@ -396,7 +422,7 @@
     </nav>
 
     <!-- 1. Hero Section -->
-    <div class="min-h-[80vh] flex items-center relative overflow-hidden bg-clay-bg dark:bg-clay-dark rounded-bl-[60px] rounded-br-[60px] py-16 lg:py-24 border-b-4 border-clay-primary shadow-lg">
+    <div class="min-h-[80vh] flex items-center relative overflow-hidden bg-clay-bg dark:bg-clay-dark workshop-hero-bg rounded-bl-[60px] rounded-br-[60px] py-16 lg:py-24 border-b-4 border-clay-primary shadow-lg">
         <!-- Abstract Shapes -->
         <div class="absolute top-0 right-0 w-[40vw] h-full bg-clay-secondary/20 dark:bg-clay-primary/10 rounded-l-[100px] z-0"></div>
         <div class="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full border-[1px] border-clay-primary/30 z-0"></div>
@@ -460,7 +486,7 @@
                         <div class="flex -space-x-4">
                             <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-beginner.jpg" alt="Student 1">
                             <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-advanced.jpg" alt="Student 2">
-                            <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-kids.jpg" alt="Student 3">
+                            <img class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark object-cover" src="assets/images/home/workshop-kids.png" alt="Student 3">
                             <div class="w-12 h-12 rounded-full border-2 border-white dark:border-clay-dark bg-clay-secondary flex items-center justify-center text-clay-text font-bold text-sm">
                                 4.9<i class="fa-solid fa-star text-[10px] ml-0.5"></i>
                             </div>
@@ -522,7 +548,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card card-clay h-100 shadow-sm border border-secondary border-opacity-10 d-flex flex-column">
                         <div class="card-img-wrapper">
-                            <img src="assets/images/home/workshop-kids.jpg" alt="Kids Clay">
+                            <img src="assets/images/home/workshop-kids.png" alt="Kids Clay">
                         </div>
                         <div class="card-body d-flex flex-column">
                             <h4 class="fw-bold mb-2">Kids Clay Club</h4>

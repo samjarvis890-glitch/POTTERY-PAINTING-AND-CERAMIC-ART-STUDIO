@@ -43,13 +43,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .container {
-            max-width: 1400px !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF6F0;
@@ -114,6 +107,13 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
+            font-weight: 600 !important;
+        }
+        p {
+            font-weight: 400;
+        }
+        p strong, p b {
+            font-weight: 550 !important;
         }
         .cursive-text {
             font-family: 'Qwitcher Grypen', cursive;
@@ -225,8 +225,35 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .navbar-collapse.collapse {
+        .navbar-collapse.collapse, .accordion-collapse.collapse {
             visibility: visible !important;
+        }
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(42, 36, 33, 0.98) !important;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                z-index: 1000;
+            }
+            body.dark .navbar-collapse {
+                background-color: rgba(26, 21, 18, 0.98) !important;
+            }
+        }
+        /* Newsletter input visibility override */
+        footer input[type="email"], #newsletter input[type="email"] {
+            color: #ffffff !important;
+        }
+        footer input[type="email"]::placeholder, #newsletter input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+        footer input[type="email"]:focus, #newsletter input[type="email"]:focus {
+            color: #ffffff !important;
+            background-color: transparent !important;
         }
         .navbar-brand img {
             height: 40px;
@@ -256,7 +283,9 @@
         }
         /* Additional Page Specific Styles */
         .contact-hero-wrap {
-            background: linear-gradient(135deg, #1F1A18 0%, #2A2421 100%);
+            background: linear-gradient(135deg, rgba(250, 246, 240, 0.94) 0%, rgba(250, 246, 240, 0.94) 100%), url('assets/images/gallery/customer-family.jpg');
+            background-size: cover;
+            background-position: center;
             border-bottom: 3px solid #C86B47;
             position: relative;
             overflow: hidden;
@@ -264,30 +293,31 @@
             border-bottom-right-radius: 40px;
         }
         body.dark .contact-hero-wrap {
-            background: linear-gradient(135deg, #121212 0%, #1a1513 100%);
+            background: linear-gradient(135deg, rgba(42, 36, 33, 0.93) 0%, rgba(26, 21, 19, 0.95) 100%), url('assets/images/gallery/customer-family.jpg') !important;
         }
         .contact-info-card {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1.5px solid rgba(225, 205, 187, 0.2) !important;
+            background-color: rgba(74, 59, 50, 0.05);
+            border: 1.5px solid rgba(74, 59, 50, 0.15) !important;
             border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            color: #4A3B32;
             transition: all 0.3s ease;
             text-align: left;
         }
         .contact-info-card:hover {
             border-color: #C86B47 !important;
-            background-color: rgba(255, 255, 255, 0.12);
+            background-color: rgba(74, 59, 50, 0.08);
             transform: translateY(-3px);
         }
         body.dark .contact-info-card {
-            background-color: rgba(200, 107, 71, 0.05);
+            background-color: rgba(200, 107, 71, 0.05) !important;
             border: 1.5px solid rgba(200, 107, 71, 0.3) !important;
+            color: white;
         }
         body.dark .contact-info-card:hover {
             border-color: #C86B47 !important;
-            background-color: rgba(200, 107, 71, 0.1);
+            background-color: rgba(200, 107, 71, 0.1) !important;
         }
         .contact-hero-img-frame {
             border-radius: 30px;
@@ -341,6 +371,7 @@
                     <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                     <li class="nav-item"><a class="nav-link" href="private-parties.html">Private Parties</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="contact.html">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dashboard</a>
                         <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -348,7 +379,6 @@
                             <li><a class="dropdown-item text-clay-secondary hover:bg-clay-primary hover:text-white transition-colors" href="admin-dashboard.html">Admin Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
                     <a href="javascript:void(0)" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
@@ -378,8 +408,8 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 text-center text-lg-start">
                     <span class="cursive-text d-block mb-2 text-clay-primary" style="transform: none; rotate: 0deg;">Get Muddy Hands with Us</span>
-                    <h1 class="display-3 fw-bold text-white mb-3">Contact Clay &amp; Kiln</h1>
-                    <p class="fs-5 text-clay-secondary mb-4">Have questions about class bookings, private parties, or picking up fired pottery? Drop us a line or visit the studio in person.</p>
+                    <h1 class="display-3 fw-bold text-clay-dark dark:text-white mb-3">Contact Clay &amp; Kiln</h1>
+                    <p class="fs-5 text-clay-muted dark:text-clay-secondary mb-4">Have questions about class bookings, private parties, or picking up fired pottery? Drop us a line or visit the studio in person.</p>
                     <div class="d-flex justify-content-center justify-content-lg-start gap-3 mb-5">
                         <a href="#form" class="btn-primary-clay text-decoration-none shadow-md">Send Message</a>
                         <a href="#location" class="btn-outline-clay text-decoration-none shadow-sm">Studio Location</a>
@@ -392,8 +422,8 @@
                                     <i class="fa-solid fa-phone fs-5 text-clay-primary"></i>
                                 </div>
                                 <div class="text-start">
-                                    <small class="text-clay-secondary uppercase text-[10px] tracking-wider font-bold">Call Us</small>
-                                    <p class="mb-0 fw-bold text-white text-sm">(555) 123-4567</p>
+                                    <small class="text-clay-muted dark:text-clay-secondary uppercase text-[10px] tracking-wider font-bold">Call Us</small>
+                                    <p class="mb-0 fw-bold text-clay-dark dark:text-white text-sm">(555) 123-4567</p>
                                 </div>
                             </div>
                         </div>
@@ -403,8 +433,8 @@
                                     <i class="fa-solid fa-envelope fs-5 text-clay-primary"></i>
                                 </div>
                                 <div class="text-start">
-                                    <small class="text-clay-secondary uppercase text-[10px] tracking-wider font-bold">Email Us</small>
-                                    <p class="mb-0 fw-bold text-white text-sm">hello@clayandkiln.com</p>
+                                    <small class="text-clay-muted dark:text-clay-secondary uppercase text-[10px] tracking-wider font-bold">Email Us</small>
+                                    <p class="mb-0 fw-bold text-clay-dark dark:text-white text-sm">hello@clayandkiln.com</p>
                                 </div>
                             </div>
                         </div>
