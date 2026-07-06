@@ -454,11 +454,23 @@
             background-color: rgba(26, 21, 18, 0.98) !important;
         }
     </style>
+
+    <!-- Global Framed Padding Style -->
+    <style>
+        body {
+            padding: clamp(10px, 2vw, 24px) !important;
+        }
+        /* Ensure sticky navbar respects the frame padding */
+        .sticky-top {
+            top: clamp(10px, 2vw, 24px) !important;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-3 shadow-sm glass-navbar" style="z-index: 1050;">
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top py-4 shadow-sm glass-navbar" style="z-index: 1050;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
                 <img src="assets/images/logo.svg" alt="Clay & Kiln Logo" style="height: 32px; width: 32px;">
@@ -473,7 +485,7 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav gap-3">
+                <ul class="navbar-nav gap-1">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="index.html" data-bs-toggle="dropdown">Home</a>
                         <ul class="dropdown-menu bg-clay-dark border-secondary shadow-lg">
@@ -496,7 +508,7 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="d-xl-none d-flex align-items-center gap-4 text-white mt-3 mb-2 ps-2">
+                <div class="d-xl-none d-flex align-items-center gap-3 text-white mt-3 mb-2 ps-2">
                     <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
                         <i class="fa-solid fa-moon" id="nav-dark-icon-mobile"></i>
                     </a>
@@ -506,7 +518,7 @@
                     <a href="login.html" class="btn btn-outline-clay px-4 py-2 text-sm rounded-pill" style="border-color:#C86B47 !important; background-color:#C86B47 !important;">Login</a>
                 </div>
             </div>
-            <div class="d-none d-xl-flex align-items-center gap-4 text-white">
+            <div class="d-none d-xl-flex align-items-center gap-2 text-white">
                 <a href="index.html" class="text-white hover:text-clay-secondary transition fs-5 d-flex align-items-center gap-1" onclick="document.getElementById('darkModeSwitch').click(); event.preventDefault();" title="Toggle Dark Mode">
                     <i class="fa-solid fa-moon" id="nav-dark-icon"></i>
                 </a>
@@ -1165,7 +1177,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-clay-dark text-white pt-5 pb-3 border-top border-secondary border-opacity-10">
+    <footer class="bg-clay-dark text-white py-4 border-top border-secondary border-opacity-10">
         <div class="container mt-4 text-center text-md-start">
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">

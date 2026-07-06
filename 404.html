@@ -257,7 +257,19 @@
         /* Additional Page Specific Styles */
         
     </style>
+
+    <!-- Global Framed Padding Style -->
+    <style>
+        body {
+            padding: clamp(10px, 2vw, 24px) !important;
+        }
+        /* Ensure sticky navbar respects the frame padding */
+        .sticky-top {
+            top: clamp(10px, 2vw, 24px) !important;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- 1. Broken Ceramic Vase Hero -->

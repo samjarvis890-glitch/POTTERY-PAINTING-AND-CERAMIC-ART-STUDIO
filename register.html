@@ -99,7 +99,19 @@
             border-color: #C86B47 !important;
         }
     </style>
+
+    <!-- Global Framed Padding Style -->
+    <style>
+        body {
+            padding: clamp(10px, 2vw, 24px) !important;
+        }
+        /* Ensure sticky navbar respects the frame padding */
+        .sticky-top {
+            top: clamp(10px, 2vw, 24px) !important;
+        }
+    </style>
 </head>
+
 <body class="h-screen overflow-hidden relative flex items-center justify-center p-4 bg-[url('assets/images/gallery/gallery-hero.jpg')] bg-cover bg-center">
 
     <!-- Background blurred overlay -->
@@ -117,7 +129,7 @@
     </div>
 
     <!-- Main Register Card Container -->
-    <div class="relative z-10 w-full max-w-[420px] bg-white/95 dark:bg-clay-dark/95 backdrop-blur-md rounded-[24px] border border-clay-secondary/30 dark:border-clay-text/20 p-5 shadow-2xl transition-all duration-300">
+    <div class="relative z-10 w-full max-w-md bg-white/95 dark:bg-clay-dark/95 backdrop-blur-md rounded-[28px] border border-clay-secondary/30 dark:border-clay-text/20 p-6 md:p-8 shadow-2xl transition-all duration-300">
         
         <!-- Logo and Brand Title -->
         <div class="text-center mb-3">

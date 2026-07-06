@@ -108,7 +108,19 @@
             border-color: #C86B47 !important;
         }
     </style>
+
+    <!-- Global Framed Padding Style -->
+    <style>
+        body {
+            padding: clamp(10px, 2vw, 24px) !important;
+        }
+        /* Ensure sticky navbar respects the frame padding */
+        .sticky-top {
+            top: clamp(10px, 2vw, 24px) !important;
+        }
+    </style>
 </head>
+
 <body class="min-h-screen flex">
 
     <!-- 1. Left Sidebar Navigation -->
